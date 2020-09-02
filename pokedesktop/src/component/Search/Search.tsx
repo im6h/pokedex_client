@@ -6,7 +6,7 @@
  */
 
 import React from "react";
-import "./search.scss";
+import "./Search.scss";
 
 function SearchBar() {
 

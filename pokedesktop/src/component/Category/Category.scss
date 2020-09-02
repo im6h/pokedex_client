@@ -1,0 +1,108 @@
+@import "src/asset/style/color";
+
+.category {
+  height: 28px;
+  width: 70px;
+  display: flex;
+  border: 1px solid transparent;
+  border-radius: 20px;
+
+  &-fire {
+    background: $type-fire;
+    color: white;
+  }
+
+  &-watter {
+    background: $type-water;
+    color: white;
+  }
+
+  &-grass {
+    background: $type-grass;
+    color: white;
+  }
+
+  &-dragon {
+    background: $type-dragon;
+    color: white;
+  }
+
+  &-electronic {
+    background: $type-electronic;
+    color: white;
+  }
+
+  &-dark {
+    background: $type-dark;
+    color: white;
+  }
+
+  &-ground {
+    background: $type-ground;
+    color: white;
+  }
+
+  &-flying {
+    background: $type-flying;
+    color: white;
+  }
+
+  &-normal {
+    background: $type-normal;
+    color: white;
+  }
+
+  &-psychic {
+    background: $type-psychic;
+    color: white;
+  }
+
+  &-poison {
+    background: $type-poison;
+    color: white;
+  }
+
+  &-rock {
+    background: $type-rock;
+    color: white;
+  }
+
+  &-steel {
+    background: $type-steel;
+    color: white;
+  }
+
+  &-fairy {
+    background: $type-fairy;
+    color: white;
+  }
+
+  &-ice {
+    background: $type-ice;
+    color: white;
+  }
+
+  &-bug {
+    background: $type-bug;
+    color: white;
+  }
+
+  &-fighting {
+    background: $type-fighting;
+    color: white;
+  }
+
+  &__wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: transparent;
+  }
+
+  &__type {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
