@@ -1,108 +1,58 @@
 @import "src/asset/style/color";
 
 .category {
-  height: 28px;
-  width: 70px;
   display: flex;
+  flex-direction: row;
   border: 1px solid transparent;
   border-radius: 20px;
-
-  &-fire {
-    background: $type-fire;
-    color: white;
-  }
-
-  &-watter {
-    background: $type-water;
-    color: white;
-  }
-
-  &-grass {
-    background: $type-grass;
-    color: white;
-  }
-
-  &-dragon {
-    background: $type-dragon;
-    color: white;
-  }
-
-  &-electronic {
-    background: $type-electronic;
-    color: white;
-  }
-
-  &-dark {
-    background: $type-dark;
-    color: white;
-  }
-
-  &-ground {
-    background: $type-ground;
-    color: white;
-  }
-
-  &-flying {
-    background: $type-flying;
-    color: white;
-  }
-
-  &-normal {
-    background: $type-normal;
-    color: white;
-  }
-
-  &-psychic {
-    background: $type-psychic;
-    color: white;
-  }
-
-  &-poison {
-    background: $type-poison;
-    color: white;
-  }
-
-  &-rock {
-    background: $type-rock;
-    color: white;
-  }
-
-  &-steel {
-    background: $type-steel;
-    color: white;
-  }
-
-  &-fairy {
-    background: $type-fairy;
-    color: white;
-  }
-
-  &-ice {
-    background: $type-ice;
-    color: white;
-  }
-
-  &-bug {
-    background: $type-bug;
-    color: white;
-  }
-
-  &-fighting {
-    background: $type-fighting;
-    color: white;
-  }
+  height: 63px;
+  width: 155px;
 
   &__wrapper {
-    height: 100%;
+    display: flex;
+    flex-direction: row;
     width: 100%;
+    height: 100%;
+    border: 1px solid $background;
+    border-radius: 18px;
+    justify-content: space-around;
+    color: white;
+
+    &-pokedex {
+      background: $pokedex;
+    }
+
+    &-moves {
+      background: $moves;
+    }
+
+    &-abilities {
+      background: $abilities;
+    }
+
+    &-items {
+      background: $items;
+    }
+
+    &-location {
+      background: $location;
+    }
+
+    &-type {
+      background: $type;
+    }
+  }
+
+
+  &__title {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: transparent;
+    padding-left: 30px;
   }
 
-  &__type {
-    font-size: 14px;
-    font-weight: bold;
+  &__img {
+    display: flex;
   }
+
 }
