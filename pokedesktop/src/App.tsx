@@ -1,11 +1,16 @@
 import React from 'react';
 import './App.css';
-import Router from "./page/router";
-
+// import Router from "./page/router";
+import Home from "./page/Home/Home";
 import './asset/style/base.scss'
+
 function App() {
   return (
-      <Router/>
+      <div className={"App"}>
+        <div className={"container"}>
+          <Home />
+        </div>
+      </div>
   );
 }
 

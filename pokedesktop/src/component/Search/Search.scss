@@ -1,9 +1,8 @@
-// comment
-
 @import "src/asset/style/color";
+
 .searchBar {
   display: flex;
-  width: 300px;
+  width: 100%;
   border: 1px solid transparent;
   background-color: $background;
   border-radius: 100px;
@@ -33,6 +32,7 @@
     justify-content: flex-end;
     align-items: center;
   }
+
   input {
     height: 100%;
     width: 90%;
