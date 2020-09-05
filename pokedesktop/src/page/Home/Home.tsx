@@ -34,11 +34,11 @@ function Home() {
           {/*category*/}
           <div className={"home__category"}>
             <Category name="pokedex"/>
-            <Category name="items"/>
+            <Category name="move"/>
             <Category name="type"/>
-            <Category name="location"/>
-            <Category name="abilities"/>
-            <Category name="moves"/>
+            <Category name="generation"/>
+            <Category name="evolution"/>
+            <Category name="ability"/>
           </div>
         </div>
         <div className={"home__new"}>

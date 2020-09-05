@@ -25,20 +25,20 @@
       background: $pokedex;
     }
 
-    &-moves {
+    &-move {
       background: $moves;
     }
 
-    &-abilities {
+    &-ability {
       background: $abilities;
     }
 
-    &-items {
-      background: $items;
+    &-evolution {
+      background: $evolution;
     }
 
-    &-location {
-      background: $location;
+    &-generation {
+      background: $generation;
     }
 
     &-type {
