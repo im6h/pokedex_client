@@ -2,7 +2,7 @@
  *
  * @author im6h
  *
- * Create at 30/8/2020.
+ * Create at 5/9/2020.
  * Update at 5/9/2020.
  *
  */
@@ -11,7 +11,7 @@ import {createContext} from 'react'
 import Base from "../interface/base";
 import pokedexApi from "../service/pokedex";
 
-class PokemonStore {
+class PokedexStore {
   @observable pokedex: Base[] = [];
 
   @action
@@ -19,7 +19,11 @@ class PokemonStore {
     try {
       let response = await pokedexApi.getAllPokemon(offset, limit)
       if (response.status === 200 && response.data) {
-        this.pokedex = response.data.result;
+        if (offset === 0) {
+          this.pokedex = response.data.results;
+        } else {
+          this.pokedex = [...this.pokedex, ...response.data.results];
+        }
       } else {
         this.pokedex = [];
         console.log('res', response.data)
@@ -29,7 +33,6 @@ class PokemonStore {
       this.pokedex = []
     }
   }
-
 }
 
-export default createContext(new PokemonStore())
+export default createContext(new PokedexStore())

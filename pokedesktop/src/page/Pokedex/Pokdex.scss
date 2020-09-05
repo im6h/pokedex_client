@@ -1,0 +1,51 @@
+@import "src/asset/style/color";
+
+.pokedex {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  //padding: 5px 5px;
+
+
+  &__navbar {
+    margin:30px 20px 0px;
+  }
+
+  &__wrapper {
+    display: flex;
+    height: 90vh;
+    width: 100%;
+    flex-direction: column;
+    //margin: 0px 10px 30px;
+  }
+
+  &__title {
+    width: 100%;
+    //margin: 0px 10px;
+
+    p {
+      font-size: 30px;
+      font-weight: bold;
+      text-align: left;
+      margin-left: 20px;
+    }
+  }
+
+  &__list {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 45% 45%;
+    grid-gap: 10px 10px;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+  }
+
+  .pokeball {
+    position: absolute;
+    right: 0;
+    top: -8px;
+  }
+}

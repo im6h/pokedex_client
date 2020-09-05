@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 2/9/2020.
- * Update at 2/9/2020.
+ * Update at 5/9/2020.
  *
  */
 import React from "react";
@@ -16,7 +16,7 @@ function Category({name}: any) {
 
   // function handle event click on category
   const handleClick = (name: string) => {
-    history.push('/detail')
+    history.push(`${name}`)
   }
 
   return (
