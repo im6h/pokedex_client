@@ -5,14 +5,15 @@ import Router from "./page/router";
 import "./asset/style/base.scss";
 
 function App() {
-	return (
-		<div className={"App"}>
-			<div className={"container"}>
-				{/*<Home />*/}
-				<Router />
-			</div>
-		</div>
-	);
+  return (
+      <div className={"App"}>
+        <div className={"container"}>
+          {/*<Home />*/}
+          <Router/>
+        </div>
+      </div>
+  );
+
 }
 
 export default App;

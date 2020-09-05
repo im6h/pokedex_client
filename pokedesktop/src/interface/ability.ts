@@ -1,6 +1,7 @@
 import Base from "./base";
 
 export default interface AbilityDetail {
+
 	id: number;
 	name: string;
 	pokemons: [
@@ -11,3 +12,4 @@ export default interface AbilityDetail {
 		},
 	];
 }
+
