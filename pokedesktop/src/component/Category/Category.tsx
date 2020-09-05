@@ -9,12 +9,14 @@
 import React from "react";
 import "./Category.scss"
 import {formatNamePokemon} from "../../util/functionHelper";
-
+import {useHistory} from 'react-router-dom'
 function Category({name}: any) {
+
+  const history = useHistory();
 
   // function handle event click on category
   const handleClick = (name: string) => {
-    console.log(`${name}`)
+    history.push('/detail')
   }
 
   return (

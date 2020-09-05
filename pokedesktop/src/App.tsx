@@ -1,17 +1,18 @@
-import React from 'react';
-import './App.css';
-// import Router from "./page/router";
-import Home from "./page/Home/Home";
-import './asset/style/base.scss'
+import React from "react";
+import "./App.css";
+import Router from "./page/router";
+// import Home from "./page/Home/Home";
+import "./asset/style/base.scss";
 
 function App() {
-  return (
-      <div className={"App"}>
-        <div className={"container"}>
-          <Home />
-        </div>
-      </div>
-  );
+	return (
+		<div className={"App"}>
+			<div className={"container"}>
+				{/*<Home />*/}
+				<Router />
+			</div>
+		</div>
+	);
 }
 
 export default App;

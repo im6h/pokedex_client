@@ -1,3 +1,5 @@
+> Update: 3-9-2020
+
 ## Component
 - [ ] Base stats
 - [x] Card
@@ -7,6 +9,7 @@
 - [ ] FloatButton
 - [x] Search
 - [x] New
+- [ ] Navbar
 
 ## Page
 - [x] Home page
