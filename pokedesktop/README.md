@@ -1,6 +1,7 @@
-> Update: 3-9-2020
+> Update: 5-9-2020
 
 ## Component
+
 - [ ] Base stats
 - [x] Card
 - [x] Category
@@ -9,11 +10,12 @@
 - [ ] FloatButton
 - [x] Search
 - [x] New
-- [ ] Navbar
+- [x] Navbar
 
 ## Page
+
 - [x] Home page
-- [ ] Pokedex page
+- [x] Pokedex page
 - [ ] Move page
 - [ ] Type page
 - [ ] Ability page
@@ -23,17 +25,21 @@
 - [ ] Ability detail page
 
 ## Utils
-- [ ] function 
+
+- [ ] function
 
 ## Style
+
 - [ ] base style
 - [ ] base color
 - [ ] base font
 
 ## Store
+
 - [ ] ability store
 - [ ] move store
 - [ ] type store
 - [ ] pokemon store
 - [ ] generation store
 - [ ] evolution store
+- [ ] pokedex store

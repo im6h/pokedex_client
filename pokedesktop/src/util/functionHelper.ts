@@ -26,8 +26,9 @@ function formatNumber(index: number): string {
   return result;
 }
 
-function formatUrlImage(id: string): string {
-  let result = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png`
+function formatUrlImage(id: number): string {
+  let _id = convertNumberIdPokemon(id);
+  let result = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${_id}.png`
   return result;
 }
 
