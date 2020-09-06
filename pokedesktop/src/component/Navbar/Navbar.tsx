@@ -3,27 +3,28 @@
  * @author im6h
  *
  * Create at 3/9/2020.
- * Update at 5/9/2020.
+ * Update at 6/9/2020.
  *
  */
 
 import React from "react";
 import "./Navbar.scss"
-import {Link} from "react-router-dom"
+import {useHistory} from "react-router-dom"
 
 function Navbar() {
+  const history = useHistory();
 
   return (
       <div className={"navbar"}>
         <div className={"navbar__wrapper"}>
-          <Link to={"/"}>
-            <div className={"navbar__back"}>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="black" width="36px" height="36px">
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-              </svg>
-            </div>
-          </Link>
+          <div className={"navbar__back"} onClick={() => {
+            history.goBack();
+          }}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="4 0 18 18" fill="black" width="36px" height="36px">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </div>
           <div className={"navbar__list"}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="black" width="36px" height="36px">
               <path d="M0 0h24v24H0z" fill="none"/>
