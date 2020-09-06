@@ -42,4 +42,4 @@
 - [ ] pokemon store
 - [ ] generation store
 - [ ] evolution store
-- [ ] pokedex store
+- [x] pokedex store

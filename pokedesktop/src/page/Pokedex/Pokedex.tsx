@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 5/9/2020.
+ * Update at 6/9/2020.
  *
  */
 
@@ -18,13 +18,19 @@ import PokedexStore from "../../store/pokedex"
 function Pokedex() {
 
   const [offset, setOffset] = React.useState(0);
+  const [loading, setLoading] = React.useState(true)
 
   const pokedexStore = React.useContext(PokedexStore);
   React.useEffect(() => {
-    pokedexStore.getPokedex(offset, 20);
+    setTimeout(() => {
+      pokedexStore.getPokedex(offset, 20);
+      setLoading(false);
+    }, 3000);
+
   }, [offset])
 
   const loadMore = () => {
+    setLoading(true)
     setOffset(offset + 20)
   }
 
@@ -60,9 +66,33 @@ function Pokedex() {
                 )
               })
             }
-
           </div>
         </div>
+        {
+          loading &&
+          <div className={"pokedex__modal"}>
+              <div style={{
+                width: '100%',
+                height: '80%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                  <div className={"pokedex__loading"}/>
+              </div>
+          </div>
+        }
+        {
+          (pokedexStore.error === 1) && <div className={"pokedex__modal"}>
+              <div className={"pokedex__alert"}>
+                  <p>Check your network</p>
+                  <button onClick={() => {
+                    pokedexStore.error = 0;
+                  }}>Close
+                  </button>
+              </div>
+          </div>
+        }
       </div>
   )
 }
