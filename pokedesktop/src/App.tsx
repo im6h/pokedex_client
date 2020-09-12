@@ -1,19 +1,35 @@
+/**
+ *
+ * @author im6h
+ *
+ * Create at 5/9/2020.
+ * Update at 11/9/2020.
+ *
+ */
 import React from "react";
-import "./App.css";
 import Router from "./page/router";
-// import Home from "./page/Home/Home";
-import "./asset/style/base.scss";
+import styled from "styled-components";
 
 function App() {
   return (
-      <div className={"App"}>
-        <div className={"container"}>
-          {/*<Home />*/}
-          <Router/>
-        </div>
-      </div>
+    <AppBase>
+      <AppContainer>
+        <Router />
+      </AppContainer>
+    </AppBase>
   );
-
 }
 
+// style app base
+const AppBase = styled.div`
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+// style app container
+const AppContainer = styled.div`
+  width: 500px;
+`;
 export default App;
