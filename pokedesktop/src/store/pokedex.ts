@@ -6,8 +6,8 @@
  * Update at 6/9/2020
  *
  */
-import {action, observable} from "mobx";
-import {createContext} from 'react'
+import { action, observable } from "mobx";
+import { createContext } from "react";
 import Base from "../interface/base";
 import pokedexApi from "../service/pokedex";
 
@@ -18,7 +18,7 @@ class PokedexStore {
   @action
   async getPokedex(offset: number, limit: number) {
     try {
-      let response = await pokedexApi.getAllPokemon(offset, limit)
+      let response = await pokedexApi.getAllPokemon(offset, limit);
       if (response.status === 200 && response.data) {
         this.error = 0;
         if (offset === 0) {
@@ -26,17 +26,20 @@ class PokedexStore {
         } else {
           this.pokedex = [...this.pokedex, ...response.data.results];
         }
+        if (response.data.results.length === 0) {
+          this.error = 2;
+        }
       } else {
         this.error = 1;
         this.pokedex = [];
-        console.log('res', response.data)
+        console.log("res", response.data);
       }
     } catch (error) {
-      console.log('err', error);
+      console.log("err", error);
       this.pokedex = [];
-      this.error = 1
+      this.error = 1;
     }
   }
 }
 
-export default createContext(new PokedexStore())
+export default createContext(new PokedexStore());

@@ -16,7 +16,7 @@
 
 - [x] Home page
 - [x] Pokedex page
-- [ ] Move page
+- [x] Move page
 - [ ] Type page
 - [ ] Ability page
 - [ ] Pokemon Detail page
@@ -31,7 +31,7 @@
 ## Style
 
 - [ ] base style
-- [ ] base color
+- [x] base color
 - [ ] base font
 
 ## Store

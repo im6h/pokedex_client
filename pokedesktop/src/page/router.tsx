@@ -11,6 +11,7 @@ import React from "react";
 import Home from "./Home/Home";
 import Detail from "./Detail/Detail";
 import Pokedex from "./Pokedex/Pokedex";
+import Move from "./Move/Move";
 
 export default function Router() {
   return (
@@ -20,10 +21,9 @@ export default function Router() {
         <Route path={"/pokedex"} component={Pokedex} />
         <Route path={"/type"} />
         <Route path={"/ability"} />
-        <Route path={"/move"} />
+        <Route path={"/move"} component={Move} />
         <Route path={"/generation"} />
         <Route path={"/evolution"} />
-        <Route path="/detail" component={Detail} />
       </Switch>
     </HashRouter>
   );

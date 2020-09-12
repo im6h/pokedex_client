@@ -1,5 +1,5 @@
 interface Base {
-  name: string,
-  url: string
+  name: string;
+  url: string;
 }
 export default Base;
