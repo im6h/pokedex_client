@@ -29,8 +29,10 @@ function Pokedex() {
   }, [offset]);
 
   const loadMore = () => {
-    setLoading(true);
-    setOffset(offset + 20);
+    if (pokedexStore.error !== 2) {
+      setLoading(true);
+      setOffset(offset + 20);
+    }
   };
 
   const handleScroll = (event: any) => {
