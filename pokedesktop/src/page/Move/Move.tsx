@@ -11,14 +11,11 @@ import styled, { keyframes } from "styled-components";
 import Navbar from "../../component/Navbar/Navbar";
 import colorStore from "../../asset/style/color";
 import Base from "../../interface/base";
-import Card from "../../component/Card/Card";
-import Category from "../../component/Category/Category";
 import { observer } from "mobx-react-lite";
 import MoveStore from "../../store/move";
 import {
   convertNumberIdPokemon,
   formatNamePokemon,
-  formatUrlImage,
   splitNumberIdPokemon,
 } from "../../util/functionHelper";
 function Move() {
@@ -69,7 +66,7 @@ function Move() {
       </MoveBall>
       <MoveWrapper>
         <MoveTitle>
-          <p>Move</p>
+          <p>Moves</p>
         </MoveTitle>
         <MoveList onScroll={handleScroll}>
           {moveStore.moves.map((e: Base) => {
@@ -157,13 +154,12 @@ const spin = keyframes`
   }
 `;
 const zoomX = keyframes`
-  from {
-    transform: translateX(0);
+ from {
+    transform: translateX(0) scale(1);
   }
   to {
-    transform: translatex(20px);
+    transform: translatex(110px) scale(2);
   }
-
 `;
 
 // style move base
