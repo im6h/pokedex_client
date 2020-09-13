@@ -8,16 +8,14 @@ export interface PokemonDetail {
   types: [
     {
       slot: number;
-      type: Base
-    }
-  ]
+      type: Base;
+    },
+  ];
   stats: [
     {
-      base_stat: number,
-      effort: number,
-      stat: Base,
-    }
-  ]
-
+      base_stat: number;
+      effort: number;
+      stat: Base;
+    },
+  ];
 }
-

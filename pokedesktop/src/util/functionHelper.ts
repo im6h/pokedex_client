@@ -1,11 +1,11 @@
 function convertNumberIdPokemon(id: number): string {
   let result: string;
   if (id < 10) {
-    result = `00${id}`
+    result = `00${id}`;
   } else if (id > 99) {
-    result = `${id}`
+    result = `${id}`;
   } else {
-    result = `0${id}`
+    result = `0${id}`;
   }
   return result;
 }
@@ -28,7 +28,7 @@ function formatNumber(index: number): string {
 
 function formatUrlImage(id: number): string {
   let _id = convertNumberIdPokemon(id);
-  let result = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${_id}.png`
+  let result = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${_id}.png`;
   return result;
 }
 
@@ -38,4 +38,4 @@ export {
   formatNumber,
   formatUrlImage,
   splitNumberIdPokemon,
-}
+};

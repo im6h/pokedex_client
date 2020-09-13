@@ -3,33 +3,58 @@
  * @author im6h
  *
  * Create at 30/8/2020.
- * Update at 5/9/2020.
+ * Update at 13/9/2020.
  *
  */
-import {action, observable} from "mobx";
-import {createContext} from 'react'
-import Base from "../interface/base";
-import pokedexApi from "../service/pokedex";
+import { action, observable } from "mobx";
+import { createContext } from "react";
+import { PokemonDetail } from "../interface/pokemon";
+import pokemonApi from "../service/pokemon";
+
+const initValue: PokemonDetail = {
+  name: "",
+  id: 0,
+  height: 0,
+  weight: 0,
+  types: [
+    {
+      slot: 0,
+      type: {
+        name: "",
+        url: "",
+      },
+    },
+  ],
+  stats: [
+    {
+      base_stat: 0,
+      effort: 0,
+      stat: {
+        name: "",
+        url: "",
+      },
+    },
+  ],
+};
 
 class PokemonStore {
-  @observable pokedex: Base[] = [];
+  @observable pokemon: PokemonDetail = initValue;
 
   @action
-  async getPokedex(offset: number, limit: number) {
+  async getPokedex(idPokemon: number) {
     try {
-      let response = await pokedexApi.getAllPokemon(offset, limit)
+      let response = await pokemonApi.getPokemonById(idPokemon);
       if (response.status === 200 && response.data) {
-        this.pokedex = response.data.result;
+        this.pokemon = response.data;
       } else {
-        this.pokedex = [];
-        console.log('res', response.data)
+        this.pokemon = initValue;
+        console.log("res", response.data);
       }
     } catch (error) {
-      console.log('err', error);
-      this.pokedex = []
+      console.log("err", error);
+      this.pokemon = initValue;
     }
   }
-
 }
 
-export default createContext(new PokemonStore())
+export default createContext(new PokemonStore());

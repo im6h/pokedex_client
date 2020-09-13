@@ -15,18 +15,19 @@ import Type from "./Type/Type";
 import Generation from "./Generation/Generation";
 import Ability from "./Ability/Ability";
 import Item from "./Item/Item";
-
+import Pokemon from "./Pokedex/Pokemon";
 export default function Router() {
   return (
     <HashRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path={"/pokedex"} component={Pokedex} />
-        <Route path={"/type"} component={Type} />
-        <Route path={"/ability"} component={Ability} />
-        <Route path={"/move"} component={Move} />
-        <Route path={"/generation"} component={Generation} />
-        <Route path={"/item"} component={Item} />
+        <Route exact path={"/pokedex"} component={Pokedex} />
+        <Route exact path={"/type"} component={Type} />
+        <Route exact path={"/ability"} component={Ability} />
+        <Route exact path={"/move"} component={Move} />
+        <Route exact path={"/generation"} component={Generation} />
+        <Route exact path={"/item"} component={Item} />
+        <Route exact path={"/pokedex/:id"} component={Pokemon} />
       </Switch>
     </HashRouter>
   );

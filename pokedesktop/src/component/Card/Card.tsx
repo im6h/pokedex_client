@@ -7,7 +7,8 @@
  *
  */
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 import colorStore from "../../asset/style/color";
 import animateStore from "../../asset/style/animation";
 import Base from "../../interface/base";
@@ -20,17 +21,17 @@ import {
 
 function Card({ name, url }: Base) {
   // function handle event click card
-  const handleClick = (): void => {
-    console.log(1);
-  };
 
+  const history = useHistory();
   let id: string = splitNumberIdPokemon(url);
   let _idPokemon: number = parseInt(id);
-
+  const handleOnClick = () => {
+    history.push(`/pokedex/${id}`);
+  };
   return (
     <CardBase
       onClick={() => {
-        handleClick();
+        handleOnClick();
       }}
     >
       <CardWrapper>
