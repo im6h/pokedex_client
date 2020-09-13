@@ -7,7 +7,7 @@ const colorStore = {
   typeGrass: "#9BCC50",
   typeElectric: "#EED535",
   typeDragon: "linear - gradient(180deg, #53a4cf 50 %, #f16e57 50 %)",
-  typeDark: "707070",
+  typeDark: "#707070",
   typePsychic: "#F366B9",
   typeIce: "#51C4E7",
   typeFlying: "linear - gradient(180deg, #3dc7ef 50 %, #bdb9b8 50 %)",

@@ -43,3 +43,9 @@
 - [ ] generation store
 - [ ] evolution store
 - [x] pokedex store
+
+## Bug
+
+- [ ] check network error
+- [ ] network error: notifi error but list = old list not empty.
+- [ ] check loading position avaliable.

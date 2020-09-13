@@ -3,12 +3,13 @@
  * @author im6h
  *
  * Create at 2/9/2020.
- * Update at 11/9/2020.
+ * Update at 13/9/2020.
  *
  */
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import colorStore from "../../asset/style/color";
+import animateStore from "../../asset/style/animation";
 import Base from "../../interface/base";
 import {
   convertNumberIdPokemon,
@@ -66,16 +67,6 @@ function Card({ name, url }: Base) {
   );
 }
 
-const zoomX = keyframes`
-    from {
-      transform: scale(1);
-    }
-    to {
-      transform: scale(1.3);
-    }
-
-`;
-
 const CardBase = styled.div`
   height: 110px;
   width: 200px;
@@ -89,7 +80,7 @@ const CardBase = styled.div`
   }
   &:hover {
     img {
-      animation-name: ${zoomX};
+      animation-name: ${animateStore.zoomX};
       animation-duration: 0.5s;
       animation-fill-mode: forwards;
     }

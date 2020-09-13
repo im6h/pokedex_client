@@ -26,7 +26,7 @@ class PokedexStore {
         } else {
           this.pokedex = [...this.pokedex, ...response.data.results];
         }
-        if (response.data.results.length === 0) {
+        if (response.data.next === null) {
           this.error = 2;
         }
       } else {

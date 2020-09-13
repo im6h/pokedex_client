@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 11/9/2020
+ * Update at 13/9/2020
  *
  */
 import { action, observable } from "mobx";
@@ -26,7 +26,7 @@ class MoveStore {
         } else {
           this.moves = [...this.moves, ...response.data.results];
         }
-        if (response.data.results.length === 0) {
+        if (response.data.next === null) {
           this.error = 2;
         }
       } else {

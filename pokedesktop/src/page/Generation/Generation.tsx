@@ -3,13 +3,14 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 11/9/2020.
+ * Update at 13/9/2020.
  *
  */
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Navbar from "../../component/Navbar/Navbar";
 import colorStore from "../../asset/style/color";
+import animationStore from "../../asset/style/animation";
 import { observer } from "mobx-react-lite";
 import GenerationStore from "../../store/generation";
 function Generation() {
@@ -146,7 +147,7 @@ function Generation() {
             <GenerationCardName>
               <p>
                 <img
-                  src="https://i2.wp.com/i0.kym-cdn.com/entries/icons/original/000/020/475/Pokemon_SunMoon_Starters.jpg"
+                  src="https://i0.wp.com/www.nintendo-insider.com/wp-content/uploads/2019/02/pokemon_sword_and_shield_logo.jpg"
                   alt="genVIII"
                 />
               </p>
@@ -185,22 +186,6 @@ function Generation() {
 }
 
 // style Generation base
-const spin = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-`;
-const zoomX = keyframes`
- from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.1);
-  }
-`;
 
 const GenerationBase = styled.div`
   display: flex;
@@ -234,7 +219,6 @@ const GenerationTitle = styled.div`
   }
 `;
 const GenerationList = styled.div`
-  margin-top: 50px;
   display: grid;
   width: 100%;
   grid-template-columns: 45% 45%;
@@ -257,7 +241,7 @@ const GenerationCard = styled.div`
   justify-content: center;
   align-items: center;
   width: 90%;
-  border: 3px solid ${colorStore.background};
+  border: 1px solid ${colorStore.typeDark};
   border-radius: 10px;
   margin: 10px 0px;
   position: relative;
@@ -267,7 +251,7 @@ const GenerationCard = styled.div`
   }
   &:hover {
     cursor: pointer;
-    animation-name: ${zoomX};
+    animation-name: ${animationStore.zoomX};
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
   }
@@ -292,11 +276,7 @@ const GenerationCardName = styled.div`
     font-weight: bold;
   }
 `;
-const GenerationIcon = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-`;
+
 const Modal = styled.div`
   position: fixed;
   z-index: 1;
@@ -315,6 +295,6 @@ const Loading = styled.div`
   border-top: 4px solid ${colorStore.typeFire};
   width: 20px;
   height: 20px;
-  animation: ${spin} 2s linear infinite;
+  animation: ${animationStore.spin} 2s linear infinite;
 `;
 export default observer(Generation);

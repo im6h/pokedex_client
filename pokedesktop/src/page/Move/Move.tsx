@@ -3,13 +3,14 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 11/9/2020.
+ * Update at 13/9/2020.
  *
  */
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Navbar from "../../component/Navbar/Navbar";
 import colorStore from "../../asset/style/color";
+import animateStore from "../../asset/style/animation";
 import Base from "../../interface/base";
 import { observer } from "mobx-react-lite";
 import MoveStore from "../../store/move";
@@ -31,7 +32,7 @@ function Move() {
   }, [offset]);
 
   const loadMore = () => {
-    if (moveStore.error != 2) {
+    if (moveStore.error !== 2) {
       setLoading(true);
       setOffset(offset + 20);
     }
@@ -145,22 +146,6 @@ function Move() {
 }
 
 // animation
-const spin = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-`;
-const zoomX = keyframes`
- from {
-    transform: translateX(0) scale(1);
-  }
-  to {
-    transform: translatex(110px) scale(2);
-  }
-`;
 
 // style move base
 const MoveBase = styled.div`
@@ -229,7 +214,7 @@ const Loading = styled.div`
   border-top: 4px solid ${colorStore.typeFire};
   width: 20px;
   height: 20px;
-  animation: ${spin} 2s linear infinite;
+  animation: ${animateStore.spin} 2s linear infinite;
 `;
 
 // style move modal
@@ -275,7 +260,7 @@ const MoveCard = styled.div`
   padding: 7px 0px;
   &:hover {
     p {
-      animation-name: ${zoomX};
+      animation-name: ${animateStore.zoomY};
       animation-duration: 0.5s;
       animation-fill-mode: forwards;
     }
@@ -289,7 +274,7 @@ const MoveIcon = styled.div`
 const MoveCardNumber = styled.div`
   margin: 2px 10px;
   text-align: right;
-  color: ${colorStore.typeDark};
+  color: ${colorStore.background};
   font-size: 14px;
   p {
     font-size: 14px;

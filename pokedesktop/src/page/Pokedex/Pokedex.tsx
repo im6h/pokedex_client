@@ -3,13 +3,14 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 11/9/2020.
+ * Update at 13/9/2020.
  *
  */
 
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import colorStore from "../../asset/style/color";
+import animateStore from "../../asset/style/animation";
 import Navbar from "../../component/Navbar/Navbar";
 import Card from "../../component/Card/Card";
 import Base from "../../interface/base";
@@ -116,16 +117,6 @@ function Pokedex() {
   );
 }
 
-// animation
-const spin = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-`;
-
 // style pokedex base
 const PokedexBase = styled.div`
   display: flex;
@@ -194,7 +185,7 @@ const Loading = styled.div`
   border-top: 4px solid ${colorStore.typeFire};
   width: 20px;
   height: 20px;
-  animation: ${spin} 2s linear infinite;
+  animation: ${animateStore.spin} 2s linear infinite;
 `;
 
 // style pokedex modal
