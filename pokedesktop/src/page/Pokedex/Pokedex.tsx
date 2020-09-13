@@ -175,7 +175,7 @@ const PokedexList = styled.div`
 const PokedexBall = styled.div`
   position: absolute;
   right: 0;
-  top: -8px;
+  top: -10px;
 `;
 
 // style pokedex loading
