@@ -7,7 +7,6 @@
   height: 63px;
   cursor: pointer;
 
-
   &__wrapper {
     display: flex;
     flex-direction: row;
@@ -33,8 +32,8 @@
       background: $abilities;
     }
 
-    &-evolution {
-      background: $evolution;
+    &-item {
+      background: $item;
     }
 
     &-generation {
@@ -45,7 +44,6 @@
       background: $type;
     }
   }
-
 
   &__title {
     display: flex;
@@ -67,5 +65,4 @@
       right: 0;
     }
   }
-
 }

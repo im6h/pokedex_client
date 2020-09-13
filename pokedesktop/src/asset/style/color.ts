@@ -25,7 +25,7 @@ const colorStore = {
   pokedex: "#4FC1A6",
   moves: "#FA6555",
   abilities: "#58ABF6",
-  evolution: "#FFCE4B",
+  item: "#FFCE4B",
   generation: "#A06EB4",
   type: "#B1736C",
 };

@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 30/8/2020.
- * Update at 11/09/2020.
+ * Update at 13/09/2020.
  *
  */
 import React from "react";
@@ -45,7 +45,7 @@ function Home() {
           <Category name="move" />
           <Category name="type" />
           <Category name="generation" />
-          <Category name="evolution" />
+          <Category name="item" />
           <Category name="ability" />
         </HomeCategory>
       </HomeAction>

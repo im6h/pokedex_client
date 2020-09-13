@@ -14,6 +14,7 @@ import Move from "./Move/Move";
 import Type from "./Type/Type";
 import Generation from "./Generation/Generation";
 import Ability from "./Ability/Ability";
+import Item from "./Item/Item";
 
 export default function Router() {
   return (
@@ -25,7 +26,7 @@ export default function Router() {
         <Route path={"/ability"} component={Ability} />
         <Route path={"/move"} component={Move} />
         <Route path={"/generation"} component={Generation} />
-        <Route path={"/evolution"} />
+        <Route path={"/item"} component={Item} />
       </Switch>
     </HashRouter>
   );
