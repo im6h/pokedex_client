@@ -7,7 +7,7 @@ class MoveApi {
   }
 
   async getMoveById(idMove: number) {
-    return axios.get(`${BASE_URL}/move/${idMove}`)
+    return axios.get(`${BASE_URL}/move/${idMove}`);
   }
 }
 

@@ -5,5 +5,5 @@ export default interface Generation {
   name: string;
   moves: Base[];
   pokemon_species: Base[];
-  types: Base[]
+  types: Base[];
 }
