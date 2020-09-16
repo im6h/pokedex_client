@@ -18,4 +18,9 @@ export interface PokemonDetail {
       stat: Base;
     },
   ];
+  moves: [
+    {
+      move: Base;
+    },
+  ];
 }

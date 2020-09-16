@@ -3,30 +3,40 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 13/9/2020.
+ * Update at 16/9/2020.
  *
  */
 
 import React from "react";
-import styled from "styled-components";
-import colorStore from "../../asset/style/color";
-import animateStore from "../../asset/style/animation";
+
 import Navbar from "../../component/Navbar/Navbar";
 import Card from "../../component/Card/Card";
 import Base from "../../interface/base";
 import { observer } from "mobx-react-lite";
 import PokedexStore from "../../store/pokedex";
+import {
+  PokedexAlert,
+  PokedexBall,
+  PokedexBase,
+  PokedexList,
+  PokedexNavbar,
+  PokedexTitle,
+  PokedexWrapper,
+  Loading,
+  Modal,
+} from "./style";
 
 function Pokedex() {
   const [offset, setOffset] = React.useState(0);
   const [loading, setLoading] = React.useState(true);
 
   const pokedexStore = React.useContext(PokedexStore);
+
   React.useEffect(() => {
     setTimeout(() => {
       pokedexStore.getPokedex(offset, 20);
       setLoading(false);
-    }, 3000);
+    }, 1000);
   }, [offset]);
 
   const loadMore = () => {
@@ -116,104 +126,5 @@ function Pokedex() {
     </PokedexBase>
   );
 }
-
-// style pokedex base
-const PokedexBase = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  height: 100%;
-  width: 100%;
-`;
-
-// style pokedex navbar
-const PokedexNavbar = styled.div`
-  margin: 30px 20px 0px;
-`;
-
-// style pokedex wrapper
-const PokedexWrapper = styled.div`
-  display: flex;
-  height: 87vh;
-  width: 100%;
-  flex-direction: column;
-`;
-
-// style pokedex title
-const PokedexTitle = styled.div`
-  width: 100%;
-
-  p {
-    margin: 0 0 10px 20px;
-    font-size: 30px;
-    font-weight: bold;
-    text-align: left;
-  }
-`;
-
-// style pokedex list
-const PokedexList = styled.div`
-  display: grid;
-  width: 100%;
-  grid-template-columns: 45% 45%;
-  grid-gap: 14px 1px;
-  justify-content: center;
-  align-items: center;
-  overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    width: 6px;
-    background-color: #f5f5f5;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: ${colorStore.typeNormal};
-  }
-`;
-
-// style pokedex ball
-const PokedexBall = styled.div`
-  position: absolute;
-  right: 0;
-  top: -10px;
-`;
-
-// style pokedex loading
-const Loading = styled.div`
-  border: 4px solid #e2e3e4;
-  border-radius: 50%;
-  border-top: 4px solid ${colorStore.typeFire};
-  width: 20px;
-  height: 20px;
-  animation: ${animateStore.spin} 2s linear infinite;
-`;
-
-// style pokedex modal
-const Modal = styled.div`
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
-`;
-
-// style pokedex alert
-const PokedexAlert = styled.div`
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-
-  p {
-    font-size: 30px;
-    font-weight: bold;
-  }
-`;
 
 export default observer(Pokedex);
