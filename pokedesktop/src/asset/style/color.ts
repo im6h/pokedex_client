@@ -29,4 +29,44 @@ const colorStore = {
   generation: "#A06EB4",
   type: "#B1736C",
 };
+export const getColor = (color: string) => {
+  switch (color) {
+    case "fire":
+      return colorStore.typeFire;
+    case "water":
+      return colorStore.typeWater;
+    case "grass":
+      return colorStore.typeGrass;
+    case "electric":
+      return colorStore.typeElectric;
+    case "dragon":
+      return colorStore.typeDragon;
+    case "dark":
+      return colorStore.typeDark;
+    case "psychic":
+      return colorStore.typePsychic;
+    case "ice":
+      return colorStore.typeIce;
+    case "flying":
+      return colorStore.typeFighting;
+    case "bug":
+      return colorStore.typeBug;
+    case "fairy":
+      return colorStore.typeFairy;
+    case "ground":
+      return colorStore.typeGround;
+    case "normal":
+      return colorStore.typeNormal;
+    case "rock":
+      return colorStore.typeRock;
+    case "fighting":
+      return colorStore.typeFighting;
+    case "poison":
+      return colorStore.typePoison;
+    case "ghost":
+      return colorStore.typeGhost;
+    case "steel":
+      return colorStore.typeSteel;
+  }
+};
 export default colorStore;

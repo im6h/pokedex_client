@@ -3,15 +3,23 @@
  * @author im6h
  *
  * Create at 30/8/2020.
- * Update at 13/09/2020.
+ * Update at 16/09/2020.
  *
  */
 import React from "react";
-import styled from "styled-components";
 import SearchBar from "../../component/Search/Search";
 import Category from "../../component/Category/Category";
 import New from "../../component/New/New";
-import colorStore from "../../asset/style/color";
+import {
+  HomeAction,
+  HomeBase,
+  HomeCategory,
+  HomeIcon,
+  HomeTitle,
+  HomeNew,
+  HomeNewTitle,
+  HomeSearchBar,
+} from "./style";
 
 function Home() {
   return (
@@ -96,82 +104,4 @@ function Home() {
     </HomeBase>
   );
 }
-
-// style home base
-const HomeBase = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background: ${colorStore.background};
-`;
-
-// style home action
-const HomeAction = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  height: 60vh;
-  position: relative;
-  background: white;
-  width: 100%;
-`;
-
-// style home icon
-const HomeIcon = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-`;
-
-// style home title
-const HomeTitle = styled.div`
-  margin-left: 2rem;
-  margin-right: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  p {
-    margin: 0px;
-    font-size: 30px;
-    text-align: left;
-    word-break: break-word;
-    font-weight: bold;
-  }
-`;
-
-// style home new
-const HomeNew = styled.div`
-  height: 39vh;
-  width: 90%;
-`;
-
-// style home new title
-const HomeNewTitle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-// style search bar
-const HomeSearchBar = styled.div`
-  width: 90%;
-  margin: 40px 10px 10px 10px;
-`;
-
-// style home category
-const HomeCategory = styled.div`
-  width: 90%;
-  margin: 10px;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-column: auto;
-  grid-gap: 10px 5px;
-  justify-content: center;
-  align-content: center;
-`;
 export default Home;

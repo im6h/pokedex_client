@@ -32,10 +32,15 @@ function formatUrlImage(id: number): string {
   return result;
 }
 
+function convertInfoPokemon(num: number) {
+  return num / 10;
+}
+
 export {
   convertNumberIdPokemon,
   formatNamePokemon,
   formatNumber,
   formatUrlImage,
   splitNumberIdPokemon,
+  convertInfoPokemon,
 };

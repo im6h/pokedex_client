@@ -39,18 +39,20 @@ const initValue: PokemonDetail = {
 
 class PokemonStore {
   @observable pokemon: PokemonDetail = initValue;
-
+  @observable error: number = 0;
   @action
-  async getPokedex(idPokemon: number) {
+  async getPokemon(idPokemon: number) {
     try {
       let response = await pokemonApi.getPokemonById(idPokemon);
       if (response.status === 200 && response.data) {
+        this.error = 0;
         this.pokemon = response.data;
       } else {
         this.pokemon = initValue;
         console.log("res", response.data);
       }
     } catch (error) {
+      this.error = 1;
       console.log("err", error);
       this.pokemon = initValue;
     }

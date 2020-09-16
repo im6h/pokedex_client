@@ -8,88 +8,122 @@
   border-radius: 20px;
 
   &-fire {
-    background: $type-fire;
-    color: white;
+    color: $type-fire;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-water {
-    background: $type-water;
-    color: white;
+    color: $type-water;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-grass {
-    background: $type-grass;
-    color: white;
+    color: $type-grass;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-dragon {
-    background: $type-dragon;
-    color: white;
+    color: $type-dragon;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-electronic {
-    background: $type-electronic;
-    color: white;
+    color: $type-electronic;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-dark {
-    background: $type-dark;
-    color: white;
+    color: $type-dark;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-ground {
-    background: $type-ground;
-    color: white;
+    color: $type-ground;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-flying {
-    background: $type-flying;
-    color: white;
+    color: $type-flying;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-normal {
-    background: $type-normal;
-    color: white;
+    color: $type-normal;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-psychic {
-    background: $type-psychic;
-    color: white;
+    color: $type-psychic;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-poison {
-    background: $type-poison;
-    color: white;
+    color: $type-poison;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-rock {
-    background: $type-rock;
-    color: white;
+    color: $type-rock;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-steel {
-    background: $type-steel;
-    color: white;
+    color: $type-steel;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-fairy {
-    background: $type-fairy;
-    color: white;
+    color: $type-fairy;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-ice {
-    background: $type-ice;
-    color: white;
+    color: $type-ice;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-bug {
-    background: $type-bug;
-    color: white;
+    color: $type-bug;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &-fighting {
-    background: $type-fighting;
-    color: white;
+    color: $type-fighting;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
 
   &__wrapper {
