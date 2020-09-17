@@ -8,7 +8,6 @@
  */
 
 import React from "react";
-
 import Navbar from "../../component/Navbar/Navbar";
 import Card from "../../component/Card/Card";
 import Base from "../../interface/base";
@@ -27,22 +26,25 @@ import {
 } from "./style";
 
 function Pokedex() {
-  const [offset, setOffset] = React.useState(0);
-  const [loading, setLoading] = React.useState(true);
-
   const pokedexStore = React.useContext(PokedexStore);
-
+  const { page, error, pokedex } = pokedexStore;
+  const [loading, setLoading] = React.useState(true);
+  const list = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
-    setTimeout(() => {
-      pokedexStore.getPokedex(offset, 20);
+    if (page === 0) {
+      setTimeout(() => {
+        pokedexStore.getPokedex(page, 20);
+        setLoading(false);
+      }, 300);
+    } else {
       setLoading(false);
-    }, 1000);
-  }, [offset]);
+    }
+  }, [page]);
 
   const loadMore = () => {
-    if (pokedexStore.error !== 2) {
+    if (error !== 2) {
       setLoading(true);
-      setOffset(offset + 20);
+      pokedexStore.getPokedex(page + 20, 20);
     }
   };
 
@@ -78,8 +80,12 @@ function Pokedex() {
           <p>Pokedex</p>
         </PokedexTitle>
         <PokedexList onScroll={handleScroll}>
-          {pokedexStore.pokedex.map((e: Base) => {
-            return <Card key={e.name} name={e.name} url={e.url} />;
+          {pokedex.map((e: Base, index: number) => {
+            return (
+              <div ref={list} key={index}>
+                <Card name={e.name} url={e.url} />
+              </div>
+            );
           })}
         </PokedexList>
       </PokedexWrapper>
@@ -109,13 +115,13 @@ function Pokedex() {
           </div>
         </Modal>
       )}
-      {pokedexStore.error === 1 && (
+      {error === 1 && (
         <Modal className={"pokedex__modal"}>
           <PokedexAlert className={"pokedex__alert"}>
             <p>Check your network</p>
             <button
               onClick={() => {
-                pokedexStore.error = 0;
+                // pokedexStore.error = 0;
               }}
             >
               Close

@@ -14,12 +14,14 @@ import pokedexApi from "../service/pokedex";
 class PokedexStore {
   @observable pokedex: Base[] = [];
   @observable error: number = 0;
+  @observable page: number = 0;
 
   @action
   async getPokedex(offset: number, limit: number) {
     try {
       let response = await pokedexApi.getAllPokemon(offset, limit);
       if (response.status === 200 && response.data) {
+        this.page = offset;
         this.error = 0;
         if (offset === 0) {
           this.pokedex = response.data.results;
@@ -40,6 +42,10 @@ class PokedexStore {
       this.error = 1;
     }
   }
+  // @action
+  // async increPage() {
+  //   return this.page + 20;
+  // }
 }
 
 export default createContext(new PokedexStore());

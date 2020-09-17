@@ -28,6 +28,7 @@ function Card({ name, url }: Base) {
   const handleOnClick = () => {
     history.push(`/pokedex/${id}`);
   };
+
   return (
     <CardBase
       onClick={() => {
