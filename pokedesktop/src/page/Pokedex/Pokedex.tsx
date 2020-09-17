@@ -40,7 +40,6 @@ function Pokedex() {
       setLoading(false);
     }
   }, [page]);
-
   const loadMore = () => {
     if (error !== 2) {
       setLoading(true);
