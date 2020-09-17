@@ -46,6 +46,7 @@
 
 ## Bug
 
-- [ ] check network error
-- [ ] network error: notifi error but list = old list not empty.
-- [ ] check loading position avaliable.
+- [ ] 1.check network error
+- [ ] 2.network error: notifi error but list = old list not empty.
+- [ ] 3.check loading position avaliable.
+- [ ] 4.back to pokedex, store stage of list pokemon.

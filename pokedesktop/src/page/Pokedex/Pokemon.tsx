@@ -38,10 +38,6 @@ import {
   PokedexAlert,
 } from "./style";
 
-interface Props {
-  color: string;
-}
-
 function Pokemon() {
   let { id } = useParams();
 
@@ -102,7 +98,7 @@ function Pokemon() {
     setTimeout(() => {
       pokemonStore.getPokemon(id);
       setLoading(false);
-    }, 100);
+    }, 3000);
   }, []);
 
   return (

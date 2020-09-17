@@ -27,22 +27,30 @@ import {
 } from "./style";
 
 function Pokedex() {
-  const [offset, setOffset] = React.useState(0);
-  const [loading, setLoading] = React.useState(true);
-
   const pokedexStore = React.useContext(PokedexStore);
+  const [loading, setLoading] = React.useState(true);
+  const list = React.useRef<HTMLInputElement | null>(null);
+  const { page, error, pokedex } = pokedexStore;
 
   React.useEffect(() => {
-    setTimeout(() => {
-      pokedexStore.getPokedex(offset, 20);
+    if (page === 0) {
+      setTimeout(() => {
+        pokedexStore.getPokedex(page, 20);
+        setLoading(false);
+      }, 1000);
+    } else {
       setLoading(false);
-    }, 1000);
-  }, [offset]);
-
+    }
+  }, [page]);
+  const scrollToBottom = () => {
+    list.current?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
   const loadMore = () => {
-    if (pokedexStore.error !== 2) {
+    if (error !== 2) {
       setLoading(true);
-      setOffset(offset + 20);
+      pokedexStore.getPokedex(page + 20, 20);
     }
   };
 
@@ -77,9 +85,9 @@ function Pokedex() {
         <PokedexTitle>
           <p>Pokedex</p>
         </PokedexTitle>
-        <PokedexList onScroll={handleScroll}>
-          {pokedexStore.pokedex.map((e: Base) => {
-            return <Card key={e.name} name={e.name} url={e.url} />;
+        <PokedexList ref={list} onScroll={handleScroll}>
+          {pokedex.map((e: Base, index: number) => {
+            return <Card key={index} name={e.name} url={e.url} />;
           })}
         </PokedexList>
       </PokedexWrapper>
@@ -109,13 +117,13 @@ function Pokedex() {
           </div>
         </Modal>
       )}
-      {pokedexStore.error === 1 && (
+      {error === 1 && (
         <Modal className={"pokedex__modal"}>
           <PokedexAlert className={"pokedex__alert"}>
             <p>Check your network</p>
             <button
               onClick={() => {
-                pokedexStore.error = 0;
+                // pokedexStore.error = 0;
               }}
             >
               Close
