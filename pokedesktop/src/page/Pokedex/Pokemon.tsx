@@ -44,7 +44,8 @@ function Pokemon() {
   const [tab, setTab] = React.useState("about");
   const pokemonStore = React.useContext(PokemonStore);
   const [loading, setLoading] = React.useState(true);
-  const colorPokemon = pokemonStore.pokemon.types[0].type.name;
+  const { pokemon, error } = pokemonStore;
+  const colorPokemon = pokemon.types[0].type.name;
 
   const PokemonNest = () => {
     return (
@@ -79,18 +80,11 @@ function Pokemon() {
   const changeTab = (tab: string) => {
     switch (tab) {
       case "about":
-        return (
-          <About
-            weight={pokemonStore.pokemon.weight}
-            height={pokemonStore.pokemon.height}
-          />
-        );
+        return <About weight={pokemon.weight} height={pokemon.height} />;
       case "stats":
-        return (
-          <Stats colorPokemon={colorPokemon} arr={pokemonStore.pokemon.stats} />
-        );
+        return <Stats colorPokemon={colorPokemon} arr={pokemon.stats} />;
       case "moves":
-        return <Move moves={pokemonStore.pokemon.moves} />;
+        return <Move moves={pokemon.moves} />;
     }
   };
 
@@ -98,7 +92,7 @@ function Pokemon() {
     setTimeout(() => {
       pokemonStore.getPokemon(id);
       setLoading(false);
-    }, 3000);
+    }, 1000);
   }, []);
 
   return (
@@ -108,9 +102,6 @@ function Pokemon() {
           backgroundColor: getColor(colorPokemon),
         }}
       >
-        <PokemonNavbar>
-          <Navbar />
-        </PokemonNavbar>
         <PokemonBallMon>
           <svg
             width="240"
@@ -126,55 +117,37 @@ function Pokemon() {
             />
           </svg>
         </PokemonBallMon>
-        <PokemonWrapper>
-          <PokemonInfo>
-            <PokemonNameAndNumber>
-              <h3>{formatNamePokemon(pokemonStore.pokemon.name)}</h3>
-              <p>{"#" + convertNumberIdPokemon(pokemonStore.pokemon.id)}</p>
-            </PokemonNameAndNumber>
-            <PokemonType>
-              {pokemonStore.pokemon.types.map((e: any) => {
-                return <Chip key={e.slot} name={e.type.name} />;
-              })}
-            </PokemonType>
-            <PokemonImg>
-              <img
-                src={`${formatUrlImage(
-                  parseInt(convertNumberIdPokemon(pokemonStore.pokemon.id)),
-                )}`}
-                alt=""
-              />
-            </PokemonImg>
-          </PokemonInfo>
-          <PokemonNest />
-        </PokemonWrapper>
-        {loading && (
-          <Modal>
-            <div
-              style={{
-                width: "100%",
-                height: "80%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-              }}
-            >
-              <Loading />
-              <p
-                style={{
-                  margin: "10px 0px",
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  color: "#e2e3e4",
-                }}
-              >
-                Loading
-              </p>
-            </div>
-          </Modal>
+        {!loading && (
+          <>
+            <PokemonNavbar>
+              <Navbar />
+            </PokemonNavbar>
+
+            <PokemonWrapper>
+              <PokemonInfo>
+                <PokemonNameAndNumber>
+                  <h3>{formatNamePokemon(pokemon.name)}</h3>
+                  <p>{"#" + convertNumberIdPokemon(pokemon.id)}</p>
+                </PokemonNameAndNumber>
+                <PokemonType>
+                  {pokemon.types.map((e: any, index: number) => {
+                    return <Chip key={index} name={e.type.name} />;
+                  })}
+                </PokemonType>
+                <PokemonImg>
+                  <img
+                    src={`${formatUrlImage(
+                      parseInt(convertNumberIdPokemon(pokemon.id)),
+                    )}`}
+                    alt=""
+                  />
+                </PokemonImg>
+              </PokemonInfo>
+              <PokemonNest />
+            </PokemonWrapper>
+          </>
         )}
-        {pokemonStore.error === 1 && (
+        {error === 1 && (
           <Modal className={"pokedex__modal"}>
             <PokedexAlert className={"pokedex__alert"}>
               <p>Check your network</p>

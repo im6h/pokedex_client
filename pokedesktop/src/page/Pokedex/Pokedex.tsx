@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 16/9/2020.
+ * Update at 18/9/2020.
  *
  */
 
@@ -40,6 +40,8 @@ function Pokedex() {
       setLoading(false);
     }
   }, [page]);
+
+  //load more data
   const loadMore = () => {
     if (error !== 2) {
       setLoading(true);
@@ -47,6 +49,7 @@ function Pokedex() {
     }
   };
 
+  //handle scroll to load more data.
   const handleScroll = (event: any) => {
     const target = event.target;
     if (target.scrollHeight - target.scrollTop === target.clientHeight) {
