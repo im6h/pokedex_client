@@ -13,12 +13,14 @@ import Base from "../interface/base";
 class ItemStore {
   @observable items: Base[] = [];
   @observable error: number = 0;
+  @observable page: number = 0;
 
   @action
   async getItems(offset: number, limit: number) {
     try {
       let response = await itemApi.getAllItems(offset, limit);
       if (response.status === 200 && response.data) {
+        this.page = offset;
         this.error = 0;
         if (offset === 0) {
           this.items = response.data.results;

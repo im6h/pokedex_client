@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 13/9/2020.
- * Update at 16/9/2020.
+ * Update at 18/9/2020.
  *
  */
 import React from "react";
@@ -32,24 +32,30 @@ import {
   Loading,
 } from "./style";
 function Item() {
-  const [offset, setOffset] = React.useState(0);
   const [loading, setLoading] = React.useState(true);
-
   const itemStore = React.useContext(ItemStore);
-  React.useEffect(() => {
-    setTimeout(() => {
-      itemStore.getItems(offset, 20);
-      setLoading(false);
-    }, 3000);
-  }, [offset]);
+  const { items, error, page } = itemStore;
 
+  React.useEffect(() => {
+    if (items.length === 0) {
+      setTimeout(() => {
+        itemStore.getItems(page, 20);
+        setLoading(false);
+      }, 300);
+    } else {
+      setLoading(false);
+    }
+  }, [page]);
+
+  // load more data
   const loadMore = () => {
     if (itemStore.error !== 2) {
       setLoading(true);
-      setOffset(offset + 20);
+      itemStore.getItems(page + 20, 20);
     }
   };
 
+  // handle scroll to load more data
   const handleScroll = (event: any) => {
     const target = event.target;
     if (target.scrollHeight - target.scrollTop === target.clientHeight) {
@@ -82,11 +88,11 @@ function Item() {
           <p>Items</p>
         </ItemTitle>
         <ItemList onScroll={handleScroll}>
-          {itemStore.items.map((e: Base) => {
+          {items.map((e: Base, index: number) => {
             let id: string = splitNumberIdPokemon(e.url);
             let _idItem: number = parseInt(id);
             return (
-              <ItemCard key={e.name}>
+              <ItemCard key={index}>
                 <ItemCardNumber>
                   <h4>{`#${convertNumberIdPokemon(_idItem)}`}</h4>
                 </ItemCardNumber>
@@ -113,7 +119,7 @@ function Item() {
           })}
         </ItemList>
       </ItemWrapper>
-      {loading && (
+      {loading && ( //check loading done.
         <Modal>
           <div
             style={{
@@ -139,7 +145,7 @@ function Item() {
           </div>
         </Modal>
       )}
-      {itemStore.error === 1 && (
+      {error === 1 && ( //check error network
         <Modal className={"Item__modal"}>
           <ItemAlert className={"Item__alert"}>
             <p>Check your network</p>

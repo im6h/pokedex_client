@@ -5,12 +5,14 @@ import Base from "../interface/base";
 class AbilityStore {
   @observable abilities: Base[] = [];
   @observable error: number = 0;
+  @observable page: number = 0;
 
   @action
   async getAbilities(offset: number, limit: number) {
     try {
       let response = await abilityApi.getAllAbilities(offset, limit);
       if (response.status === 200 && response.data) {
+        this.page = offset;
         this.error = 0;
         if (offset === 0) {
           this.abilities = response.data.results;

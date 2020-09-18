@@ -42,10 +42,6 @@ class PokedexStore {
       this.error = 1;
     }
   }
-  // @action
-  // async increPage() {
-  //   return this.page + 20;
-  // }
 }
 
 export default createContext(new PokedexStore());

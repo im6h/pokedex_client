@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 13/9/2020.
- * Update at 16/9/2020.
+ * Update at 18/9/2020.
  *
  */
 import React from "react";
@@ -16,7 +16,6 @@ import {
   formatNamePokemon,
   splitNumberIdPokemon,
 } from "../../util/functionHelper";
-
 import {
   AbilityAlert,
   AbilityBall,
@@ -33,24 +32,30 @@ import {
   Loading,
 } from "./style";
 function Ability() {
-  const [offset, setOffset] = React.useState(0);
   const [loading, setLoading] = React.useState(true);
-
   const abilityStore = React.useContext(AbilityStore);
-  React.useEffect(() => {
-    setTimeout(() => {
-      abilityStore.getAbilities(offset, 20);
-      setLoading(false);
-    }, 3000);
-  }, [offset]);
+  const { abilities, error, page } = abilityStore;
 
+  React.useEffect(() => {
+    if (abilities.length === 0) {
+      setTimeout(() => {
+        abilityStore.getAbilities(page, 20);
+        setLoading(false);
+      }, 300);
+    } else {
+      setLoading(false);
+    }
+  }, [page]);
+
+  //load more data
   const loadMore = () => {
     if (abilityStore.error !== 2) {
       setLoading(true);
-      setOffset(offset + 20);
+      abilityStore.getAbilities(page + 20, 20);
     }
   };
 
+  //handle scroll to loadmore data
   const handleScroll = (event: any) => {
     const target = event.target;
     if (target.scrollHeight - target.scrollTop === target.clientHeight) {
@@ -83,11 +88,11 @@ function Ability() {
           <p>Abilities</p>
         </AbilityTitle>
         <AbilityList onScroll={handleScroll}>
-          {abilityStore.abilities.map((e: Base) => {
+          {abilities.map((e: Base, index: number) => {
             let id: string = splitNumberIdPokemon(e.url);
             let _idAbility: number = parseInt(id);
             return (
-              <AbilityCard key={e.name}>
+              <AbilityCard key={index}>
                 <AbilityCardNumber>
                   <h4>{`#${convertNumberIdPokemon(_idAbility)}`}</h4>
                 </AbilityCardNumber>
@@ -114,7 +119,7 @@ function Ability() {
           })}
         </AbilityList>
       </AbilityWrapper>
-      {loading && (
+      {loading && ( //check loading done?
         <Modal>
           <div
             style={{
@@ -140,7 +145,7 @@ function Ability() {
           </div>
         </Modal>
       )}
-      {abilityStore.error === 1 && (
+      {error === 1 && ( //check network error
         <Modal className={"Ability__modal"}>
           <AbilityAlert className={"Ability__alert"}>
             <p>Check your network</p>

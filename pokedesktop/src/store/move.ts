@@ -14,12 +14,14 @@ import Base from "../interface/base";
 class MoveStore {
   @observable moves: Base[] = [];
   @observable error: number = 0;
+  @observable page: number = 0;
 
   @action
   async getMoves(offset: number, limit: number) {
     try {
       let response = await moveApi.getAllMoves(offset, limit);
       if (response.status === 200 && response.data) {
+        this.page = offset;
         this.error = 0;
         if (offset === 0) {
           this.moves = response.data.results;

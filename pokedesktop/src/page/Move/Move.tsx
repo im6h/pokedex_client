@@ -3,13 +3,11 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 13/9/2020.
+ * Update at 18/9/2020.
  *
  */
 import React from "react";
-
 import Navbar from "../../component/Navbar/Navbar";
-
 import Base from "../../interface/base";
 import { observer } from "mobx-react-lite";
 import MoveStore from "../../store/move";
@@ -34,24 +32,30 @@ import {
   Loading,
 } from "./style";
 function Move() {
-  const [offset, setOffset] = React.useState(0);
   const [loading, setLoading] = React.useState(true);
-
   const moveStore = React.useContext(MoveStore);
-  React.useEffect(() => {
-    setTimeout(() => {
-      moveStore.getMoves(offset, 20);
-      setLoading(false);
-    }, 3000);
-  }, [offset]);
+  const { moves, error, page } = moveStore;
 
+  React.useEffect(() => {
+    if (moves.length === 0) {
+      setTimeout(() => {
+        moveStore.getMoves(page, 20);
+        setLoading(false);
+      }, 300);
+    } else {
+      setLoading(false);
+    }
+  }, [page]);
+
+  // load more data
   const loadMore = () => {
     if (moveStore.error !== 2) {
       setLoading(true);
-      setOffset(offset + 20);
+      moveStore.getMoves(page + 20, 20);
     }
   };
 
+  // handle scroll to load more data
   const handleScroll = (event: any) => {
     const target = event.target;
     if (target.scrollHeight - target.scrollTop === target.clientHeight) {
@@ -84,11 +88,11 @@ function Move() {
           <p>Moves</p>
         </MoveTitle>
         <MoveList onScroll={handleScroll}>
-          {moveStore.moves.map((e: Base) => {
+          {moves.map((e: Base, index: number) => {
             let id: string = splitNumberIdPokemon(e.url);
             let _idMove: number = parseInt(id);
             return (
-              <MoveCard key={e.name}>
+              <MoveCard key={index}>
                 <MoveCardNumber>
                   <h4>{`#${convertNumberIdPokemon(_idMove)}`}</h4>
                 </MoveCardNumber>
@@ -115,7 +119,7 @@ function Move() {
           })}
         </MoveList>
       </MoveWrapper>
-      {loading && (
+      {loading && ( //check loading to show modal
         <Modal>
           <div
             style={{
@@ -141,7 +145,7 @@ function Move() {
           </div>
         </Modal>
       )}
-      {moveStore.error === 1 && (
+      {error === 1 && ( //check error to show modal
         <Modal className={"move__modal"}>
           <MoveAlert className={"move__alert"}>
             <p>Check your network</p>
