@@ -44,7 +44,7 @@ function Pokemon() {
   const [tab, setTab] = React.useState("about");
   const pokemonStore = React.useContext(PokemonStore);
   const [loading, setLoading] = React.useState(true);
-  const { pokemon, error } = pokemonStore;
+  const { pokemon, error, pokemonSpecial } = pokemonStore;
   const colorPokemon = pokemon.types[0].type.name;
 
   const PokemonNest = () => {
@@ -80,7 +80,17 @@ function Pokemon() {
   const changeTab = (tab: string) => {
     switch (tab) {
       case "about":
-        return <About weight={pokemon.weight} height={pokemon.height} />;
+        return (
+          <About
+            weight={pokemon.weight}
+            height={pokemon.height}
+            about={pokemonSpecial.flavor_text_entries}
+            legendary={pokemonSpecial.is_legendary ? "Yes" : "No"}
+            mythical={pokemonSpecial.is_mythical ? "Yes" : "No"}
+            happiness={pokemonSpecial.base_happiness}
+            captureRate={pokemonSpecial.capture_rate}
+          />
+        );
       case "stats":
         return <Stats colorPokemon={colorPokemon} arr={pokemon.stats} />;
       case "moves":
@@ -91,6 +101,9 @@ function Pokemon() {
   React.useEffect(() => {
     setTimeout(() => {
       pokemonStore.getPokemon(id);
+      if (id < 1000) {
+        pokemonStore.getPokemonSpecial(id);
+      }
       setLoading(false);
     }, 1000);
   }, []);
@@ -139,7 +152,8 @@ function Pokemon() {
                     src={`${formatUrlImage(
                       parseInt(convertNumberIdPokemon(pokemon.id)),
                     )}`}
-                    alt=""
+                    alt={pokemon.name}
+                    loading="lazy"
                   />
                 </PokemonImg>
               </PokemonInfo>

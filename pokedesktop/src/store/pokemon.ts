@@ -8,10 +8,10 @@
  */
 import { action, observable } from "mobx";
 import { createContext } from "react";
-import { PokemonDetail } from "../interface/pokemon";
+import { PokemonDetail, PokemonSpecial } from "../interface/pokemon";
 import pokemonApi from "../service/pokemon";
 
-const initValue: PokemonDetail = {
+const initPokemonDetail: PokemonDetail = {
   name: "",
   id: 0,
   height: 0,
@@ -45,8 +45,29 @@ const initValue: PokemonDetail = {
   ],
 };
 
+const initPokemonSpecail: PokemonSpecial = {
+  base_happiness: "",
+  capture_rate: "",
+  flavor_text_entries: [
+    {
+      flavor_text: "",
+      language: {
+        name: "",
+        url: "",
+      },
+      version: {
+        name: "",
+        url: "",
+      },
+    },
+  ],
+  is_legendary: false,
+  is_mythical: false,
+};
+
 class PokemonStore {
-  @observable pokemon: PokemonDetail = initValue;
+  @observable pokemon: PokemonDetail = initPokemonDetail;
+  @observable pokemonSpecial: PokemonSpecial = initPokemonSpecail;
   @observable error: number = 0;
   @action
   async getPokemon(idPokemon: number) {
@@ -56,13 +77,31 @@ class PokemonStore {
         this.error = 0;
         this.pokemon = response.data;
       } else {
-        this.pokemon = initValue;
+        this.pokemon = initPokemonDetail;
         console.log("res", response.data);
       }
     } catch (error) {
       this.error = 1;
       console.log("err", error);
-      this.pokemon = initValue;
+      this.pokemon = initPokemonDetail;
+    }
+  }
+
+  @action
+  async getPokemonSpecial(idPokemon: number) {
+    try {
+      let response = await pokemonApi.getPokemonSpecialById(idPokemon);
+      if (response.status === 200 && response.data) {
+        this.error = 0;
+        this.pokemonSpecial = response.data;
+      } else {
+        this.pokemonSpecial = initPokemonSpecail;
+        console.log("res", response.data);
+      }
+    } catch (error) {
+      this.error = 1;
+      console.log("pokes", error);
+      this.pokemonSpecial = initPokemonSpecail;
     }
   }
 }

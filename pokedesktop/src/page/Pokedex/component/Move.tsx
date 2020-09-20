@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 13/9/2020.
- * Update at 18/9/2020
+ * Update at 20/9/2020
  *
  */
 import React from "react";
@@ -36,8 +36,13 @@ const Move = ({ colorPokemon, moves }: MoveProps) => {
           let id: string = splitNumberIdPokemon(e.move.url);
           let _idMove: number = parseInt(id);
           return (
-            <>
-              <MoveCard key={index}>
+            <div
+              key={index}
+              style={{
+                width: "85%",
+              }}
+            >
+              <MoveCard>
                 <MoveCardNumber>
                   <h4>{`#${convertNumberIdPokemon(_idMove)}`}</h4>
                 </MoveCardNumber>
@@ -52,7 +57,7 @@ const Move = ({ colorPokemon, moves }: MoveProps) => {
                 </MoveCardName>
               </MoveCard>
               <hr />
-            </>
+            </div>
           );
         })}
       </MoveList>
@@ -74,18 +79,17 @@ const MoveList = styled.div`
     background-color: ${colorStore.typeNormal};
   }
   hr {
-    width: 90%;
-    height: 1px;
+    width: 100%;
+    margin: 0px;
   }
   overflow-y: auto;
 `;
 const MoveCard = styled.div`
   display: flex;
   align-items: center;
-  width: 85%;
+  width: 100%;
   height: 100%;
   position: relative;
-  padding: 7px 0px;
   &:hover {
     cursor: pointer;
   }

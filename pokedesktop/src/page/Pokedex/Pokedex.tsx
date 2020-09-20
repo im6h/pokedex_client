@@ -34,7 +34,7 @@ function Pokedex() {
   React.useEffect(() => {
     if (page === 0) {
       setTimeout(() => {
-        pokedexStore.getPokedex(page, 20);
+        pokedexStore.getPokedex(page, 100);
         setLoading(false);
       }, 300);
     } else {
@@ -46,7 +46,7 @@ function Pokedex() {
   const loadMore = () => {
     if (error !== 2) {
       setLoading(true);
-      pokedexStore.getPokedex(page + 20, 20);
+      pokedexStore.getPokedex(page + 100, 100);
     }
   };
 

@@ -163,6 +163,7 @@ export const PokemonImg = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  height: 215px;
 `;
 export const PokemonFull = styled.div`
   width: 500px;
@@ -185,43 +186,7 @@ export const Tab = styled.div`
     cursor: pointer;
   }
 `;
-export const TabAbout = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 0px 30px 50px 30px;
-`;
 export const TabStats = styled.div`
   padding: 0px 60px 50px 60px;
-`;
-export const TabEvolution = styled.div``;
-export const TabMove = styled.div``;
-
-export const ShadowDiv = styled.div`
-  display: flex;
-  border-radius: 5px;
-  flex-direction: row;
-  justify-content: space-between;
-  -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
-`;
-
-export const InfoDiv = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10px 20px;
-  text-align: left;
-  h5 {
-    font-weight: bold;
-    font-size: 16px;
-    color: ${colorStore.typeSteel};
-    margin-bottom: 10px;
-  }
-  p {
-    font-weight: bold;
-    font-size: 18px;
-  }
 `;
 // style pokedex alert

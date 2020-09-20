@@ -28,7 +28,13 @@ function formatNumber(index: number): string {
 
 function formatUrlImage(id: number): string {
   let _id = convertNumberIdPokemon(id);
-  let result = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${_id}.png`;
+  let result: string = "";
+  if (id < 10000) {
+    result = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${_id}.png`;
+  } else {
+    result =
+      "https://upload.wikimedia.org/wikipedia/commons/5/55/Question_Mark.svg";
+  }
   return result;
 }
 

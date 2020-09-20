@@ -6,8 +6,8 @@ class PokemonApi {
     return axios.get(`${BASE_URL}/pokemon/${idPokemon}`);
   }
 
-  async getPokemonByName(namePokemon: string) {
-    return axios.get(`${BASE_URL}/pokemon/${namePokemon}`);
+  async getPokemonSpecialById(idPokemon: number) {
+    return axios.get(`${BASE_URL}/pokemon-species/${idPokemon}`);
   }
 }
 
