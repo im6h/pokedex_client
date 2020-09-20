@@ -8,7 +8,7 @@
  */
 import React from "react";
 import { useParams } from "react-router-dom";
-import { getColor } from "../../asset/style/color";
+import colorStore, { getColor } from "../../asset/style/color";
 import Navbar from "../../component/Navbar/Navbar";
 import Chip from "../../component/Chip/Chip";
 import PokemonStore from "../../store/pokemon";
@@ -84,7 +84,7 @@ function Pokemon() {
       case "stats":
         return <Stats colorPokemon={colorPokemon} arr={pokemon.stats} />;
       case "moves":
-        return <Move moves={pokemon.moves} />;
+        return <Move colorPokemon={colorPokemon} moves={pokemon.moves} />;
     }
   };
 

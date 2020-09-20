@@ -1,3 +1,11 @@
+/**
+ *
+ * @author im6h
+ *
+ * Create at 13/9/2020.
+ * Update at 18/9/2020
+ *
+ */
 import React from "react";
 import { TabStats } from "../style";
 import colorStore, { getColor } from "../../../asset/style/color";
@@ -37,8 +45,8 @@ const Stats = ({ colorPokemon, arr }: StatsProps) => {
             </div>
             <div
               style={{
-                width: "10%",
-                textAlign: "left",
+                width: "20%",
+                textAlign: "center",
                 fontWeight: "bold",
               }}
             >
@@ -46,7 +54,7 @@ const Stats = ({ colorPokemon, arr }: StatsProps) => {
             </div>
             <div
               style={{
-                width: "70%",
+                width: "60%",
                 height: "6px",
                 borderRadius: "4px",
                 backgroundColor: colorStore.background,

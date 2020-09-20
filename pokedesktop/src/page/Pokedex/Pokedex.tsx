@@ -30,6 +30,7 @@ function Pokedex() {
   const { page, error, pokedex } = pokedexStore;
   const [loading, setLoading] = React.useState(true);
   const list = React.useRef<HTMLDivElement>(null);
+
   React.useEffect(() => {
     if (page === 0) {
       setTimeout(() => {

@@ -125,6 +125,12 @@
     background-blend-mode: soft-light;
     box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
   }
+  &-ghost {
+    color: $type-ghost;
+    background: rgba(255, 255, 255, 0.5);
+    background-blend-mode: soft-light;
+    box-shadow: 0px 8px 35px rgba(59, 141, 122, 0.12);
+  }
 
   &__wrapper {
     height: 100%;

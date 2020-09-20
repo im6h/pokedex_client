@@ -191,7 +191,7 @@ export const TabAbout = styled.div`
   padding: 0px 30px 50px 30px;
 `;
 export const TabStats = styled.div`
-  padding: 0px 30px 50px 30px;
+  padding: 0px 60px 50px 60px;
 `;
 export const TabEvolution = styled.div``;
 export const TabMove = styled.div``;

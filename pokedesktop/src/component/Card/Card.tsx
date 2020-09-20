@@ -46,7 +46,7 @@ function Card({ name, url }: Base) {
         </CardInfo>
         <CardImage>
           <div className={"card__img"}>
-            <img src={formatUrlImage(_idPokemon)} alt={name} />
+            <img src={formatUrlImage(_idPokemon)} alt={name} loading="lazy" />
           </div>
         </CardImage>
         <CardIcon>
