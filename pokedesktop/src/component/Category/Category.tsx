@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 2/9/2020.
- * Update at 11/9/2020.
+ * Update at 25/9/2020.
  *
  */
 import React from "react";
@@ -34,8 +34,8 @@ function Category({ name }: any) {
         {/*icon*/}
         <div className={"category__img"}>
           <svg
-            width="90"
-            height="90"
+            width="85"
+            height="85"
             viewBox="-100 -55 350 350"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

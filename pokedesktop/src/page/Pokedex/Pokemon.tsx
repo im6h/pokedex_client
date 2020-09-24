@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 13/9/2020.
- * Update at 16/9/2020.
+ * Update at 25/9/2020.
  *
  */
 import React from "react";
@@ -21,6 +21,7 @@ import {
 import About from "./component/About";
 import Stats from "./component/Stats";
 import Move from "./component/Move";
+import { Tabs, Spin } from "antd";
 import {
   PokemonBase,
   PokemonNavbar,
@@ -31,17 +32,14 @@ import {
   PokemonType,
   PokemonImg,
   PokemonFull,
-  PokemonTab,
-  Tab,
-  Loading,
   Modal,
   PokedexAlert,
 } from "./style";
 
 function Pokemon() {
+  const { TabPane } = Tabs;
   let { id } = useParams();
 
-  const [tab, setTab] = React.useState("about");
   const pokemonStore = React.useContext(PokemonStore);
   const [loading, setLoading] = React.useState(true);
   const { pokemon, error, pokemonSpecial } = pokemonStore;
@@ -50,52 +48,27 @@ function Pokemon() {
   const PokemonNest = () => {
     return (
       <PokemonFull>
-        <PokemonTab>
-          <Tab
-            onClick={() => {
-              setTab("about");
-            }}
-          >
-            About
-          </Tab>
-          <Tab
-            onClick={() => {
-              setTab("stats");
-            }}
-          >
-            Base Stats
-          </Tab>
-          <Tab
-            onClick={() => {
-              setTab("moves");
-            }}
-          >
-            Moves
-          </Tab>
-        </PokemonTab>
-        {changeTab(tab)}
+        <Tabs defaultActiveKey="1" size="large" centered tabBarStyle={{}}>
+          <TabPane tab="About" key="1">
+            <About
+              weight={pokemon.weight}
+              height={pokemon.height}
+              about={pokemonSpecial.flavor_text_entries}
+              legendary={pokemonSpecial.is_legendary ? "Yes" : "No"}
+              mythical={pokemonSpecial.is_mythical ? "Yes" : "No"}
+              happiness={pokemonSpecial.base_happiness}
+              captureRate={pokemonSpecial.capture_rate}
+            />
+          </TabPane>
+          <TabPane tab="Stats" key="2">
+            <Stats colorPokemon={colorPokemon} arr={pokemon.stats} />
+          </TabPane>
+          <TabPane tab="Move" key="3">
+            <Move colorPokemon={colorPokemon} moves={pokemon.moves} />
+          </TabPane>
+        </Tabs>
       </PokemonFull>
     );
-  };
-  const changeTab = (tab: string) => {
-    switch (tab) {
-      case "about":
-        return (
-          <About
-            weight={pokemon.weight}
-            height={pokemon.height}
-            about={pokemonSpecial.flavor_text_entries}
-            legendary={pokemonSpecial.is_legendary ? "Yes" : "No"}
-            mythical={pokemonSpecial.is_mythical ? "Yes" : "No"}
-            happiness={pokemonSpecial.base_happiness}
-            captureRate={pokemonSpecial.capture_rate}
-          />
-        );
-      case "stats":
-        return <Stats colorPokemon={colorPokemon} arr={pokemon.stats} />;
-      case "moves":
-        return <Move colorPokemon={colorPokemon} moves={pokemon.moves} />;
-    }
   };
 
   React.useEffect(() => {

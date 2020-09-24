@@ -3,11 +3,12 @@
  * @author im6h
  *
  * Create at 13/9/2020.
- * Update at 20/9/2020
+ * Update at 25/9/2020
  *
  */
 import React from "react";
 import styled from "styled-components";
+import { List, Typography, Divider } from "antd";
 import colorStore, { getColor } from "../../../asset/style/color";
 import {
   convertNumberIdPokemon,
@@ -32,36 +33,76 @@ const Move = ({ colorPokemon, moves }: MoveProps) => {
       }}
     >
       <MoveList>
-        {moves.map((e: any, index: number) => {
-          let id: string = splitNumberIdPokemon(e.move.url);
-          let _idMove: number = parseInt(id);
-          return (
-            <div
-              key={index}
-              style={{
-                width: "85%",
-              }}
-            >
-              <MoveCard>
-                <MoveCardNumber>
-                  <h4>{`#${convertNumberIdPokemon(_idMove)}`}</h4>
-                </MoveCardNumber>
-                <MoveCardName>
-                  <p
-                    style={{
-                      color: getColor(colorPokemon),
-                    }}
-                  >
-                    {formatNamePokemon(e.move.name)}
-                  </p>
-                </MoveCardName>
-              </MoveCard>
-              <hr />
-            </div>
-          );
-        })}
+        <List
+          style={{
+            width: "100%",
+          }}
+          itemLayout="horizontal"
+          dataSource={moves}
+          renderItem={(e: any) => {
+            let id: string = splitNumberIdPokemon(e.move.url);
+            let _idMove: number = parseInt(id);
+            return (
+              <List.Item
+                style={{
+                  textAlign: "left",
+                  margin: "0px 40px",
+                  color: getColor(colorPokemon),
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                }}
+              >
+                <Typography.Text
+                  style={{
+                    marginRight: "40px",
+                  }}
+                >
+                  {`#${convertNumberIdPokemon(_idMove)}`}
+                </Typography.Text>
+                {formatNamePokemon(e.move.name)}
+              </List.Item>
+            );
+          }}
+        />
       </MoveList>
     </div>
+    // <div
+    //   style={{
+    //     margin: "0px 20px",
+    //     height: "50vh",
+    //   }}
+    // >
+    //   <MoveList>
+    //     {moves.map((e: any, index: number) => {
+    //       let id: string = splitNumberIdPokemon(e.move.url);
+    //       let _idMove: number = parseInt(id);
+    //       return (
+    //         <div
+    //           key={index}
+    //           style={{
+    //             width: "85%",
+    //           }}
+    //         >
+    //           <MoveCard>
+    //             <MoveCardNumber>
+    //               <h4>{`#${convertNumberIdPokemon(_idMove)}`}</h4>
+    //             </MoveCardNumber>
+    //             <MoveCardName>
+    //               <p
+    //                 style={{
+    //                   color: getColor(colorPokemon),
+    //                 }}
+    //               >
+    //                 {formatNamePokemon(e.move.name)}
+    //               </p>
+    //             </MoveCardName>
+    //           </MoveCard>
+    //           <hr />
+    //         </div>
+    //       );
+    //     })}
+    //   </MoveList>
+    // </div>
   );
 };
 const MoveList = styled.div`

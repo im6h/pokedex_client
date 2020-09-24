@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 18/9/2020.
+ * Update at 25/9/2020.
  *
  */
 
@@ -24,7 +24,7 @@ import {
   Loading,
   Modal,
 } from "./style";
-
+import { PageHeader, Spin, List } from "antd";
 function Pokedex() {
   const pokedexStore = React.useContext(PokedexStore);
   const { page, error, pokedex } = pokedexStore;
@@ -36,7 +36,7 @@ function Pokedex() {
       setTimeout(() => {
         pokedexStore.getPokedex(page, 100);
         setLoading(false);
-      }, 300);
+      }, 3000);
     } else {
       setLoading(false);
     }
@@ -79,9 +79,7 @@ function Pokedex() {
         </svg>
       </PokedexBall>
       <PokedexWrapper>
-        <PokedexTitle>
-          <p>Pokedex</p>
-        </PokedexTitle>
+        <PageHeader title="Pokedex" className="site-page-header" />
         <PokedexList onScroll={handleScroll}>
           {pokedex.map((e: Base, index: number) => {
             return (
@@ -93,30 +91,17 @@ function Pokedex() {
         </PokedexList>
       </PokedexWrapper>
       {loading && (
-        <Modal>
-          <div
-            style={{
-              width: "100%",
-              height: "80%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-            }}
-          >
-            <Loading />
-            <p
-              style={{
-                margin: "10px 0px",
-                fontSize: "14px",
-                fontWeight: "bold",
-                color: "#e2e3e4",
-              }}
-            >
-              Loading
-            </p>
-          </div>
-        </Modal>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+          }}
+        >
+          <Spin size="large" />
+        </div>
       )}
       {error === 1 && (
         <Modal className={"pokedex__modal"}>

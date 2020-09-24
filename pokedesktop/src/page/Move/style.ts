@@ -103,7 +103,7 @@ export const MoveAlert = styled.div`
 
 // style move card
 export const MoveCard = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   align-items: center;
   width: 90%;
@@ -113,7 +113,7 @@ export const MoveCard = styled.div`
   background: ${colorStore.moves};
   margin: 10px 0px;
   position: relative;
-  padding: 7px 0px;
+  padding: 7px 0px; */
   &:hover {
     p {
       animation-name: ${animateStore.zoomY};
