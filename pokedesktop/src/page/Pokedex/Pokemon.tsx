@@ -8,7 +8,7 @@
  */
 import React from "react";
 import { useParams } from "react-router-dom";
-import colorStore, { getColor } from "../../asset/style/color";
+import { getColor } from "../../asset/style/color";
 import Navbar from "../../component/Navbar/Navbar";
 import Chip from "../../component/Chip/Chip";
 import PokemonStore from "../../store/pokemon";
@@ -21,7 +21,8 @@ import {
 import About from "./component/About";
 import Stats from "./component/Stats";
 import Move from "./component/Move";
-import { Tabs, Spin } from "antd";
+import Evolution from "./component/Evolution";
+import { Tabs } from "antd";
 import {
   PokemonBase,
   PokemonNavbar,
@@ -65,6 +66,9 @@ function Pokemon() {
           </TabPane>
           <TabPane tab="Move" key="3">
             <Move colorPokemon={colorPokemon} moves={pokemon.moves} />
+          </TabPane>
+          <TabPane tab="Evolution" key="4">
+            <Evolution />
           </TabPane>
         </Tabs>
       </PokemonFull>

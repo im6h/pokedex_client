@@ -19,12 +19,10 @@ import {
   PokedexBase,
   PokedexList,
   PokedexNavbar,
-  PokedexTitle,
   PokedexWrapper,
-  Loading,
   Modal,
 } from "./style";
-import { PageHeader, Spin, List } from "antd";
+import { PageHeader, Spin } from "antd";
 function Pokedex() {
   const pokedexStore = React.useContext(PokedexStore);
   const { page, error, pokedex } = pokedexStore;

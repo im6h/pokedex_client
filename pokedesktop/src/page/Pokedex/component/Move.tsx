@@ -8,7 +8,7 @@
  */
 import React from "react";
 import styled from "styled-components";
-import { List, Typography, Divider } from "antd";
+import { List, Typography } from "antd";
 import colorStore, { getColor } from "../../../asset/style/color";
 import {
   convertNumberIdPokemon,
@@ -66,43 +66,6 @@ const Move = ({ colorPokemon, moves }: MoveProps) => {
         />
       </MoveList>
     </div>
-    // <div
-    //   style={{
-    //     margin: "0px 20px",
-    //     height: "50vh",
-    //   }}
-    // >
-    //   <MoveList>
-    //     {moves.map((e: any, index: number) => {
-    //       let id: string = splitNumberIdPokemon(e.move.url);
-    //       let _idMove: number = parseInt(id);
-    //       return (
-    //         <div
-    //           key={index}
-    //           style={{
-    //             width: "85%",
-    //           }}
-    //         >
-    //           <MoveCard>
-    //             <MoveCardNumber>
-    //               <h4>{`#${convertNumberIdPokemon(_idMove)}`}</h4>
-    //             </MoveCardNumber>
-    //             <MoveCardName>
-    //               <p
-    //                 style={{
-    //                   color: getColor(colorPokemon),
-    //                 }}
-    //               >
-    //                 {formatNamePokemon(e.move.name)}
-    //               </p>
-    //             </MoveCardName>
-    //           </MoveCard>
-    //           <hr />
-    //         </div>
-    //       );
-    //     })}
-    //   </MoveList>
-    // </div>
   );
 };
 const MoveList = styled.div`
@@ -124,33 +87,5 @@ const MoveList = styled.div`
     margin: 0px;
   }
   overflow-y: auto;
-`;
-const MoveCard = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  &:hover {
-    cursor: pointer;
-  }
-`;
-const MoveCardNumber = styled.div`
-  margin: 2px 10px;
-  text-align: right;
-  font-size: 14px;
-  p {
-    font-size: 14px;
-    font-weight: bold;
-  }
-`;
-const MoveCardName = styled.div`
-  text-align: center;
-  margin-left: 20px;
-  word-break: break-all;
-  p {
-    font-size: 16px;
-    font-weight: bold;
-  }
 `;
 export default Move;

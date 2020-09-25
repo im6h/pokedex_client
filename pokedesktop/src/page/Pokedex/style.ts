@@ -115,6 +115,7 @@ export const PokemonBallMon = styled.div`
   left: 0;
   top: 150px;
   svg {
+    opacity: 0.4;
     animation: ${animateStore.spin} 8s linear infinite;
   }
 `;
@@ -164,6 +165,9 @@ export const PokemonImg = styled.div`
   justify-content: center;
   align-items: center;
   height: 215px;
+  img {
+    opacity: 1;
+  }
 `;
 export const PokemonFull = styled.div`
   width: 500px;

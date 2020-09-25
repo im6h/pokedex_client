@@ -34,9 +34,9 @@ function Category({ name }: any) {
         {/*icon*/}
         <div className={"category__img"}>
           <svg
-            width="85"
-            height="85"
-            viewBox="-100 -55 350 350"
+            width="82"
+            height="82"
+            viewBox="-130 -55 350 350"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >

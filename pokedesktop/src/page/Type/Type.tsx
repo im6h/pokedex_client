@@ -10,7 +10,7 @@ import React from "react";
 import Navbar from "../../component/Navbar/Navbar";
 import { observer } from "mobx-react-lite";
 import TypeStore from "../../store/type";
-import colorStore, { getColor } from "../../asset/style/color";
+import colorStore from "../../asset/style/color";
 import {
   convertNumberIdPokemon,
   formatNamePokemon,
@@ -22,7 +22,7 @@ import { List, Spin, Typography, PageHeader } from "antd";
 function Type() {
   const [loading, setLoading] = React.useState(true);
   const typeStore = React.useContext(TypeStore);
-  const { types, error } = typeStore;
+  const { types } = typeStore;
   React.useEffect(() => {
     setTimeout(() => {
       typeStore.getTypes();

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import colorStore, { getColor } from "../../../asset/style/color";
+import colorStore from "../../../asset/style/color";
 import { convertInfoPokemon } from "../../../util/functionHelper";
 import Base from "../../../interface/base";
 interface AboutProps {
@@ -81,9 +81,6 @@ const TabAbout = styled.div`
   flex-direction: column;
   padding: 0px 30px 50px 30px;
 `;
-
-const TabEvolution = styled.div``;
-const TabMove = styled.div``;
 
 const ShadowDiv = styled.div`
   display: flex;

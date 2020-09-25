@@ -23,7 +23,6 @@ import {
   ItemBase,
   ItemList,
   ItemNavbar,
-  ItemTitle,
   ItemWrapper,
   Modal,
 } from "./style";

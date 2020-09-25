@@ -53,7 +53,7 @@ function Card({ name, url }: Base) {
           <svg
             width="100"
             height="100"
-            viewBox="-30 -70 250 250"
+            viewBox="-30 -80 250 250"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -119,6 +119,7 @@ const CardImage = styled.div`
   img {
     height: 100px;
     width: 100px;
+    opacity: 3;
   }
 `;
 const CardNumber = styled.div`
@@ -132,7 +133,10 @@ const CardNumber = styled.div`
 const CardIcon = styled.div`
   position: absolute;
   right: 0;
-  bottom: -5px;
+  bottom: -10px;
+  svg {
+    opacity: 0.5;
+  }
 `;
 
 const CardName = styled.div`

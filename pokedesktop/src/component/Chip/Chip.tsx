@@ -9,7 +9,6 @@
 
 import React from "react";
 import styled from "styled-components";
-import colorStore from "../../asset/style/color";
 import { formatNamePokemon } from "../../util/functionHelper";
 import "./Chip.scss";
 

@@ -21,16 +21,10 @@ import {
   AbilityAlert,
   AbilityBall,
   AbilityBase,
-  AbilityCard,
-  AbilityCardName,
-  AbilityCardNumber,
-  AbilityIcon,
   AbilityList,
   AbilityNavbar,
-  AbilityTitle,
   AbilityWrapper,
   Modal,
-  Loading,
 } from "./style";
 import { List, Spin, Typography, PageHeader } from "antd";
 function Ability() {

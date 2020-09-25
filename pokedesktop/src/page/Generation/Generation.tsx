@@ -3,13 +3,11 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 16/9/2020.
+ * Update at 26/9/2020.
  *
  */
 import React from "react";
-
 import Navbar from "../../component/Navbar/Navbar";
-
 import { observer } from "mobx-react-lite";
 import GenerationStore from "../../store/generation";
 import {
@@ -22,9 +20,9 @@ import {
   GenerationNavbar,
   GenerationTitle,
   GenerationWrapper,
-  Modal,
-  Loading,
 } from "./style";
+import { Spin } from "antd";
+
 function Generation() {
   const [loading, setLoading] = React.useState(true);
   const generationStore = React.useContext(GenerationStore);
@@ -168,30 +166,27 @@ function Generation() {
         </GenerationList>
       </GenerationWrapper>
       {loading && (
-        <Modal>
-          <div
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+          }}
+        >
+          <Spin size="large" />
+          <p
             style={{
-              width: "100%",
-              height: "80%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
+              margin: "10px 0px",
+              fontSize: "14px",
+              fontWeight: "bold",
+              color: "#e2e3e4",
             }}
           >
-            <Loading />
-            <p
-              style={{
-                margin: "10px 0px",
-                fontSize: "14px",
-                fontWeight: "bold",
-                color: "#e2e3e4",
-              }}
-            >
-              Loading
-            </p>
-          </div>
-        </Modal>
+            Loading
+          </p>
+        </div>
       )}
     </GenerationBase>
   );
