@@ -3,10 +3,11 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 25/9/2020.
+ * Update at 26/9/2020.
  *
  */
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Navbar from "../../component/Navbar/Navbar";
 import Base from "../../interface/base";
 import { observer } from "mobx-react-lite";
@@ -31,6 +32,7 @@ function Move() {
   const [loading, setLoading] = React.useState(true);
   const moveStore = React.useContext(MoveStore);
   const { moves, error, page } = moveStore;
+  const history = useHistory();
 
   React.useEffect(() => {
     if (moves.length === 0) {
@@ -57,6 +59,10 @@ function Move() {
     if (target.scrollHeight - target.scrollTop === target.clientHeight) {
       loadMore();
     }
+  };
+
+  const handleOnClick = (id: string) => {
+    history.push(`/move/${id}`);
   };
 
   return (
@@ -99,6 +105,10 @@ function Move() {
                     fontSize: "16px",
                     fontWeight: "bold",
                     color: colorStore.moves,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    handleOnClick(id);
                   }}
                 >
                   <Typography.Text
@@ -106,7 +116,7 @@ function Move() {
                       marginRight: "40px",
                     }}
                   >
-                    {`#${convertNumberIdPokemon(_idMove)}`}
+                    {"#" + convertNumberIdPokemon(_idMove)}
                   </Typography.Text>
                   {formatNamePokemon(e.name)}
                 </List.Item>

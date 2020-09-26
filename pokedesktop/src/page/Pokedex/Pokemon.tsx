@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 13/9/2020.
- * Update at 25/9/2020.
+ * Update at 26/9/2020.
  *
  */
 import React from "react";
@@ -76,11 +76,11 @@ function Pokemon() {
   };
 
   React.useEffect(() => {
+    pokemonStore.getPokemon(id);
+    if (id < 1000) {
+      pokemonStore.getPokemonSpecial(id);
+    }
     setTimeout(() => {
-      pokemonStore.getPokemon(id);
-      if (id < 1000) {
-        pokemonStore.getPokemonSpecial(id);
-      }
       setLoading(false);
     }, 1000);
   }, []);
@@ -127,7 +127,7 @@ function Pokemon() {
                 <PokemonImg>
                   <img
                     src={`${formatUrlImage(
-                      parseInt(convertNumberIdPokemon(pokemon.id)),
+                      parseInt(convertNumberIdPokemon(pokemon.id))
                     )}`}
                     alt={pokemon.name}
                     loading="lazy"

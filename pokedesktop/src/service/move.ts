@@ -1,4 +1,4 @@
-import BASE_URL from "../ApiEndpoint";
+import BASE_URL from "./ApiEndpoint";
 import axios from "axios";
 
 class MoveApi {
@@ -6,7 +6,7 @@ class MoveApi {
     return axios.get(`${BASE_URL}/move/?offset=${offset}&limit=${limit}`);
   }
 
-  async getMoveById(idMove: number) {
+  async getMoveById(idMove: string) {
     return axios.get(`${BASE_URL}/move/${idMove}`);
   }
 }

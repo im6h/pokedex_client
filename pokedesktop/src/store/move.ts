@@ -10,9 +10,36 @@ import { action, observable } from "mobx";
 import { createContext } from "react";
 import moveApi from "../service/move";
 import Base from "../interface/base";
+import Move from "../interface/move";
+
+const moveInit: Move = {
+  id: 0,
+  name: "",
+  accuracy: 0,
+  power: 0,
+  type: {
+    name: "",
+    url: "",
+  },
+  pp: 0,
+  flavor_text_entries: [
+    {
+      flavor_text: "",
+      language: {
+        name: "",
+        url: "",
+      },
+      version: {
+        name: "",
+        url: "",
+      },
+    },
+  ],
+};
 
 class MoveStore {
   @observable moves: Base[] = [];
+  @observable move: Move = moveInit;
   @observable error: number = 0;
   @observable page: number = 0;
 
@@ -40,6 +67,19 @@ class MoveStore {
       console.log("err", error);
       this.moves = [];
       this.error = 1;
+    }
+  }
+
+  @action
+  async getDetailMove(idMove: string) {
+    try {
+      let response = await moveApi.getMoveById(idMove);
+      if (response.status === 200 && response.data) {
+        this.move = response.data;
+      }
+    } catch (error) {
+      console.log("err", error);
+      this.move = moveInit;
     }
   }
 }
