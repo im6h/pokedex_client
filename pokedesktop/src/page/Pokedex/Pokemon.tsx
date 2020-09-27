@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 13/9/2020.
- * Update at 26/9/2020.
+ * Update at 27/9/2020.
  *
  */
 import React from "react";
@@ -45,6 +45,15 @@ function Pokemon() {
   const [loading, setLoading] = React.useState(true);
   const { pokemon, error, pokemonSpecial } = pokemonStore;
   const colorPokemon = pokemon.types[0].type.name;
+  React.useEffect(() => {
+    pokemonStore.getPokemon(id);
+    if (id < 1000) {
+      pokemonStore.getPokemonSpecial(id);
+    }
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   const PokemonNest = () => {
     return (
@@ -74,17 +83,6 @@ function Pokemon() {
       </PokemonFull>
     );
   };
-
-  React.useEffect(() => {
-    pokemonStore.getPokemon(id);
-    if (id < 1000) {
-      pokemonStore.getPokemonSpecial(id);
-    }
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  }, []);
-
   return (
     <>
       <PokemonBase
@@ -127,7 +125,7 @@ function Pokemon() {
                 <PokemonImg>
                   <img
                     src={`${formatUrlImage(
-                      parseInt(convertNumberIdPokemon(pokemon.id))
+                      parseInt(convertNumberIdPokemon(pokemon.id)),
                     )}`}
                     alt={pokemon.name}
                     loading="lazy"

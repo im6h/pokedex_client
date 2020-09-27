@@ -3,11 +3,11 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 11/9/2020.
+ * Update at 27/9/2020.
  *
  */
 import React from "react";
-import Router from "./page/router";
+import Router from "./config/router";
 import styled from "styled-components";
 
 function App() {

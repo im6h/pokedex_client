@@ -3,10 +3,11 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 25/9/2020.
+ * Update at 27/9/2020.
  *
  */
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Navbar from "../../component/Navbar/Navbar";
 import { observer } from "mobx-react-lite";
 import TypeStore from "../../store/type";
@@ -20,6 +21,7 @@ import Base from "../../interface/base";
 import { TypeBall, TypeBase, TypeList, TypeNavbar, TypeWrapper } from "./style";
 import { List, Spin, Typography, PageHeader } from "antd";
 function Type() {
+  const history = useHistory();
   const [loading, setLoading] = React.useState(true);
   const typeStore = React.useContext(TypeStore);
   const { types } = typeStore;
@@ -27,8 +29,13 @@ function Type() {
     setTimeout(() => {
       typeStore.getTypes();
       setLoading(false);
-    }, 3000);
+    }, 500);
   }, []);
+
+  // handle click
+  const handleOnClick = (id: string) => {
+    history.push(`/type/${id}`);
+  };
 
   return (
     <TypeBase>
@@ -70,6 +77,10 @@ function Type() {
                     fontSize: "16px",
                     fontWeight: "bold",
                     color: colorStore.type,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    handleOnClick(id);
                   }}
                 >
                   <Typography.Text

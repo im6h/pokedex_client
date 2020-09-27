@@ -6,7 +6,7 @@ class TypeApi {
     return axios.get(`${BASE_URL}/type/`);
   }
 
-  async getTypeById(idType: number) {
+  async getTypeById(idType: string) {
     return axios.get(`${BASE_URL}/type/${idType}`);
   }
 }

@@ -19,7 +19,7 @@ Pokedex client side is a small demo application based on Electronjs, Reactjs, Fl
 
 ## Download
 
-Go to the [Releases](https://bitbucket.org/im6h/pokedex_client) to download the lastest APK.
+Go to the [Releases](https://bitbucket.org/im6h/pokedex_client/releases) to download the lastest Application.
 
 ## Tech stack & Open-source libraries
 
@@ -34,5 +34,5 @@ PokeAPI provides a RESTful API interface to highly detailed objects built from t
 
 ## Find this repository useful? :heart:
 
-Support it by joining **[stargazers](https://github.com/skydoves/Pokedex/stargazers)** for this repository. :star: <br>
-And **[follow](https://github.com/skydoves)** me for my next creations! 🤩
+Support it by joining **[im6h](https://github.com/im6h/pokedex_client)** for this repository. :star: <br>
+And **[follow](https://github.com/im6h)** me for my next creations! 🤩
