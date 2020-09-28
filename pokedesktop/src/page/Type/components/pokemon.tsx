@@ -30,7 +30,7 @@ const Pokemon = ({ pokemons }: PokeProps) => {
   );
 };
 const Container = styled.div`
-  height: 54vh;
+  height: 50vh;
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;

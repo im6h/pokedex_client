@@ -12,6 +12,7 @@ import styled from "styled-components";
 import { Tabs, Spin, Descriptions } from "antd";
 import Move from "../../component/ListMove/Move";
 import Pokemon from "./components/pokemon";
+import Effect from "./components/effect";
 import TypeStore from "../../store/type";
 import Navbar from "../../component/Navbar/Navbar";
 import { observer } from "mobx-react-lite";
@@ -20,7 +21,6 @@ import {
   convertNumberIdPokemon,
   formatNamePokemon,
 } from "../../util/functionHelper";
-import Base from "../../interface/base";
 
 const TypeDetail = () => {
   let { id } = useParams();
@@ -38,11 +38,21 @@ const TypeDetail = () => {
     return (
       <>
         <Tabs defaultActiveKey="1" size="large" centered>
-          <TabPane tab="Move" key="1">
+          <TabPane tab="Move" key="3">
             <Move colorPokemon={type.name} moveCustom={type.moves} />
           </TabPane>
           <TabPane tab="Pokemon" key="2">
             <Pokemon pokemons={type.pokemon} />
+          </TabPane>
+          <TabPane tab="Effect" key="1">
+            <Effect
+              double_damage_from={type.damage_relations.double_damage_from}
+              double_damage_to={type.damage_relations.double_damage_to}
+              half_damage_from={type.damage_relations.half_damage_from}
+              half_damage_to={type.damage_relations.double_damage_to}
+              no_damage_from={type.damage_relations.no_damage_from}
+              no_damage_to={type.damage_relations.no_damage_to}
+            />
           </TabPane>
         </Tabs>
       </>
