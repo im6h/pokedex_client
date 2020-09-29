@@ -42,6 +42,12 @@ function convertInfoPokemon(num: number) {
   return num / 10;
 }
 
+function refactorGeneration(name: string): string {
+  let tmp = name.split("-");
+  let result = formatNamePokemon(tmp[0]) + " " + tmp[1].toUpperCase();
+  return result;
+}
+
 export {
   convertNumberIdPokemon,
   formatNamePokemon,
@@ -49,4 +55,5 @@ export {
   formatUrlImage,
   splitNumberIdPokemon,
   convertInfoPokemon,
+  refactorGeneration,
 };

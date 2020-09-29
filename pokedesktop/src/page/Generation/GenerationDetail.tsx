@@ -2,58 +2,52 @@
  *
  * @author im6h
  *
- * Create at 27/9/2020.
+ * Create at 29/9/2020.
  * Update at 29/9/2020.
  *
  */
 import React, { useState, useEffect, useContext } from "react";
-import colorStore, { getColor } from "../../asset/style/color";
 import styled from "styled-components";
 import { Tabs, Spin, Descriptions } from "antd";
+import colorStore, { getColor } from "../../asset/style/color";
 import Move from "../../component/ListMove/move";
 import Pokemon from "../../component/ListPokemon/pokemon";
-import Effect from "./components/effect";
-import TypeStore from "../../store/type";
+import Ability from "../../component/ListAbility/ability";
 import Navbar from "../../component/Navbar/Navbar";
 import { observer } from "mobx-react-lite";
 import { useParams } from "react-router";
 import {
   convertNumberIdPokemon,
   refactorGeneration,
-  formatNamePokemon,
 } from "../../util/functionHelper";
-
-const TypeDetail = () => {
+import GenerationStore from "../../store/generation";
+const GenerationDetail = () => {
   let { id } = useParams();
-  const typeStore = useContext(TypeStore);
-  const { TabPane } = Tabs;
-  const { type } = typeStore;
   const [loading, setLoading] = useState(true);
+  const generationStore = useContext(GenerationStore);
+  const { generation } = generationStore;
+  const { TabPane } = Tabs;
   useEffect(() => {
-    typeStore.getTypeById(id);
+    generationStore.getGenerationById(id);
     setTimeout(() => {
       setLoading(false);
     }, 3000);
   }, []);
-  const TypeTabs = () => {
+  const GenerationTabs = () => {
     return (
       <>
         <Tabs defaultActiveKey="1" size="large" centered>
-          <TabPane tab="Move" key="1">
-            <Move colorPokemon={type.name} moveCustom={type.moves} />
+          <TabPane tab="Ability" key="1">
+            <Ability abilityCustom={generation.abilities} />
           </TabPane>
-          <TabPane tab="Pokemon" key="2">
-            <Pokemon pokemons={type.pokemon} />
-          </TabPane>
-          <TabPane tab="Effect" key="3">
-            <Effect
-              double_damage_from={type.damage_relations.double_damage_from}
-              double_damage_to={type.damage_relations.double_damage_to}
-              half_damage_from={type.damage_relations.half_damage_from}
-              half_damage_to={type.damage_relations.double_damage_to}
-              no_damage_from={type.damage_relations.no_damage_from}
-              no_damage_to={type.damage_relations.no_damage_to}
+          <TabPane tab="Move" key="2">
+            <Move
+              colorPokemon={colorStore.typeNormal}
+              moveCustom={generation.moves}
             />
+          </TabPane>
+          <TabPane tab="Pokemon" key="3">
+            <Pokemon pokemon_species={generation.pokemon_species} />
           </TabPane>
         </Tabs>
       </>
@@ -61,45 +55,43 @@ const TypeDetail = () => {
   };
   return (
     <>
-      <TypeBase>
+      <GenerationBase>
         <>
-          <TypeNavbar>
+          <GenerationNavbar>
             <Navbar />
-          </TypeNavbar>
+          </GenerationNavbar>
           {!loading && (
             <>
-              <TypeWrapper>
-                <TypeInfo>
-                  <TypeNameAndNumber>
-                    <h3>{formatNamePokemon(type.name)}</h3>
+              <GenerationWrapper>
+                <GenerationInfo>
+                  <GenerationNameAndNumber>
+                    <h3>{refactorGeneration(generation.name)}</h3>
                     <p
                       style={{
-                        color: getColor(type.name),
+                        color: colorStore.typeNormal,
                       }}
                     >
-                      {"#" + convertNumberIdPokemon(type.id)}
+                      {"#" + convertNumberIdPokemon(generation.id)}
                     </p>
-                  </TypeNameAndNumber>
-                </TypeInfo>
-                <TypeData>
+                  </GenerationNameAndNumber>
+                </GenerationInfo>
+                <GenerationData>
                   <Descriptions layout="horizontal" column={1} bordered>
-                    <Descriptions.Item label="Gen">
-                      {refactorGeneration(type.generation.name)}
-                    </Descriptions.Item>
-                    <Descriptions.Item label="Category">
-                      {type.move_damage_class !== null
-                        ? formatNamePokemon(type.move_damage_class.name)
-                        : "No data"}
+                    <Descriptions.Item label="Move">
+                      {generation.moves.length}
                     </Descriptions.Item>
                     <Descriptions.Item label="Pokemon">
-                      {type.pokemon.length}
+                      {generation.pokemon_species.length}
+                    </Descriptions.Item>
+                    <Descriptions.Item label="Ability">
+                      {generation.abilities.length}
                     </Descriptions.Item>
                   </Descriptions>
-                </TypeData>
-                <TypeTab>
-                  <TypeTabs />
-                </TypeTab>
-              </TypeWrapper>
+                </GenerationData>
+                <GenerationTab>
+                  <GenerationTabs />
+                </GenerationTab>
+              </GenerationWrapper>
             </>
           )}
           {loading && ( //check loading to show modal
@@ -117,29 +109,29 @@ const TypeDetail = () => {
             </div>
           )}
         </>
-      </TypeBase>
+      </GenerationBase>
     </>
   );
 };
-const TypeBase = styled.div`
+const GenerationBase = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
 `;
-const TypeNavbar = styled.div`
+const GenerationNavbar = styled.div`
   margin: 30px 20px 0px;
 `;
-const TypeWrapper = styled.div`
+const GenerationWrapper = styled.div`
   width: 500px;
 `;
-const TypeInfo = styled.div`
+const GenerationInfo = styled.div`
   width: 100%;
   height: 40%;
   display: flex;
   flex-direction: column;
 `;
-const TypeTab = styled.div`
+const GenerationTab = styled.div`
   width: 500px;
   background-color: white;
   padding: 0px 30px;
@@ -150,7 +142,7 @@ const TypeTab = styled.div`
     font-style: italic;
   }
 `;
-const TypeNameAndNumber = styled.div`
+const GenerationNameAndNumber = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -168,7 +160,7 @@ const TypeNameAndNumber = styled.div`
     margin: 5px 30px;
   }
 `;
-const TypeData = styled.div`
+const GenerationData = styled.div`
   width: 500px;
   height: 60%;
   background-color: white;
@@ -181,4 +173,5 @@ const TypeData = styled.div`
     font-style: italic;
   }
 `;
-export default observer(TypeDetail);
+
+export default observer(GenerationDetail);

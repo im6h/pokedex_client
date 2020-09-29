@@ -3,11 +3,12 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 26/9/2020.
+ * Update at 29/9/2020.
  *
  */
 import React from "react";
 import Navbar from "../../component/Navbar/Navbar";
+import { useHistory } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import GenerationStore from "../../store/generation";
 import {
@@ -25,6 +26,7 @@ import { Spin } from "antd";
 
 function Generation() {
   const [loading, setLoading] = React.useState(true);
+  const history = useHistory();
   const generationStore = React.useContext(GenerationStore);
   React.useEffect(() => {
     setTimeout(() => {
@@ -59,7 +61,11 @@ function Generation() {
         </GenerationTitle>
 
         <GenerationList>
-          <GenerationCard>
+          <GenerationCard
+            onClick={() => {
+              history.push("/generation/1");
+            }}
+          >
             <GenerationCardNumber>
               <h4>Generation I</h4>
             </GenerationCardNumber>
@@ -72,7 +78,11 @@ function Generation() {
               </p>
             </GenerationCardName>
           </GenerationCard>
-          <GenerationCard>
+          <GenerationCard
+            onClick={() => {
+              history.push("/generation/2");
+            }}
+          >
             <GenerationCardNumber>
               <h4>Generation II</h4>
             </GenerationCardNumber>
@@ -85,7 +95,11 @@ function Generation() {
               </p>
             </GenerationCardName>
           </GenerationCard>
-          <GenerationCard>
+          <GenerationCard
+            onClick={() => {
+              history.push("/generation/3");
+            }}
+          >
             <GenerationCardNumber>
               <h4>Generation III</h4>
             </GenerationCardNumber>
@@ -98,7 +112,11 @@ function Generation() {
               </p>
             </GenerationCardName>
           </GenerationCard>
-          <GenerationCard>
+          <GenerationCard
+            onClick={() => {
+              history.push("/generation/4");
+            }}
+          >
             <GenerationCardNumber>
               <h4>Generation IV</h4>
             </GenerationCardNumber>
@@ -111,7 +129,11 @@ function Generation() {
               </p>
             </GenerationCardName>
           </GenerationCard>
-          <GenerationCard>
+          <GenerationCard
+            onClick={() => {
+              history.push("/generation/5");
+            }}
+          >
             <GenerationCardNumber>
               <h4>Generation V</h4>
             </GenerationCardNumber>
@@ -124,7 +146,11 @@ function Generation() {
               </p>
             </GenerationCardName>
           </GenerationCard>
-          <GenerationCard>
+          <GenerationCard
+            onClick={() => {
+              history.push("/generation/6");
+            }}
+          >
             <GenerationCardNumber>
               <h4>Generation VI</h4>
             </GenerationCardNumber>
@@ -137,7 +163,11 @@ function Generation() {
               </p>
             </GenerationCardName>
           </GenerationCard>
-          <GenerationCard>
+          <GenerationCard
+            onClick={() => {
+              history.push("/generation/7");
+            }}
+          >
             <GenerationCardNumber>
               <h4>Generation VII</h4>
             </GenerationCardNumber>
@@ -150,7 +180,11 @@ function Generation() {
               </p>
             </GenerationCardName>
           </GenerationCard>
-          <GenerationCard>
+          <GenerationCard
+            onClick={() => {
+              history.push("/generation/8");
+            }}
+          >
             <GenerationCardNumber>
               <h4>Generation VIII</h4>
             </GenerationCardNumber>

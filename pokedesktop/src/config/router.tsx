@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 30/8/2020.
- * Update at 27/9/2020.
+ * Update at 29/9/2020.
  *
  */
 import { HashRouter, Switch, Route } from "react-router-dom";
@@ -18,6 +18,7 @@ import Item from "../page/Item/Item";
 import Pokemon from "../page/Pokedex/Pokemon";
 import MoveDetail from "../page/Move/MoveDetail";
 import TypeDetail from "../page/Type/TypeDetail";
+import GenerationDetail from "../page/Generation/GenerationDetail";
 export default function Router() {
   return (
     <HashRouter>
@@ -31,6 +32,7 @@ export default function Router() {
         <Route exact path={"/move"} component={Move} />
         <Route exact path={"/move/:id"} component={MoveDetail} />
         <Route exact path={"/generation"} component={Generation} />
+        <Route exact path={"/generation/:id"} component={GenerationDetail} />
         <Route exact path={"/item"} component={Item} />
       </Switch>
     </HashRouter>

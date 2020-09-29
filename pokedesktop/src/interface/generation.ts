@@ -6,4 +6,5 @@ export default interface Generation {
   moves: Base[];
   pokemon_species: Base[];
   types: Base[];
+  abilities: Base[];
 }
