@@ -9,7 +9,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { Tabs, Spin, Descriptions } from "antd";
-import colorStore, { getColor } from "../../asset/style/color";
+import colorStore from "../../asset/style/color";
 import Move from "../../component/ListMove/move";
 import Pokemon from "../../component/ListPokemon/pokemon";
 import Ability from "../../component/ListAbility/ability";
@@ -28,10 +28,14 @@ const GenerationDetail = () => {
   const { generation } = generationStore;
   const { TabPane } = Tabs;
   useEffect(() => {
-    generationStore.getGenerationById(id);
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+    generationStore.getGenerationById(id).then(() => {
+      let timeout = setTimeout(() => {
+        setLoading(false);
+      }, 1500);
+      return () => {
+        clearTimeout(timeout);
+      };
+    });
   }, []);
   const GenerationTabs = () => {
     return (
@@ -173,5 +177,4 @@ const GenerationData = styled.div`
     font-style: italic;
   }
 `;
-
 export default observer(GenerationDetail);

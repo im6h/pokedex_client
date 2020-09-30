@@ -31,10 +31,14 @@ function Pokedex() {
 
   React.useEffect(() => {
     if (page === 0) {
-      setTimeout(() => {
-        pokedexStore.getPokedex(page, 100);
-        setLoading(false);
-      }, 3000);
+      pokedexStore.getPokedex(page, 100).then(() => {
+        let timeout = setTimeout(() => {
+          setLoading(false);
+        }, 1500);
+        return () => {
+          clearTimeout(timeout);
+        };
+      });
     } else {
       setLoading(false);
     }

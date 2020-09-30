@@ -26,10 +26,14 @@ function Type() {
   const typeStore = React.useContext(TypeStore);
   const { types } = typeStore;
   React.useEffect(() => {
-    setTimeout(() => {
-      typeStore.getTypes();
-      setLoading(false);
-    }, 500);
+    typeStore.getTypes().then(() => {
+      let timeout = setTimeout(() => {
+        setLoading(false);
+      }, 1500);
+      return () => {
+        clearTimeout(timeout);
+      };
+    });
   }, []);
 
   // handle click

@@ -34,10 +34,14 @@ function Item() {
 
   React.useEffect(() => {
     if (items.length === 0) {
-      setTimeout(() => {
-        itemStore.getItems(page, 20);
-        setLoading(false);
-      }, 3000);
+      itemStore.getItems(page, 20).then(() => {
+        let timeout = setTimeout(() => {
+          setLoading(false);
+        }, 1500);
+        return () => {
+          clearTimeout(timeout);
+        };
+      });
     } else {
       setLoading(false);
     }
@@ -135,6 +139,7 @@ function Item() {
             <button
               onClick={() => {
                 itemStore.error = 0;
+                setLoading(false);
               }}
             >
               Close

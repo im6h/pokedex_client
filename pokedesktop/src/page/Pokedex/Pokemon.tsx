@@ -48,11 +48,15 @@ function Pokemon() {
   React.useEffect(() => {
     pokemonStore.getPokemon(id);
     if (id < 1000) {
-      pokemonStore.getPokemonSpecial(id);
+      pokemonStore.getPokemonSpecial(id).then(() => {
+        let timeout = setTimeout(() => {
+          setLoading(false);
+        }, 1500);
+        return () => {
+          clearTimeout(timeout);
+        };
+      });
     }
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
   }, []);
 
   const PokemonNest = () => {
@@ -154,5 +158,4 @@ function Pokemon() {
     </>
   );
 }
-
 export default observer(Pokemon);

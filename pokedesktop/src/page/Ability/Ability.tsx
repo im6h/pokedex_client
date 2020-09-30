@@ -34,10 +34,14 @@ function Ability() {
 
   React.useEffect(() => {
     if (abilities.length === 0) {
-      setTimeout(() => {
-        abilityStore.getAbilities(page, 100);
-        setLoading(false);
-      }, 3000);
+      abilityStore.getAbilities(page, 100).then(() => {
+        let timeout = setTimeout(() => {
+          setLoading(false);
+        }, 1500);
+        return () => {
+          clearTimeout(timeout);
+        };
+      });
     } else {
       setLoading(false);
     }

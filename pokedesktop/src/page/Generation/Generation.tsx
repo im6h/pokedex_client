@@ -29,10 +29,14 @@ function Generation() {
   const history = useHistory();
   const generationStore = React.useContext(GenerationStore);
   React.useEffect(() => {
-    setTimeout(() => {
-      generationStore.getGenerations();
-      setLoading(false);
-    }, 3000);
+    generationStore.getGenerations().then(() => {
+      let timeout = setTimeout(() => {
+        setLoading(false);
+      }, 1500);
+      return () => {
+        clearTimeout(timeout);
+      };
+    });
   }, []);
 
   return (

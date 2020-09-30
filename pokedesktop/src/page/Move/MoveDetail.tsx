@@ -26,10 +26,14 @@ const MoveDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    moveStore.getDetailMove(id);
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+    moveStore.getDetailMove(id).then(() => {
+      let timeout = setTimeout(() => {
+        setLoading(false);
+      }, 1500);
+      return () => {
+        clearTimeout(timeout);
+      };
+    });
   }, []);
 
   return (

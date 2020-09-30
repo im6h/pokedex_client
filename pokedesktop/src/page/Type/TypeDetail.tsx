@@ -30,10 +30,14 @@ const TypeDetail = () => {
   const { type } = typeStore;
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    typeStore.getTypeById(id);
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+    typeStore.getTypeById(id).then(() => {
+      let timeout = setTimeout(() => {
+        setLoading(false);
+      }, 1500);
+      return () => {
+        clearTimeout(timeout);
+      };
+    });
   }, []);
   const TypeTabs = () => {
     return (
