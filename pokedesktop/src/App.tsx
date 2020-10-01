@@ -11,25 +11,25 @@ import Router from "./config/router";
 import styled from "styled-components";
 
 function App() {
-	return (
-		<AppBase>
-			<AppContainer>
-				<Router />
-			</AppContainer>
-		</AppBase>
-	);
+  return (
+    <AppBase>
+      <AppContainer>
+        <Router />
+      </AppContainer>
+    </AppBase>
+  );
 }
 
 // style app base
 const AppBase = styled.div`
-	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 // style app container
 const AppContainer = styled.div`
-	width: 500px;
+  width: 500px;
 `;
 export default App;
