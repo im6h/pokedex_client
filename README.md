@@ -19,9 +19,13 @@ Pokedex client side is a small demo application based on Electronjs, Reactjs, Fl
 
 ## Download
 
-Go to the [Releases](https://bitbucket.org/im6h/pokedex_client/releases) to download the lastest Application.
+Go to the [Releases](https://github.com/im6h/pokedex_client/releases) to download the lastest Application.
 
 ## Tech stack & Open-source libraries
+
+1. ReactJS + Electron App
+2. Flutter
+3. React-Native
 
 ## Architecture
 
