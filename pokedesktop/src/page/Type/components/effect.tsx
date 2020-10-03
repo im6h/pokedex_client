@@ -27,13 +27,12 @@ const Effect = ({
           <Descriptions.Item label="x2 damage to">
             {double_damage_to.map((e: Base, index: number) => {
               return (
-                <span>
+                <span key={index}>
                   <Tag
                     style={{
                       marginTop: "10px",
                     }}
                     color={getColor(e.name)}
-                    key={index}
                   >
                     {formatNamePokemon(e.name)}
                   </Tag>
@@ -44,13 +43,12 @@ const Effect = ({
           <Descriptions.Item label="1/2 damage to">
             {half_damage_to.map((e: Base, index: number) => {
               return (
-                <span>
+                <span key={index}>
                   <Tag
                     style={{
                       marginTop: "10px",
                     }}
                     color={getColor(e.name)}
-                    key={index}
                   >
                     {formatNamePokemon(e.name)}
                   </Tag>
@@ -61,13 +59,12 @@ const Effect = ({
           <Descriptions.Item label="No damage to">
             {no_damage_to.map((e: Base, index: number) => {
               return (
-                <span>
+                <span key={index}>
                   <Tag
                     style={{
                       marginTop: "10px",
                     }}
                     color={getColor(e.name)}
-                    key={index}
                   >
                     {formatNamePokemon(e.name)}
                   </Tag>
@@ -78,13 +75,12 @@ const Effect = ({
           <Descriptions.Item label="x2 damage from">
             {double_damage_from.map((e: Base, index: number) => {
               return (
-                <span>
+                <span key={index}>
                   <Tag
                     style={{
                       marginTop: "10px",
                     }}
                     color={getColor(e.name)}
-                    key={index}
                   >
                     {formatNamePokemon(e.name)}
                   </Tag>
@@ -95,13 +91,12 @@ const Effect = ({
           <Descriptions.Item label="1/2 damage from">
             {half_damage_from.map((e: Base, index: number) => {
               return (
-                <span>
+                <span key={index}>
                   <Tag
                     style={{
                       marginTop: "10px",
                     }}
                     color={getColor(e.name)}
-                    key={index}
                   >
                     {formatNamePokemon(e.name)}
                   </Tag>
@@ -112,13 +107,12 @@ const Effect = ({
           <Descriptions.Item label="No damage from">
             {no_damage_from.map((e: Base, index: number) => {
               return (
-                <span>
+                <span key={index}>
                   <Tag
                     style={{
                       marginTop: "10px",
                     }}
                     color={getColor(e.name)}
-                    key={index}
                   >
                     {formatNamePokemon(e.name)}
                   </Tag>

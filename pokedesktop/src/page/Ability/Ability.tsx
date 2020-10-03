@@ -12,6 +12,7 @@ import Base from "../../interface/base";
 import colorStore from "../../asset/style/color";
 import { observer } from "mobx-react-lite";
 import AbilityStore from "../../store/ability";
+import { useHistory } from "react-router-dom";
 import {
   convertNumberIdPokemon,
   formatNamePokemon,
@@ -31,6 +32,7 @@ function Ability() {
   const [loading, setLoading] = React.useState(true);
   const abilityStore = React.useContext(AbilityStore);
   const { abilities, error, page } = abilityStore;
+  const history = useHistory();
 
   React.useEffect(() => {
     if (abilities.length === 0) {
@@ -61,6 +63,10 @@ function Ability() {
     if (target.scrollHeight - target.scrollTop === target.clientHeight) {
       loadMore();
     }
+  };
+
+  const handleOnClick = (id: string): void => {
+    history.push(`/ability/${id}`);
   };
 
   return (
@@ -103,6 +109,10 @@ function Ability() {
                     fontSize: "16px",
                     fontWeight: "bold",
                     color: colorStore.abilities,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    handleOnClick(id);
                   }}
                 >
                   <Typography.Text

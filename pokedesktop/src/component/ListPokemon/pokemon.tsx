@@ -9,7 +9,7 @@ interface PokeProps {
     {
       pokemon: Base;
       slot: number;
-    },
+    }
   ];
   pokemon_species?: Base[];
 }

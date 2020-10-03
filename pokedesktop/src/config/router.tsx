@@ -20,6 +20,7 @@ import MoveDetail from "../page/Move/MoveDetail";
 import TypeDetail from "../page/Type/TypeDetail";
 import GenerationDetail from "../page/Generation/GenerationDetail";
 import ItemDetail from "../page/Item/ItemDetail";
+import AbilityDetail from "../page/Ability/AbilityDetail";
 export default function Router() {
   return (
     <HashRouter>
@@ -30,6 +31,7 @@ export default function Router() {
         <Route exact path={"/type"} component={Type} />
         <Route exact path={"/type/:id"} component={TypeDetail} />
         <Route exact path={"/ability"} component={Ability} />
+        <Route exact path={"/ability/:id"} component={AbilityDetail} />
         <Route exact path={"/move"} component={Move} />
         <Route exact path={"/move/:id"} component={MoveDetail} />
         <Route exact path={"/generation"} component={Generation} />
