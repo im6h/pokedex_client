@@ -19,6 +19,7 @@ import Pokemon from "../page/Pokedex/Pokemon";
 import MoveDetail from "../page/Move/MoveDetail";
 import TypeDetail from "../page/Type/TypeDetail";
 import GenerationDetail from "../page/Generation/GenerationDetail";
+import ItemDetail from "../page/Item/ItemDetail";
 export default function Router() {
   return (
     <HashRouter>
@@ -34,6 +35,7 @@ export default function Router() {
         <Route exact path={"/generation"} component={Generation} />
         <Route exact path={"/generation/:id"} component={GenerationDetail} />
         <Route exact path={"/item"} component={Item} />
+        <Route exact path={"/item/:id"} component={ItemDetail} />
       </Switch>
     </HashRouter>
   );

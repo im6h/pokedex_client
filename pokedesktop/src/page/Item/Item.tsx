@@ -12,6 +12,7 @@ import colorStore from "../../asset/style/color";
 import Base from "../../interface/base";
 import { observer } from "mobx-react-lite";
 import ItemStore from "../../store/item";
+import { useHistory } from "react-router-dom";
 import {
   convertNumberIdPokemon,
   formatNamePokemon,
@@ -31,6 +32,7 @@ function Item() {
   const [loading, setLoading] = React.useState(true);
   const itemStore = React.useContext(ItemStore);
   const { items, error, page } = itemStore;
+  const history = useHistory();
 
   React.useEffect(() => {
     if (items.length === 0) {
@@ -61,6 +63,9 @@ function Item() {
     if (target.scrollHeight - target.scrollTop === target.clientHeight) {
       loadMore();
     }
+  };
+  const handleOnClick = (id: string) => {
+    history.push(`/item/${id}`);
   };
 
   return (
@@ -103,6 +108,10 @@ function Item() {
                     fontSize: "16px",
                     fontWeight: "bold",
                     color: colorStore.item,
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    handleOnClick(id);
                   }}
                 >
                   <Typography.Text

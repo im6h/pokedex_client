@@ -7,6 +7,7 @@ export const GenerationBase = styled.div`
   position: relative;
   height: 100%;
   width: 100%;
+  overflow-y: hidden;
 `;
 export const GenerationNavbar = styled.div`
   margin: 30px 20px 0px;
@@ -18,7 +19,7 @@ export const GenerationBall = styled.div`
 `;
 export const GenerationWrapper = styled.div`
   display: flex;
-  height: 87vh;
+  height: 65vh;
   width: 100%;
   flex-direction: column;
 `;

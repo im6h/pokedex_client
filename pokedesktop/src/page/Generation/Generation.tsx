@@ -214,16 +214,6 @@ function Generation() {
           }}
         >
           <Spin size="large" />
-          <p
-            style={{
-              margin: "10px 0px",
-              fontSize: "14px",
-              fontWeight: "bold",
-              color: "#e2e3e4",
-            }}
-          >
-            Loading
-          </p>
         </div>
       )}
     </GenerationBase>
