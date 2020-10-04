@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 13/9/2020.
- * Update at 27/9/2020.
+ * Update at 4/10/2020.
  *
  */
 import React from "react";
@@ -37,12 +37,12 @@ import {
   PokedexAlert,
 } from "./style";
 
-function Pokemon() {
+const Pokemon: React.FC<{}> = () => {
   const { TabPane } = Tabs;
   let { id } = useParams();
 
   const pokemonStore = React.useContext(PokemonStore);
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = React.useState<boolean>(true);
   const { pokemon, error, pokemonSpecial } = pokemonStore;
   const colorPokemon = pokemon.types[0].type.name;
   React.useEffect(() => {
@@ -129,7 +129,7 @@ function Pokemon() {
                 <PokemonImg>
                   <img
                     src={`${formatUrlImage(
-                      parseInt(convertNumberIdPokemon(pokemon.id)),
+                      parseInt(convertNumberIdPokemon(pokemon.id))
                     )}`}
                     alt={pokemon.name}
                     loading="lazy"
@@ -157,5 +157,5 @@ function Pokemon() {
       </PokemonBase>
     </>
   );
-}
+};
 export default observer(Pokemon);

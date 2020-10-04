@@ -1,6 +1,6 @@
 import React from "react";
 
-const Evolution = () => {
+const Evolution: React.FC<{}> = () => {
   return <div>Evolution</div>;
 };
 export default Evolution;

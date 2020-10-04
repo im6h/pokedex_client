@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 27/9/2020.
- * Update at 27/9/2020
+ * Update at 4/10/2020
  *
  */
 import React from "react";
@@ -17,16 +17,17 @@ import {
   splitNumberIdPokemon,
 } from "../../util/functionHelper";
 import Base from "../../interface/base";
-interface MoveProps {
+type MoveProps = {
   colorPokemon: string;
   moves?: [
     {
       move: Base;
-    },
+    }
   ];
   moveCustom?: Base[];
-}
-const Move = ({ colorPokemon, moves, moveCustom }: MoveProps) => {
+};
+const Move: React.FC<MoveProps> = (props) => {
+  const { colorPokemon, moves, moveCustom } = props;
   const history = useHistory();
   const handleOnClick = (id: string) => {
     history.push(`/move/${id}`);

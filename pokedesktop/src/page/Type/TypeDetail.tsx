@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 27/9/2020.
- * Update at 29/9/2020.
+ * Update at 4/10/2020.
  *
  */
 import React, { useState, useEffect, useContext } from "react";
@@ -23,12 +23,12 @@ import {
   formatNamePokemon,
 } from "../../util/functionHelper";
 
-const TypeDetail = () => {
+const TypeDetail: React.FC<{}> = () => {
   let { id } = useParams();
   const typeStore = useContext(TypeStore);
   const { TabPane } = Tabs;
   const { type } = typeStore;
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     typeStore.getTypeById(id).then(() => {
       let timeout = setTimeout(() => {

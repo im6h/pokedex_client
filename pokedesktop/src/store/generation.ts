@@ -1,3 +1,11 @@
+/**
+ *
+ * @author im6h
+ *
+ * Create at 5/9/2020.
+ * Update at 4/10/2020
+ *
+ */
 import { action, observable } from "mobx";
 import { createContext } from "react";
 import generationApi from "../service/generation";
@@ -38,7 +46,7 @@ class GenerationStore {
   @observable error: number = 0;
 
   @action
-  async getGenerations() {
+  async getGenerations(): Promise<void> {
     try {
       let response = await generationApi.getAllGeneration();
       if (response.status === 200 && response.data) {
@@ -56,7 +64,7 @@ class GenerationStore {
   }
 
   @action
-  async getGenerationById(idGen: string) {
+  async getGenerationById(idGen: string): Promise<void> {
     try {
       let response = await generationApi.getGenerationById(idGen);
       if (response.status === 200 && response.data) {

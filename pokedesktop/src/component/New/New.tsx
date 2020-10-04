@@ -3,17 +3,16 @@
  * @author im6h
  *
  * Create at 30/8/2020.
- * Update at 13/9/2020.
+ * Update at 4/10/2020.
  *
  */
 
 import React from "react";
 import styled from "styled-components";
 
-function New() {
+const New: React.FC<{}> = () => {
   return (
     <NewBase>
-      {/*title*/}
       <NewTitle className={"new__title"}>
         <div
           style={{
@@ -31,7 +30,6 @@ function New() {
           15 May 2019
         </div>
       </NewTitle>
-      {/*img*/}
       <NewImage className={"new__image"}>
         <img
           src="https://res.cloudinary.com/lmn/image/upload/c_limit,h_360,w_640/e_sharpen:100/f_auto,fl_lossy,q_auto/v1/gameskinnyc/p/o/k/pokemon-sunmoon-starters-a9591.jpg"
@@ -40,7 +38,7 @@ function New() {
       </NewImage>
     </NewBase>
   );
-}
+};
 
 const NewBase = styled.div`
   display: flex;

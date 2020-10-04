@@ -8,6 +8,7 @@
  */
 import React from "react";
 import Navbar from "../../component/Navbar/Navbar";
+import Loading from "../../component/Loading/Loading";
 import { useHistory } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import GenerationStore from "../../store/generation";
@@ -22,10 +23,9 @@ import {
   GenerationTitle,
   GenerationWrapper,
 } from "./style";
-import { Spin } from "antd";
 
-function Generation() {
-  const [loading, setLoading] = React.useState(true);
+const Generation: React.FC<{}> = () => {
+  const [loading, setLoading] = React.useState<boolean>(true);
   const history = useHistory();
   const generationStore = React.useContext(GenerationStore);
   React.useEffect(() => {
@@ -203,21 +203,9 @@ function Generation() {
           </GenerationCard>
         </GenerationList>
       </GenerationWrapper>
-      {loading && (
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-          }}
-        >
-          <Spin size="large" />
-        </div>
-      )}
+      {loading && <Loading />}
     </GenerationBase>
   );
-}
+};
 
 export default observer(Generation);

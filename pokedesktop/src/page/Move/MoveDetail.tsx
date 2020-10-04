@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 26/9/2020.
- * Update at 27/9/2020.
+ * Update at 4/10/2020.
  *
  */
 import React, { useState, useContext, useEffect } from "react";
@@ -19,11 +19,11 @@ import {
   formatNamePokemon,
 } from "../../util/functionHelper";
 import { Spin, Descriptions } from "antd";
-const MoveDetail = () => {
+const MoveDetail: React.FC<{}> = () => {
   let { id } = useParams();
   const moveStore = useContext(MoveStore);
   const { move } = moveStore;
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     moveStore.getDetailMove(id).then(() => {

@@ -3,12 +3,13 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 25/9/2020.
+ * Update at 4/10/2020.
  *
  */
 
 import React from "react";
 import Navbar from "../../component/Navbar/Navbar";
+import Loading from "../../component/Loading/Loading";
 import Card from "../../component/Card/Card";
 import Base from "../../interface/base";
 import { observer } from "mobx-react-lite";
@@ -22,11 +23,11 @@ import {
   PokedexWrapper,
   Modal,
 } from "./style";
-import { PageHeader, Spin } from "antd";
-function Pokedex() {
+import { PageHeader } from "antd";
+const Pokedex: React.FC<{}> = () => {
   const pokedexStore = React.useContext(PokedexStore);
   const { page, error, pokedex } = pokedexStore;
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = React.useState<boolean>(true);
   const list = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -92,19 +93,7 @@ function Pokedex() {
           })}
         </PokedexList>
       </PokedexWrapper>
-      {loading && (
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-          }}
-        >
-          <Spin size="large" />
-        </div>
-      )}
+      {loading && <Loading />}
       {error === 1 && (
         <Modal className={"pokedex__modal"}>
           <PokedexAlert className={"pokedex__alert"}>
@@ -121,6 +110,6 @@ function Pokedex() {
       )}
     </PokedexBase>
   );
-}
+};
 
 export default observer(Pokedex);

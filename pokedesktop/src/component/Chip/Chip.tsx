@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 2/9/2020.
- * Update at 13/9/2020.
+ * Update at 4/10/2020.
  *
  */
 
@@ -12,7 +12,8 @@ import styled from "styled-components";
 import { formatNamePokemon } from "../../util/functionHelper";
 import "./Chip.scss";
 
-function Chip({ name }: any) {
+const Chip: React.FC<any> = (props) => {
+  const { name } = props;
   return (
     <ChipBase className={`chip-${name}`}>
       <ChipWrapper>
@@ -20,7 +21,7 @@ function Chip({ name }: any) {
       </ChipWrapper>
     </ChipBase>
   );
-}
+};
 const ChipBase = styled.div`
   height: 28px;
   width: 70px;

@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 26/9/2020.
+ * Update at 4/10/2020.
  *
  */
 import React from "react";
@@ -28,8 +28,8 @@ import {
   MoveWrapper,
 } from "./style";
 import colorStore from "../../asset/style/color";
-function Move() {
-  const [loading, setLoading] = React.useState(true);
+const Move: React.FC<{}> = () => {
+  const [loading, setLoading] = React.useState<boolean>(true);
   const moveStore = React.useContext(MoveStore);
   const { moves, error, page } = moveStore;
   const history = useHistory();
@@ -158,6 +158,6 @@ function Move() {
       )}
     </MoveBase>
   );
-}
+};
 
 export default observer(Move);

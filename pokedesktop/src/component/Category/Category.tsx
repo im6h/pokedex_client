@@ -3,14 +3,15 @@
  * @author im6h
  *
  * Create at 2/9/2020.
- * Update at 25/9/2020.
+ * Update at 4/10/2020.
  *
  */
 import React from "react";
 import "./Category.scss";
 import { formatNamePokemon } from "../../util/functionHelper";
 import { useHistory } from "react-router-dom";
-function Category({ name }: any) {
+const Category: React.FC<any> = (props) => {
+  const { name } = props;
   const history = useHistory();
 
   // function handle event click on category
@@ -25,13 +26,10 @@ function Category({ name }: any) {
         handleClick(name);
       }}
     >
-      {/*wrapper category*/}
       <div className={`category__wrapper category__wrapper-${name}`}>
-        {/*text*/}
         <div className={"category__title"}>
           <p>{formatNamePokemon(name)}</p>
         </div>
-        {/*icon*/}
         <div className={"category__img"}>
           <svg
             width="82"
@@ -50,6 +48,6 @@ function Category({ name }: any) {
       </div>
     </div>
   );
-}
+};
 
 export default Category;

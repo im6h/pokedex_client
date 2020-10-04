@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 30/8/2020.
- * Update at 16/09/2020.
+ * Update at 4/10/2020.
  *
  */
 import React from "react";
@@ -21,7 +21,7 @@ import {
   HomeSearchBar,
 } from "./style";
 
-function Home() {
+const Home: React.FC<{}> = () => {
   return (
     <HomeBase>
       <HomeAction>
@@ -43,11 +43,9 @@ function Home() {
         <HomeTitle>
           <p>What Pokemon are you looking for?</p>
         </HomeTitle>
-        {/*search bar*/}
         <HomeSearchBar>
           <SearchBar />
         </HomeSearchBar>
-        {/*category*/}
         <HomeCategory>
           <Category name="pokedex" />
           <Category name="move" />
@@ -103,5 +101,5 @@ function Home() {
       </HomeNew>
     </HomeBase>
   );
-}
+};
 export default Home;

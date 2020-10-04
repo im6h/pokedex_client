@@ -1,12 +1,12 @@
 import BASE_URL from "./ApiEndpoint";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 class TypeApi {
-  async getAllTypes() {
+  async getAllTypes(): Promise<AxiosResponse<any>> {
     return axios.get(`${BASE_URL}/type/`);
   }
 
-  async getTypeById(idType: string) {
+  async getTypeById(idType: string): Promise<AxiosResponse<any>> {
     return axios.get(`${BASE_URL}/type/${idType}`);
   }
 }

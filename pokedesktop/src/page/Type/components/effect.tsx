@@ -4,22 +4,23 @@ import { Descriptions, Tag } from "antd";
 import Base from "../../../interface/base";
 import { formatNamePokemon } from "../../../util/functionHelper";
 import colorStore, { getColor } from "../../../asset/style/color";
-interface EffectProps {
+type EffectProps = {
   double_damage_from: Base[];
   double_damage_to: Base[];
   half_damage_from: Base[];
   half_damage_to: Base[];
   no_damage_from: Base[];
   no_damage_to: Base[];
-}
-const Effect = ({
-  double_damage_from,
-  double_damage_to,
-  no_damage_from,
-  no_damage_to,
-  half_damage_from,
-  half_damage_to,
-}: EffectProps) => {
+};
+const Effect: React.FC<EffectProps> = (props) => {
+  const {
+    double_damage_from,
+    double_damage_to,
+    no_damage_from,
+    no_damage_to,
+    half_damage_from,
+    half_damage_to,
+  } = props;
   return (
     <>
       <TableEffect>

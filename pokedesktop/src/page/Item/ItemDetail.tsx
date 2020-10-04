@@ -1,3 +1,11 @@
+/**
+ *
+ * @author im6h
+ *
+ * Create at 5/9/2020.
+ * Update at 4/10/2020.
+ *
+ */
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { observer } from "mobx-react-lite";
@@ -10,11 +18,11 @@ import {
   formatNamePokemon,
 } from "../../util/functionHelper";
 import ItemStore from "../../store/item";
-const ItemDetail = () => {
+const ItemDetail: React.FC<{}> = () => {
   let { id } = useParams();
   const itemStore = useContext(ItemStore);
   const { item } = itemStore;
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     itemStore.getItemDetail(id).then(() => {

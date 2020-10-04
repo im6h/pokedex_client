@@ -21,9 +21,9 @@ import {
   refactorGeneration,
 } from "../../util/functionHelper";
 import GenerationStore from "../../store/generation";
-const GenerationDetail = () => {
+const GenerationDetail: React.FC<{}> = () => {
   let { id } = useParams();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const generationStore = useContext(GenerationStore);
   const { generation } = generationStore;
   const { TabPane } = Tabs;
