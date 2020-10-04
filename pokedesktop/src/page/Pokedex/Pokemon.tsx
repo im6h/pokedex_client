@@ -18,10 +18,10 @@ import {
   formatNamePokemon,
   formatUrlImage,
 } from "../../util/functionHelper";
-import About from "./component/About";
-import Stats from "./component/Stats";
-import Move from "./component/Move";
-import Evolution from "./component/Evolution";
+import About from "./components/About";
+import Stats from "./components/Stats";
+import Move from "./components/Move";
+import Evolution from "./components/Evolution";
 import { Tabs } from "antd";
 import {
   PokemonBase,
