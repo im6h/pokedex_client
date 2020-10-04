@@ -3,11 +3,12 @@
  * @author im6h
  *
  * Create at 13/9/2020.
- * Update at 25/9/2020.
+ * Update at 4/10/2020.
  *
  */
 import React from "react";
 import Navbar from "../../component/Navbar/Navbar";
+import Loading from "../../component/Loading/Loading";
 import Base from "../../interface/base";
 import colorStore from "../../asset/style/color";
 import { observer } from "mobx-react-lite";
@@ -27,9 +28,9 @@ import {
   AbilityWrapper,
   Modal,
 } from "./style";
-import { List, Spin, Typography, PageHeader } from "antd";
-function Ability() {
-  const [loading, setLoading] = React.useState(true);
+import { List, Typography, PageHeader } from "antd";
+const Ability: React.FC<{}> = () => {
+  const [loading, setLoading] = React.useState<boolean>(true);
   const abilityStore = React.useContext(AbilityStore);
   const { abilities, error, page } = abilityStore;
   const history = useHistory();
@@ -129,19 +130,9 @@ function Ability() {
           />
         </AbilityList>
       </AbilityWrapper>
-      {loading && ( //check loading done?
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-          }}
-        >
-          <Spin size="large" />
-        </div>
-      )}
+      {
+        loading && <Loading /> //check loading done?
+      }
       {error === 1 && ( //check network error
         <Modal className={"Ability__modal"}>
           <AbilityAlert className={"Ability__alert"}>
@@ -158,6 +149,6 @@ function Ability() {
       )}
     </AbilityBase>
   );
-}
+};
 
 export default observer(Ability);

@@ -8,6 +8,7 @@
  */
 import React from "react";
 import Navbar from "../../component/Navbar/Navbar";
+import Loading from "../../component/Loading/Loading";
 import colorStore from "../../asset/style/color";
 import Base from "../../interface/base";
 import { observer } from "mobx-react-lite";
@@ -27,9 +28,9 @@ import {
   ItemWrapper,
   Modal,
 } from "./style";
-import { List, Spin, Typography, PageHeader } from "antd";
-function Item() {
-  const [loading, setLoading] = React.useState(true);
+import { List, Typography, PageHeader } from "antd";
+const Item: React.FC<{}> = () => {
+  const [loading, setLoading] = React.useState<boolean>(true);
   const itemStore = React.useContext(ItemStore);
   const { items, error, page } = itemStore;
   const history = useHistory();
@@ -128,19 +129,9 @@ function Item() {
           />
         </ItemList>
       </ItemWrapper>
-      {loading && ( //check loading done.
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-          }}
-        >
-          <Spin size="large" />
-        </div>
-      )}
+      {
+        loading && <Loading /> //check loading done.
+      }
       {error === 1 && ( //check error network
         <Modal className={"Item__modal"}>
           <ItemAlert className={"Item__alert"}>
@@ -158,6 +149,6 @@ function Item() {
       )}
     </ItemBase>
   );
-}
+};
 
 export default observer(Item);

@@ -1,3 +1,11 @@
+/**
+ *
+ * @author im6h
+ *
+ * Create at 5/9/2020.
+ * Update at 4/10/2020
+ *
+ */
 import { action, observable } from "mobx";
 import { createContext } from "react";
 import abilityApi from "../service/ability";
@@ -41,7 +49,7 @@ class AbilityStore {
   @observable page: number = 0;
 
   @action
-  async getAbilities(offset: number, limit: number) {
+  async getAbilities(offset: number, limit: number): Promise<void> {
     try {
       let response = await abilityApi.getAllAbilities(offset, limit);
       if (response.status === 200 && response.data) {
@@ -50,7 +58,7 @@ class AbilityStore {
         if (offset === 0) {
           this.abilities = response.data.results;
         } else {
-          this.abilities = [...this.abilities, ...response.data.results];
+          this.abilities = [...this.abilities, ...response.data.results]; // merge old array and new array to result
         }
         if (response.data.next === null) {
           this.error = 2;
@@ -68,7 +76,7 @@ class AbilityStore {
   }
 
   @action
-  async getAbilityDetail(idAbility: string) {
+  async getAbilityDetail(idAbility: string): Promise<void> {
     try {
       let response = await abilityApi.getAbilityById(idAbility);
       if (response.status === 200 && response.data) {

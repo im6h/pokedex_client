@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 2/9/2020.
- * Update at 13/9/2020.
+ * Update at 4/10/2020.
  *
  */
 import React from "react";
@@ -19,12 +19,13 @@ import {
   splitNumberIdPokemon,
 } from "../../util/functionHelper";
 
-function Card({ name, url }: Base) {
-  // function handle event click card
-
+const Card: React.FC<Base> = (props) => {
+  const { url, name } = props;
   const history = useHistory();
   let id: string = splitNumberIdPokemon(url);
   let _idPokemon: number = parseInt(id);
+
+  // handle on click
   const handleOnClick = () => {
     history.push(`/pokedex/${id}`);
   };
@@ -67,7 +68,7 @@ function Card({ name, url }: Base) {
       </CardWrapper>
     </CardBase>
   );
-}
+};
 
 const CardBase = styled.div`
   height: 110px;

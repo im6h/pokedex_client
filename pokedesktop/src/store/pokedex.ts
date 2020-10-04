@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 6/9/2020
+ * Update at 4/10/2020
  *
  */
 import { action, observable } from "mobx";
@@ -17,7 +17,7 @@ class PokedexStore {
   @observable page: number = 0;
 
   @action
-  async getPokedex(offset: number, limit: number) {
+  async getPokedex(offset: number, limit: number): Promise<void> {
     try {
       let response = await pokedexApi.getAllPokemon(offset, limit);
       if (response.status === 200 && response.data) {

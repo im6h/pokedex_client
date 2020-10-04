@@ -1,3 +1,11 @@
+/**
+ *
+ * @author im6h
+ *
+ * Create at 30/8/2020.
+ * Update at 4/10/2020.
+ *
+ */
 import { action, observable } from "mobx";
 import { createContext } from "react";
 import typeApi from "../service/type";
@@ -75,7 +83,7 @@ class TypeStore {
   @observable type: TypeDetail = initType;
 
   @action
-  async getTypes() {
+  async getTypes(): Promise<void> {
     try {
       let response = await typeApi.getAllTypes();
       if (response.status === 200 && response.data) {
@@ -92,7 +100,7 @@ class TypeStore {
     }
   }
   @action
-  async getTypeById(idType: string) {
+  async getTypeById(idType: string): Promise<void> {
     try {
       let response = await typeApi.getTypeById(idType);
       if (response.status === 200 && response.data) {

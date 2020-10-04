@@ -1,12 +1,12 @@
 import BASE_URL from "./ApiEndpoint";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 class GenerationApi {
-  async getAllGeneration() {
+  async getAllGeneration(): Promise<AxiosResponse<any>> {
     return axios.get(`${BASE_URL}/generation/`);
   }
 
-  async getGenerationById(idGen: string) {
+  async getGenerationById(idGen: string): Promise<AxiosResponse<any>> {
     return axios.get(`${BASE_URL}/generation/${idGen}`);
   }
 }

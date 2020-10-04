@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 29/9/2020.
- * Update at 29/9/2020
+ * Update at 4/10/2020
  *
  */
 import React from "react";
@@ -17,26 +17,23 @@ import {
   splitNumberIdPokemon,
 } from "../../util/functionHelper";
 import Base from "../../interface/base";
-interface AbilityProps {
+
+type AbilityProps = {
   ability?: [
     {
       ability: Base;
-    },
+    }
   ];
   abilityCustom?: Base[];
-}
-const Ability = ({ ability, abilityCustom }: AbilityProps) => {
+};
+const Ability: React.FC<AbilityProps> = (props) => {
+  const { ability, abilityCustom } = props;
   const history = useHistory();
   const handleOnClick = (id: string) => {
     history.push(`/ability/${id}`);
   };
   return (
-    <div
-      style={{
-        margin: "0px 20px",
-        height: "50vh",
-      }}
-    >
+    <AbilityWrapper>
       <AbilityList>
         {ability && (
           <List
@@ -110,9 +107,13 @@ const Ability = ({ ability, abilityCustom }: AbilityProps) => {
           />
         )}
       </AbilityList>
-    </div>
+    </AbilityWrapper>
   );
 };
+const AbilityWrapper = styled.div`
+  margin: 0px 20px;
+  height: 50vh;
+`;
 const AbilityList = styled.div`
   display: flex;
   flex-direction: column;

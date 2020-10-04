@@ -28,7 +28,7 @@ import {
   MoveWrapper,
 } from "./style";
 import colorStore from "../../asset/style/color";
-function Move() {
+const Move: React.FC<{}> = () => {
   const [loading, setLoading] = React.useState(true);
   const moveStore = React.useContext(MoveStore);
   const { moves, error, page } = moveStore;
@@ -158,6 +158,6 @@ function Move() {
       )}
     </MoveBase>
   );
-}
+};
 
 export default observer(Move);

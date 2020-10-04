@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 13/9/2020
+ * Update at 4/10/2020
  *
  */
 import { action, observable } from "mobx";
@@ -57,7 +57,7 @@ class ItemStore {
   @observable page: number = 0;
 
   @action
-  async getItems(offset: number, limit: number) {
+  async getItems(offset: number, limit: number): Promise<void> {
     try {
       let response = await itemApi.getAllItems(offset, limit);
       if (response.status === 200 && response.data) {
@@ -83,7 +83,7 @@ class ItemStore {
     }
   }
   @action
-  async getItemDetail(idItem: string) {
+  async getItemDetail(idItem: string): Promise<void> {
     try {
       let response = await itemApi.getDetailItem(idItem);
       if (response.status === 200 && response.data) {

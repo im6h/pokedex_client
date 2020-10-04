@@ -1,4 +1,4 @@
-> Update: 27-9-2020
+> Update: 4-10-2020
 
 ## Component
 
@@ -18,11 +18,13 @@
 - [x] Pokedex page
 - [x] Move page
 - [x] Type page
+- [x] Generation page
 - [x] Ability page
 - [x] Pokemon Detail page
 - [x] Move Detail page
 - [x] Type Detail page
-- [ ] Ability detail page
+- [x] Ability detail page
+- [x] Generation detail page
 
 ## Utils
 
@@ -46,7 +48,10 @@
 
 ## Bug
 
-- [ ] 1.check network error
-- [ ] 2.network error: notifi error but list = old list not empty.
-- [x] 3.check loading position avaliable.
-- [x] 4.back to pokedex, store stage of list pokemon.
+## Note
+
+- Recommend 200 LOC/ 1 file
+- Use many and many component
+- Spreate large file to many children file
+- use @ instead of "../"
+- Custom hook if you want

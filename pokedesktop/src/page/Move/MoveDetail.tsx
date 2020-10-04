@@ -19,11 +19,11 @@ import {
   formatNamePokemon,
 } from "../../util/functionHelper";
 import { Spin, Descriptions } from "antd";
-const MoveDetail = () => {
+const MoveDetail: React.FC<{}> = () => {
   let { id } = useParams();
   const moveStore = useContext(MoveStore);
   const { move } = moveStore;
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     moveStore.getDetailMove(id).then(() => {

@@ -3,12 +3,13 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 27/9/2020.
+ * Update at 4/10/2020.
  *
  */
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Navbar from "../../component/Navbar/Navbar";
+import Loading from "../../component/Loading/Loading";
 import { observer } from "mobx-react-lite";
 import TypeStore from "../../store/type";
 import colorStore from "../../asset/style/color";
@@ -19,10 +20,10 @@ import {
 } from "../../util/functionHelper";
 import Base from "../../interface/base";
 import { TypeBall, TypeBase, TypeList, TypeNavbar, TypeWrapper } from "./style";
-import { List, Spin, Typography, PageHeader } from "antd";
-function Type() {
+import { List, Typography, PageHeader } from "antd";
+const Type: React.FC<{}> = () => {
   const history = useHistory();
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = React.useState<boolean>(true);
   const typeStore = React.useContext(TypeStore);
   const { types } = typeStore;
   React.useEffect(() => {
@@ -101,21 +102,9 @@ function Type() {
           />
         </TypeList>
       </TypeWrapper>
-      {loading && (
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-          }}
-        >
-          <Spin size="large" />
-        </div>
-      )}
+      {loading && <Loading />}
     </TypeBase>
   );
-}
+};
 
 export default observer(Type);

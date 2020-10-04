@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 3/9/2020.
- * Update at 11/9/2020.
+ * Update at 4/10/2020.
  *
  */
 
@@ -12,7 +12,7 @@ import styled from "styled-components";
 import colorStore from "../../asset/style/color";
 import { useHistory } from "react-router-dom";
 
-function Navbar() {
+const Navbar: React.FC<{}> = () => {
   const history = useHistory();
 
   return (
@@ -49,7 +49,7 @@ function Navbar() {
       </NavbarWrapper>
     </NavbarBase>
   );
-}
+};
 
 const NavbarBase = styled.div`
   width: 100%;

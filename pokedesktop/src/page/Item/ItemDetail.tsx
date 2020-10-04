@@ -10,7 +10,7 @@ import {
   formatNamePokemon,
 } from "../../util/functionHelper";
 import ItemStore from "../../store/item";
-const ItemDetail = () => {
+const ItemDetail: React.FC<{}> = () => {
   let { id } = useParams();
   const itemStore = useContext(ItemStore);
   const { item } = itemStore;

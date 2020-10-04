@@ -12,12 +12,12 @@ import {
 } from "../../util/functionHelper";
 import { Tabs, Descriptions, Spin } from "antd";
 import Pokemon from "../../component/ListPokemon/pokemon";
-const AbilityDetail = () => {
+const AbilityDetail: React.FC<{}> = () => {
   let { id } = useParams();
   const { TabPane } = Tabs;
   const abilityStore = useContext(AbilityStore);
   const { ability } = abilityStore;
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     abilityStore.getAbilityDetail(id).then(() => {
       let timeout = setTimeout(() => {
@@ -28,6 +28,8 @@ const AbilityDetail = () => {
       };
     });
   }, []);
+
+  // nest component tab
   const AbilityTabs = () => {
     return (
       <>
@@ -39,6 +41,7 @@ const AbilityDetail = () => {
       </>
     );
   };
+
   return (
     <>
       <AbilityBase>

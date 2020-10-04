@@ -3,14 +3,14 @@
  * @author im6h
  *
  * Create at 5/9/2020.
- * Update at 27/9/2020.
+ * Update at 4/10/2020.
  *
  */
 import React from "react";
 import Router from "./config/router";
 import styled from "styled-components";
 
-function App() {
+const App: React.FC = () => {
   return (
     <AppBase>
       <AppContainer>
@@ -18,7 +18,7 @@ function App() {
       </AppContainer>
     </AppBase>
   );
-}
+};
 
 // style app base
 const AppBase = styled.div`

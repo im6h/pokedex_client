@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { convertInfoPokemon } from "../../../util/functionHelper";
 import Base from "../../../interface/base";
 import { Descriptions } from "antd";
-interface AboutProps {
+type AboutProps = {
   weight: number;
   height: number;
   about: [
@@ -11,22 +11,23 @@ interface AboutProps {
       flavor_text: string;
       language: Base;
       version: Base;
-    },
+    }
   ];
   legendary: string;
   mythical: string;
   happiness: string;
   captureRate: string;
-}
-const About = ({
-  weight,
-  height,
-  about,
-  legendary,
-  mythical,
-  happiness,
-  captureRate,
-}: AboutProps) => {
+};
+const About: React.FC<AboutProps> = (props) => {
+  const {
+    weight,
+    height,
+    about,
+    legendary,
+    mythical,
+    happiness,
+    captureRate,
+  } = props;
   return (
     <TabAbout>
       <div>

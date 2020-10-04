@@ -10,17 +10,18 @@ import React from "react";
 import { TabStats } from "../style";
 import colorStore, { getColor } from "../../../asset/style/color";
 import Base from "../../../interface/base";
-interface StatsProps {
+type StatsProps = {
   colorPokemon: string;
   arr: [
     {
       base_stat: number;
       effort: number;
       stat: Base;
-    },
+    }
   ];
-}
-const Stats = ({ colorPokemon, arr }: StatsProps) => {
+};
+const Stats: React.FC<StatsProps> = (props) => {
+  const { colorPokemon, arr } = props;
   return (
     <TabStats>
       {arr.map((e: any, index: number) => {

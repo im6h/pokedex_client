@@ -1,10 +1,18 @@
+/**
+ *
+ * @author im6h
+ *
+ * Create at 27/9/2020.
+ * Update at 4/10/2020
+ *
+ */
 import React from "react";
 import { List } from "antd";
 import Card from "../Card/Card";
 import Base from "../../interface/base";
 import styled from "styled-components";
 import colorStore from "../../asset/style/color";
-interface PokeProps {
+type PokeProps = {
   pokemons?: [
     {
       pokemon: Base;
@@ -12,8 +20,9 @@ interface PokeProps {
     }
   ];
   pokemon_species?: Base[];
-}
-const Pokemon = ({ pokemons, pokemon_species }: PokeProps) => {
+};
+const Pokemon: React.FC<PokeProps> = (props) => {
+  const { pokemons, pokemon_species } = props;
   return (
     <>
       <Container>

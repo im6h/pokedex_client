@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 30/8/2020.
- * Update at 29/9/2020.
+ * Update at 4/10/2020.
  *
  */
 import { HashRouter, Switch, Route } from "react-router-dom";
@@ -21,7 +21,7 @@ import TypeDetail from "../page/Type/TypeDetail";
 import GenerationDetail from "../page/Generation/GenerationDetail";
 import ItemDetail from "../page/Item/ItemDetail";
 import AbilityDetail from "../page/Ability/AbilityDetail";
-export default function Router() {
+const Router: React.FC<{}> = () => {
   return (
     <HashRouter>
       <Switch>
@@ -41,4 +41,6 @@ export default function Router() {
       </Switch>
     </HashRouter>
   );
-}
+};
+
+export default Router;

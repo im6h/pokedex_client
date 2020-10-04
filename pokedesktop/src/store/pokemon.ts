@@ -3,7 +3,7 @@
  * @author im6h
  *
  * Create at 30/8/2020.
- * Update at 13/9/2020.
+ * Update at 4/10/2020.
  *
  */
 import { action, observable } from "mobx";
@@ -70,7 +70,7 @@ class PokemonStore {
   @observable pokemonSpecial: PokemonSpecial = initPokemonSpecail;
   @observable error: number = 0;
   @action
-  async getPokemon(idPokemon: number) {
+  async getPokemon(idPokemon: number): Promise<void> {
     try {
       let response = await pokemonApi.getPokemonById(idPokemon);
       if (response.status === 200 && response.data) {
@@ -88,7 +88,7 @@ class PokemonStore {
   }
 
   @action
-  async getPokemonSpecial(idPokemon: number) {
+  async getPokemonSpecial(idPokemon: number): Promise<void> {
     try {
       let response = await pokemonApi.getPokemonSpecialById(idPokemon);
       if (response.status === 200 && response.data) {
