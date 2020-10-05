@@ -12,7 +12,11 @@ import styled from "styled-components";
 import { formatNamePokemon } from "../../util/functionHelper";
 import "./Chip.scss";
 
-const Chip: React.FC<any> = (props) => {
+type ChipProps = {
+  name: string;
+};
+
+const Chip: React.FC<ChipProps> = (props) => {
   const { name } = props;
   return (
     <ChipBase className={`chip-${name}`}>

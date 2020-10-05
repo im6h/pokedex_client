@@ -46,16 +46,16 @@ const Pokemon: React.FC<{}> = () => {
   const { pokemon, error, pokemonSpecial } = pokemonStore;
   const colorPokemon = pokemon.types[0].type.name;
   React.useEffect(() => {
-    pokemonStore.getPokemon(id);
+    pokemonStore.getPokemon(id).then(() => {
+      let timeout = setTimeout(() => {
+        setLoading(false);
+      }, 1500);
+      return () => {
+        clearTimeout(timeout);
+      };
+    });
     if (id < 1000) {
-      pokemonStore.getPokemonSpecial(id).then(() => {
-        let timeout = setTimeout(() => {
-          setLoading(false);
-        }, 1500);
-        return () => {
-          clearTimeout(timeout);
-        };
-      });
+      pokemonStore.getPokemonSpecial(id);
     }
   }, []);
 

@@ -17,6 +17,7 @@ import { observer } from "mobx-react-lite";
 import {
   convertNumberIdPokemon,
   formatNamePokemon,
+  refactorGeneration,
 } from "../../util/functionHelper";
 import { Spin, Descriptions } from "antd";
 const MoveDetail: React.FC<{}> = () => {
@@ -62,7 +63,11 @@ const MoveDetail: React.FC<{}> = () => {
                   </MoveType>
                 </MoveInfo>
                 <MoveFull>
-                  <h4>{move.flavor_text_entries[0].flavor_text}</h4>
+                  <h4>
+                    {move.flavor_text_entries.length > 0
+                      ? move.flavor_text_entries[0].flavor_text
+                      : "-"}
+                  </h4>
                   <Descriptions
                     title="Move Data"
                     layout="horizontal"
@@ -73,19 +78,25 @@ const MoveDetail: React.FC<{}> = () => {
                       {move.power || "-"}
                     </Descriptions.Item>
                     <Descriptions.Item label="Accuracy">
-                      {move.accuracy + "%" || "-"}
+                      {move.accuracy !== null ? `${move.accuracy}%` : "-"}
                     </Descriptions.Item>
                     <Descriptions.Item label="PP">
                       {move.pp || "-"}
                     </Descriptions.Item>
                     <Descriptions.Item label="Gen">
-                      {move.generation.name.toUpperCase()}
+                      {move.generation.name
+                        ? refactorGeneration(move.generation.name)
+                        : "-"}
                     </Descriptions.Item>
                     <Descriptions.Item label="Contest">
-                      {formatNamePokemon(move.contest_type.name)}
+                      {move.contest_type
+                        ? formatNamePokemon(move.contest_type.name)
+                        : "-"}
                     </Descriptions.Item>
                     <Descriptions.Item label="Category">
-                      {formatNamePokemon(move.damage_class.name)}
+                      {move.damage_class
+                        ? formatNamePokemon(move.damage_class.name)
+                        : "-"}
                     </Descriptions.Item>
                   </Descriptions>
                 </MoveFull>

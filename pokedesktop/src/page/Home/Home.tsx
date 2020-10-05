@@ -6,7 +6,7 @@
  * Update at 4/10/2020.
  *
  */
-import React from "react";
+import React, { useEffect } from "react";
 import SearchBar from "../../component/Search/Search";
 import Category from "../../component/Category/Category";
 import New from "../../component/New/New";
@@ -20,8 +20,15 @@ import {
   HomeNewTitle,
   HomeSearchBar,
 } from "./style";
+import { notification } from "antd";
 
 const Home: React.FC<{}> = () => {
+  useEffect(() => {
+    notification.open({
+      message: "About us",
+      description: " Hope you love it.",
+    });
+  }, []);
   return (
     <HomeBase>
       <HomeAction>
