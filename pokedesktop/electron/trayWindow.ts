@@ -18,7 +18,7 @@ export function InitTray() {
   MainTray = new Tray(path.join(__dirname, "trayIcon.png"));
   createWindow();
 
-  MainTray.on("click", function (event) {
+  MainTray.on("click", function () {
     ipcMain.emit("tray-window-clicked", { window: TrayWindow, tray: MainTray });
     toggleTrayWindow();
   });

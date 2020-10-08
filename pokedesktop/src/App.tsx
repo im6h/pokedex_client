@@ -6,11 +6,18 @@
  * Update at 4/10/2020.
  *
  */
-import React from "react";
+import React, { useEffect } from "react";
 import Router from "./config/router";
 import styled from "styled-components";
+import { notification } from "antd";
 
 const App: React.FC = () => {
+  useEffect(() => {
+    notification.open({
+      message: "About us",
+      description: " Hope you love it.",
+    });
+  }, []);
   return (
     <AppBase>
       <AppContainer>
