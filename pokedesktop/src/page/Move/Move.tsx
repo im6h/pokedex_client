@@ -1,4 +1,5 @@
 /**
+ * ModalError();
  *
  * @author im6h
  *
@@ -18,15 +19,7 @@ import {
   splitNumberIdPokemon,
 } from "../../util/functionHelper";
 import { List, Spin, Typography, PageHeader } from "antd";
-import {
-  MoveAlert,
-  MoveBall,
-  MoveBase,
-  Modal,
-  MoveList,
-  MoveNavbar,
-  MoveWrapper,
-} from "./style";
+import { MoveBall, MoveBase, MoveList, MoveNavbar, MoveWrapper } from "./style";
 import colorStore from "../../asset/style/color";
 const Move: React.FC<{}> = () => {
   const [loading, setLoading] = React.useState<boolean>(true);
@@ -37,12 +30,7 @@ const Move: React.FC<{}> = () => {
   React.useEffect(() => {
     if (page === 0) {
       moveStore.getMoves(page, 100).then(() => {
-        let timeout = setTimeout(() => {
-          setLoading(false);
-        }, 1500);
-        return () => {
-          clearTimeout(timeout);
-        };
+        setLoading(false);
       });
     } else {
       setLoading(false);
@@ -51,7 +39,7 @@ const Move: React.FC<{}> = () => {
 
   // load more data
   const loadMore = () => {
-    if (moveStore.error !== 2) {
+    if (error !== 2) {
       setLoading(true);
       moveStore.getMoves(page + 100, 100);
     }
@@ -137,19 +125,6 @@ const Move: React.FC<{}> = () => {
           }}>
           <Spin size="large" />
         </div>
-      )}
-      {error === 1 && ( //check error to show modal
-        <Modal className={"move__modal"}>
-          <MoveAlert className={"move__alert"}>
-            <p>Check your network</p>
-            <button
-              onClick={() => {
-                moveStore.error = 0;
-              }}>
-              Close
-            </button>
-          </MoveAlert>
-        </Modal>
       )}
     </MoveBase>
   );

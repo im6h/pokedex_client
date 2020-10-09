@@ -11,6 +11,7 @@ import { createContext } from "react";
 import moveApi from "../service/move";
 import Base from "../interface/base";
 import Move from "../interface/move";
+import ModalError from "../component/ModalError/ModalError";
 
 const moveInit: Move = {
   id: 0,
@@ -76,8 +77,7 @@ class MoveStore {
         console.log("res", response.data);
       }
     } catch (error) {
-      console.log("err", error);
-      this.moves = [];
+      ModalError();
       this.error = 1;
     }
   }

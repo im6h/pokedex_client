@@ -11,6 +11,7 @@ import { createContext } from "react";
 import itemApi from "../service/item";
 import Base from "../interface/base";
 import Item from "../interface/item";
+import ModelError from "../component/ModalError/ModalError";
 
 const initItem: Item = {
   id: 0,
@@ -77,8 +78,7 @@ class ItemStore {
         console.log("res", response.data);
       }
     } catch (error) {
-      console.log("err", error);
-      this.items = [];
+      ModelError();
       this.error = 1;
     }
   }

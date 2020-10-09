@@ -11,6 +11,7 @@ import { createContext } from "react";
 import abilityApi from "../service/ability";
 import Base from "../interface/base";
 import Ability from "../interface/ability";
+import ModalError from "../component/ModalError/ModalError";
 
 const initAbility: Ability = {
   id: 0,
@@ -69,8 +70,7 @@ class AbilityStore {
         console.log("res", response.data);
       }
     } catch (error) {
-      console.log("err", error);
-      this.abilities = [];
+      ModalError();
       this.error = 1;
     }
   }

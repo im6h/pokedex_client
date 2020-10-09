@@ -10,6 +10,7 @@ import { action, observable } from "mobx";
 import { createContext } from "react";
 import Base from "../interface/base";
 import pokedexApi from "../service/pokedex";
+import ModalError from "../component/ModalError/ModalError";
 
 class PokedexStore {
   @observable pokedex: Base[] = [];
@@ -37,9 +38,8 @@ class PokedexStore {
         console.log("res", response.data);
       }
     } catch (error) {
-      console.log("err", error);
-      this.pokedex = [];
       this.error = 1;
+      ModalError();
     }
   }
 }

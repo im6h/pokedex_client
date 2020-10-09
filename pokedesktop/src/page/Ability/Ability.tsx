@@ -20,13 +20,11 @@ import {
   splitNumberIdPokemon,
 } from "../../util/functionHelper";
 import {
-  AbilityAlert,
   AbilityBall,
   AbilityBase,
   AbilityList,
   AbilityNavbar,
   AbilityWrapper,
-  Modal,
 } from "./style";
 import { List, Typography, PageHeader } from "antd";
 const Ability: React.FC<{}> = () => {
@@ -36,14 +34,9 @@ const Ability: React.FC<{}> = () => {
   const history = useHistory();
 
   React.useEffect(() => {
-    if (abilities.length === 0) {
+    if (page === 0) {
       abilityStore.getAbilities(page, 100).then(() => {
-        let timeout = setTimeout(() => {
-          setLoading(false);
-        }, 1500);
-        return () => {
-          clearTimeout(timeout);
-        };
+        setLoading(false);
       });
     } else {
       setLoading(false);
@@ -52,7 +45,7 @@ const Ability: React.FC<{}> = () => {
 
   //load more data
   const loadMore = () => {
-    if (abilityStore.error !== 2) {
+    if (error !== 2) {
       setLoading(true);
       abilityStore.getAbilities(page + 100, 100);
     }
@@ -130,19 +123,6 @@ const Ability: React.FC<{}> = () => {
       {
         loading && <Loading /> //check loading done?
       }
-      {error === 1 && ( //check network error
-        <Modal className={"Ability__modal"}>
-          <AbilityAlert className={"Ability__alert"}>
-            <p>Check your network</p>
-            <button
-              onClick={() => {
-                abilityStore.error = 0;
-              }}>
-              Close
-            </button>
-          </AbilityAlert>
-        </Modal>
-      )}
     </AbilityBase>
   );
 };

@@ -1,4 +1,5 @@
 /**
+ * import ModalError from '../../component/ModalError/ModalError'
  *
  * @author im6h
  *
@@ -15,13 +16,11 @@ import Base from "../../interface/base";
 import { observer } from "mobx-react-lite";
 import PokedexStore from "../../store/pokedex";
 import {
-  PokedexAlert,
   PokedexBall,
   PokedexBase,
   PokedexList,
   PokedexNavbar,
   PokedexWrapper,
-  Modal,
 } from "./style";
 import { PageHeader } from "antd";
 const Pokedex: React.FC<{}> = () => {
@@ -33,12 +32,7 @@ const Pokedex: React.FC<{}> = () => {
   React.useEffect(() => {
     if (page === 0) {
       pokedexStore.getPokedex(page, 100).then(() => {
-        let timeout = setTimeout(() => {
-          setLoading(false);
-        }, 1500);
-        return () => {
-          clearTimeout(timeout);
-        };
+        setLoading(false);
       });
     } else {
       setLoading(false);
@@ -93,19 +87,6 @@ const Pokedex: React.FC<{}> = () => {
         </PokedexList>
       </PokedexWrapper>
       {loading && <Loading />}
-      {error === 1 && (
-        <Modal className={"pokedex__modal"}>
-          <PokedexAlert className={"pokedex__alert"}>
-            <p>Check your network</p>
-            <button
-              onClick={() => {
-                // pokedexStore.error = 0;
-              }}>
-              Close
-            </button>
-          </PokedexAlert>
-        </Modal>
-      )}
     </PokedexBase>
   );
 };

@@ -15,7 +15,7 @@ const App: React.FC = () => {
   useEffect(() => {
     notification.open({
       message: "About us",
-      description: " Hope you love it.",
+      description: "Pokedex v0.1.4",
     });
   }, []);
   return (

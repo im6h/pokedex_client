@@ -19,15 +19,7 @@ import {
   formatNamePokemon,
   splitNumberIdPokemon,
 } from "../../util/functionHelper";
-import {
-  ItemAlert,
-  ItemBall,
-  ItemBase,
-  ItemList,
-  ItemNavbar,
-  ItemWrapper,
-  Modal,
-} from "./style";
+import { ItemBall, ItemBase, ItemList, ItemNavbar, ItemWrapper } from "./style";
 import { List, Typography, PageHeader } from "antd";
 const Item: React.FC<{}> = () => {
   const [loading, setLoading] = React.useState<boolean>(true);
@@ -38,12 +30,7 @@ const Item: React.FC<{}> = () => {
   React.useEffect(() => {
     if (page === 0) {
       itemStore.getItems(page, 100).then(() => {
-        let timeout = setTimeout(() => {
-          setLoading(false);
-        }, 1500);
-        return () => {
-          clearTimeout(timeout);
-        };
+        setLoading(false);
       });
     } else {
       setLoading(false);
@@ -52,7 +39,7 @@ const Item: React.FC<{}> = () => {
 
   // load more data
   const loadMore = () => {
-    if (itemStore.error !== 2) {
+    if (error !== 2) {
       setLoading(true);
       itemStore.getItems(page + 100, 100);
     }
@@ -129,20 +116,6 @@ const Item: React.FC<{}> = () => {
       {
         loading && <Loading /> //check loading done.
       }
-      {error === 1 && ( //check error network
-        <Modal className={"Item__modal"}>
-          <ItemAlert className={"Item__alert"}>
-            <p>Check your network</p>
-            <button
-              onClick={() => {
-                itemStore.error = 0;
-                setLoading(false);
-              }}>
-              Close
-            </button>
-          </ItemAlert>
-        </Modal>
-      )}
     </ItemBase>
   );
 };
