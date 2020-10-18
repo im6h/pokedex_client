@@ -8,7 +8,8 @@ import {
   Typography,
 } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
-import { formatName } from '../../../util/formatString'
+import { formatName } from 'src/util/formatString'
+import { getColor } from 'src/util/color'
 
 type Props = {
   url: string
@@ -33,16 +34,17 @@ const useStyles = makeStyles(() =>
       backgroundSize: 'contain',
     },
     chip: {
-      width: 60,
+      width: 70,
       height: 20,
       margin: '2px 0px',
+      color: 'white',
     },
   }),
 )
 const Pokemon: React.FC<Props> = (props: Props) => {
   const { url, alt } = props
   const classes = useStyles()
-  const types: string[] = ['water', 'fire']
+  const types: string[] = ['fire', 'flying']
 
   return (
     <>
@@ -58,10 +60,13 @@ const Pokemon: React.FC<Props> = (props: Props) => {
             <WrapperChip>
               {types.map((type: string) => (
                 <Chip
+                  key={type}
                   className={classes.chip}
+                  style={{
+                    background: getColor(type),
+                  }}
                   size="small"
                   label={formatName(type)}
-                  variant="outlined"
                 />
               ))}
             </WrapperChip>

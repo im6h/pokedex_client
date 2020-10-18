@@ -1,9 +1,8 @@
 import React from 'react'
-import { GridList, GridListTile } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import styled from 'styled-components'
 
-import Navbar from '../../components/navbar'
-import Pokemon from '../../components/pokemon'
+import Pokemon from 'src/render/components/pokemon'
 
 const Home: React.FC = () => {
   const data: string[] = ['pokemon', 'move', 'type', 'hello', 'js', 'ts']
@@ -12,15 +11,14 @@ const Home: React.FC = () => {
   return (
     <>
       <div>
-        <Navbar />
         <Content>
-          <GridList cellHeight="auto" cols={4}>
+          <Grid container spacing={1}>
             {data.map((tile: string) => (
-              <GridListTile key={tile}>
+              <Grid item lg={2} md={4} sm={6} xs={12} key={tile}>
                 <Pokemon url={url} alt={tile} />
-              </GridListTile>
+              </Grid>
             ))}
-          </GridList>
+          </Grid>
         </Content>
       </div>
     </>
@@ -28,5 +26,8 @@ const Home: React.FC = () => {
 }
 const Content = styled.div`
   margin-top: 12px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 85vh;
 `
 export default Home
