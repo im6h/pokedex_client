@@ -38,7 +38,8 @@ const Navbar: React.FC = () => {
             }}
             edge="start"
             color="primary"
-            aria-label="menu">
+            aria-label="menu"
+          >
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" color="primary">
@@ -49,7 +50,8 @@ const Navbar: React.FC = () => {
             open={open}
             onClose={() => {
               setOpen(false)
-            }}>
+            }}
+          >
             <div className={classes.list}>
               <List>
                 {data.map((e: string) => (
@@ -59,7 +61,8 @@ const Navbar: React.FC = () => {
                       style={{
                         textDecoration: 'none',
                         color: 'black',
-                      }}>
+                      }}
+                    >
                       <ListItemText primary={e} />
                     </Link>
                   </ListItem>
