@@ -15,6 +15,7 @@ export const pokemon = createModel<RootModel>()({
     pokemon: {},
     special: {},
   } as PokemonState,
+
   reducers: {
     setPokemons(state, payload: List) {
       return {
@@ -35,13 +36,14 @@ export const pokemon = createModel<RootModel>()({
       }
     },
   },
+
   effects: (dispatch) => ({
     async getPokemons(offset: number) {
       const res = await api.getPokemons(offset)
       if (res.status === 200 && res.data) {
-        dispatch.pokemons.setPokemons(res.data)
+        dispatch.pokemon.setPokemons(res.data)
       } else {
-        dispatch.pokemons.setPokemons({})
+        dispatch.pokemon.setPokemons({})
       }
     },
     async getPokemon(id: number) {

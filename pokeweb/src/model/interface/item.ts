@@ -1,23 +1,27 @@
 import Base from './base'
 
 export type Item = {
-  id: number
-  name: string
-  cost: number
-  effect_entries: [
-    {
-      effect: string
-      language: Base
-      short_effect: string
-    },
-  ]
-  flavor_text_entries: [
-    {
-      text: string
-      language: Base
-      version_group: Base
-    },
-  ]
-  category: Base
-  attributes: Base[]
+  id?: number | null
+  name?: string | null
+  cost?: number | null
+  effect_entries?:
+    | [
+        {
+          effect: string
+          language: Base
+          short_effect: string
+        },
+      ]
+    | null
+  flavor_text_entries?:
+    | [
+        {
+          text: string
+          language: Base
+          version_group: Base
+        },
+      ]
+    | null
+  category?: Base | null
+  attributes?: Base[] | null
 }

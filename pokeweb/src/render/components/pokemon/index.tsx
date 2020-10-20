@@ -8,18 +8,21 @@ import {
   Typography,
 } from '@material-ui/core'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
-import { formatName } from 'src/util/formatString'
 import { getColor } from 'src/util/color'
+import { formatNamePokemon } from 'src/util/formatString'
 
 type Props = {
-  url: string
-  alt: string
+  name: string
+  idString: string
+  urlImage: string
+  types: any[]
 }
 
 const useStyles = makeStyles(() =>
   createStyles({
     root: {
       display: 'flex',
+      height: '100%',
     },
     details: {
       display: 'flex',
@@ -29,7 +32,7 @@ const useStyles = makeStyles(() =>
       flex: '1 0 auto',
     },
     cover: {
-      width: '100%',
+      width: '90%',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'contain',
     },
@@ -42,37 +45,36 @@ const useStyles = makeStyles(() =>
   }),
 )
 const Pokemon: React.FC<Props> = (props: Props) => {
-  const { url, alt } = props
+  const { name, idString, urlImage, types } = props
   const classes = useStyles()
-  const types: string[] = ['fire', 'flying']
 
   return (
     <>
       <Card variant="outlined" className={classes.root}>
         <div className={classes.details}>
           <CardContent className={classes.content}>
-            <Typography component="h5" variant="h5">
-              Charizard
+            <Typography gutterBottom variant="h6">
+              {name}
             </Typography>
             <Typography variant="subtitle1" color="textSecondary">
-              #001
+              #{idString}
             </Typography>
             <WrapperChip>
-              {types.map((type: string) => (
+              {types?.map((e: any, idx: number) => (
                 <Chip
-                  key={type}
+                  key={idx}
                   className={classes.chip}
                   style={{
-                    background: getColor(type),
+                    background: getColor(e.type?.name),
                   }}
                   size="small"
-                  label={formatName(type)}
+                  label={formatNamePokemon(e.type?.name)}
                 />
               ))}
             </WrapperChip>
           </CardContent>
         </div>
-        <CardMedia className={classes.cover} image={url} title={alt} />
+        <CardMedia className={classes.cover} image={urlImage} title={name} />
       </Card>
     </>
   )
