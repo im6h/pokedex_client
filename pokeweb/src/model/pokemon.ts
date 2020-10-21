@@ -38,7 +38,7 @@ export const pokemon = createModel<RootModel>()({
   },
 
   effects: (dispatch) => ({
-    async getPokemons(offset: number) {
+    async getPokemons(offset: number = 0) {
       const res = await api.getPokemons(offset)
       if (res.status === 200 && res.data) {
         dispatch.pokemon.setPokemons(res.data)

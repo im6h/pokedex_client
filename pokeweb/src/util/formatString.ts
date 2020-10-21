@@ -9,6 +9,11 @@ export const formatNamePokemon = (name: string): string => {
   return result
 }
 
+export const formatGenerationName = (name: string): string => {
+  const result: string[] = name.split('-')
+  return `${formatNamePokemon(result[0])} ${result[1].toUpperCase()}`
+}
+
 export const handleUrlPokemon = (url: string): Format => {
   const s = url.split('/')
   const idNumber: number = parseInt(s[6], 0)

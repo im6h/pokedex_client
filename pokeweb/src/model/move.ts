@@ -28,12 +28,12 @@ export const move = createModel<RootModel>()({
     },
   },
   effects: (dispatch) => ({
-    async getMoves(offset: number) {
+    async getMoves(offset: number = 0) {
       const res = await api.getMoves(offset)
       if (res.status === 200 && res.data) {
-        dispatch.moves.setMoves(res.data)
+        dispatch.move.setMoves(res.data)
       } else {
-        dispatch.moves.setMoves({})
+        dispatch.move.setMoves({})
       }
     },
     async getMove(id: number) {
