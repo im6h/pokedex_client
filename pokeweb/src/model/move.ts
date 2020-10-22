@@ -13,6 +13,7 @@ export const move = createModel<RootModel>()({
     moves: {},
     move: {},
   } as MoveState,
+
   reducers: {
     setMoves(state, payload: List) {
       return {
@@ -27,8 +28,9 @@ export const move = createModel<RootModel>()({
       }
     },
   },
+
   effects: (dispatch) => ({
-    async getMoves(offset: number = 0) {
+    async getMoves(offset: number) {
       const res = await api.getMoves(offset)
       if (res.status === 200 && res.data) {
         dispatch.move.setMoves(res.data)

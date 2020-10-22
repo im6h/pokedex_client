@@ -14,7 +14,7 @@ const Router: React.FC = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/pokemon" component={Pokemon} />
           <Route exact path="/generation" component={Generation} />
-          <Route exact path="/generation/:id" component={Generation} />
+          <Route exact path="/generation/:id" component={Pokemon} />
         </Switch>
       </BrowserRouter>
     </>

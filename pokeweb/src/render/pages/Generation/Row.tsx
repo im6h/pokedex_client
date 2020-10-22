@@ -3,13 +3,16 @@ import { TableRow, TableCell } from '@material-ui/core'
 import { formatNamePokemon, formatGenerationName } from 'src/util/formatString'
 import api from 'src/service/generation'
 import { Generation } from 'src/model/interface/generation'
+import { useHistory } from 'react-router-dom'
 
 type Props = {
   idx: number
 }
+
 const Row: React.FC<Props> = (props) => {
   const { idx } = props
   const [generation, setGenerations] = useState<Generation>({})
+  const history = useHistory()
   const fetchData = async () => {
     const res = await api.getGeneration(idx)
     if (res.status === 200 && res.data) {
@@ -18,14 +21,21 @@ const Row: React.FC<Props> = (props) => {
       setGenerations({})
     }
   }
+  const handleOnClick = (): void => {
+    history.push(`/generation/${idx}`)
+  }
   useEffect(() => {
     fetchData()
   }, [])
 
   return (
     <>
-      <TableRow>
-        <TableCell align="left">{generation.id}</TableCell>
+      <TableRow
+        style={{
+          cursor: 'pointer',
+        }}
+        onClick={handleOnClick}>
+        <TableCell align="left">{generation.id}</TableCell>{' '}
         <TableCell align="left">
           {formatGenerationName(generation.name || 'Hello-Hello') || '-'}
         </TableCell>
@@ -42,4 +52,5 @@ const Row: React.FC<Props> = (props) => {
     </>
   )
 }
+
 export default Row

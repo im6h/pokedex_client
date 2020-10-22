@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import {
-  Container,
   Table,
   TableBody,
   TableCell,
@@ -12,53 +11,37 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState, Dispatch } from 'src/store'
-import { formatGenerationName } from 'src/util/formatString'
-import styled from 'styled-components'
 import Row from './Row'
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
-) {
-  return { name, calories, fat, carbs, protein }
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-]
 const useStyles = makeStyles({
+  root: {
+    marginTop: '10px',
+  },
   table: {
     minWidth: 650,
   },
 })
+
 const Generation: React.FC = () => {
   const classes = useStyles()
   const store = useSelector((state: RootState) => state.generation)
   const move = useSelector((state: RootState) => state.move)
   const pokemon = useSelector((state: RootState) => state.pokemon)
+  const ability = useSelector((state: RootState) => state.ability)
   const { generations } = store
   const { results } = generations
   const dispatch = useDispatch<Dispatch>()
+
   useEffect(() => {
     dispatch.generation.getGenerations()
-    dispatch.move.getMoves()
-    dispatch.pokemon.getPokemons()
+    dispatch.move.getMoves(0)
+    dispatch.pokemon.getPokemons(0)
+    dispatch.ability.getAbilities(0)
   }, [])
 
   return (
     <>
-      <div
-        style={{
-          marginTop: '10px',
-        }}
-      >
+      <div className={classes.root}>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
             <TableHead>
@@ -75,12 +58,12 @@ const Generation: React.FC = () => {
               {results?.map((row: any, idx: number) => (
                 <Row key={idx} idx={idx + 1} />
               ))}
-
               <TableCell align="left">-</TableCell>
               <TableCell align="left">-</TableCell>
               <TableCell align="left">-</TableCell>
               <TableCell align="left">{move?.moves?.count}</TableCell>
               <TableCell align="left">{pokemon?.pokemons?.count}</TableCell>
+              <TableCell align="left">{ability?.abilities?.count}</TableCell>
             </TableBody>
           </Table>
         </TableContainer>
