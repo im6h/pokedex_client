@@ -10,7 +10,7 @@ type Props = {
 }
 const Wrapper: React.FC<Props> = (props: Props) => {
   const [types, setTypes] = useState<string[]>([])
-  const { url } = props
+  const { url, name } = props
   const { idNumber, idString, urlImage } = handleUrlPokemon(url)
   const getPokemon = async () => {
     const res = await axios.get(`${API_URL}/pokemon/${idNumber}`)

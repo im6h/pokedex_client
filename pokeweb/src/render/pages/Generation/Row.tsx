@@ -53,6 +53,3 @@ const Row: React.FC<Props> = (props: Props) => {
 }
 
 export default Row
-export default Row
-export default Row
-export default Row
