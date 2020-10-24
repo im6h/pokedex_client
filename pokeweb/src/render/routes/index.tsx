@@ -4,6 +4,8 @@ import Navbar from 'src/render/components/navbar'
 import Home from 'src/render/pages/Home'
 import Pokemon from 'src/render/pages/Pokemon'
 import Generation from 'src/render/pages/Generation'
+import Move from 'src/render/pages/Move'
+import Ability from 'src/render/pages/Ability'
 
 const Router: React.FC = () => {
   return (
@@ -12,9 +14,10 @@ const Router: React.FC = () => {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/pokemon" component={Pokemon} />
           <Route exact path="/generation" component={Generation} />
-          <Route exact path="/generation/:id" component={Pokemon} />
+          <Route exact path="/generation/:id/pokemon" component={Pokemon} />
+          <Route exact path="/generation/:id/move" component={Move} />
+          <Route exact path="/generation/:id/ability" component={Ability} />
         </Switch>
       </BrowserRouter>
     </>

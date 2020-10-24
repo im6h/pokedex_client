@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react'
-import { Grid } from '@material-ui/core'
 import styled from 'styled-components'
+import Wrapper from 'src/render/pages/Pokemon/Wrapper'
+import Base from 'src/model/interface/base'
+import { Grid } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState, Dispatch } from 'src/store'
-import Wrapper from 'src/render/pages/Pokemon/Wrapper'
 import { useParams } from 'react-router-dom'
-import Base from 'src/model/interface/base'
-import { sortArray } from 'src/util/sort'
+import { byNumber } from 'src/util/sort'
 
 const Pokemon: React.FC = () => {
   const generation = useSelector((state: RootState) => state.generation)
   const dispatch = useDispatch<Dispatch>()
   const { id } = useParams()
   const { pokemon_species } = generation.generation
-  const pokemons = sortArray(pokemon_species).byNumber
+  const pokemons = byNumber(pokemon_species)
 
   useEffect(() => {
     dispatch.generation.getGeneration(id)

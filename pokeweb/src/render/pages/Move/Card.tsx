@@ -1,21 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import {
-  Chip,
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-} from '@material-ui/core'
+import { Chip, Card, CardContent, Typography } from '@material-ui/core'
+import { useFetch } from 'src/hook/useFetch'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { getColor } from 'src/util/color'
 import { formatNamePokemon } from 'src/util/formatString'
 
 type Props = {
   name: string
+  url: string
   idString: string
-  urlImage: string
-  types: any[]
 }
 
 const useStyles = makeStyles(() =>
@@ -29,6 +23,7 @@ const useStyles = makeStyles(() =>
       flexDirection: 'column',
     },
     content: {
+      width: '100%',
       flex: '1 0 auto',
     },
     cover: {
@@ -44,37 +39,37 @@ const useStyles = makeStyles(() =>
     },
   }),
 )
-const Pokemon: React.FC<Props> = (props: Props) => {
-  const { name, idString, urlImage, types } = props
+const CardMove: React.FC<Props> = (props: Props) => {
+  const { name, url, idString } = props
   const classes = useStyles()
+  const { data } = useFetch(url)
 
   return (
     <>
       <Card variant="outlined" className={classes.root}>
         <div className={classes.details}>
           <CardContent className={classes.content}>
-            <Typography gutterBottom variant="h6">
-              {name}
-            </Typography>
-            <Typography variant="subtitle1" color="textSecondary">
-              #{idString}
-            </Typography>
             <WrapperChip>
-              {types?.map((e: any, idx: number) => (
-                <Chip
-                  key={idx}
-                  className={classes.chip}
-                  style={{
-                    background: getColor(e.type?.name),
-                  }}
-                  size="small"
-                  label={formatNamePokemon(e.type?.name)}
-                />
-              ))}
+              <Chip
+                className={classes.chip}
+                style={{
+                  background: getColor(data?.type?.name || ''),
+                }}
+                size="small"
+                label={formatNamePokemon(data?.type?.name || '')}
+              />
             </WrapperChip>
+            <CardTop>
+              <Typography variant="subtitle1" color="textSecondary">
+                #{idString}
+              </Typography>
+              <Typography gutterBottom variant="h5">
+                {formatNamePokemon(name)}
+              </Typography>
+            </CardTop>
           </CardContent>
         </div>
-        <CardMedia className={classes.cover} image={urlImage} title={name} />
+        {/* <CardMedia className={classes.cover} image={urlImage} title={name} /> */}
       </Card>
     </>
   )
@@ -83,4 +78,10 @@ const WrapperChip = styled.div`
   display: flex;
   flex-direction: column;
 `
-export default Pokemon
+const CardTop = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+export default CardMove

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { TableRow, TableCell } from '@material-ui/core'
-import { formatNamePokemon, formatGenerationName } from 'src/util/formatString'
 import api from 'src/service/generation'
+import { TableRow, TableCell, Tooltip } from '@material-ui/core'
+import { formatNamePokemon, formatGenerationName } from 'src/util/formatString'
 import { Generation, generationInstance } from 'src/model/interface/generation'
 import { useHistory } from 'react-router-dom'
 
@@ -19,9 +19,16 @@ const Row: React.FC<Props> = (props: Props) => {
       setGenerations(res.data)
     }
   }
-  const handleOnClick = (): void => {
-    history.push(`/generation/${idx}`)
+  const clickPokemon = (): void => {
+    history.push(`/generation/${idx}/pokemon`)
   }
+  const clickMove = (): void => {
+    history.push(`/generation/${idx}/move`)
+  }
+  const clickAbility = (): void => {
+    history.push(`/generation/${idx}/ability`)
+  }
+
   useEffect(() => {
     fetchData()
   }, [])
@@ -32,7 +39,6 @@ const Row: React.FC<Props> = (props: Props) => {
         style={{
           cursor: 'pointer',
         }}
-        onClick={handleOnClick}
       >
         <TableCell align="left">{generation.id}</TableCell>{' '}
         <TableCell align="left">
@@ -42,11 +48,21 @@ const Row: React.FC<Props> = (props: Props) => {
           {formatNamePokemon(generation.main_region?.name || 'Pikachu') ||
             'Pikachu'}
         </TableCell>
-        <TableCell align="left">+ {generation.moves?.length}</TableCell>
-        <TableCell align="left">
-          + {generation.pokemon_species?.length}
+        <TableCell align="left" onClick={clickMove}>
+          <Tooltip title={`move generation ${idx}`} placement="top-start">
+            <span>+ {generation.moves?.length}</span>
+          </Tooltip>
         </TableCell>
-        <TableCell align="left">+ {generation.abilities?.length}</TableCell>
+        <TableCell align="left" onClick={clickPokemon}>
+          <Tooltip title={`pokemon generation ${idx}`} placement="top-start">
+            <span>+ {generation.pokemon_species?.length}</span>
+          </Tooltip>
+        </TableCell>
+        <TableCell align="left" onClick={clickAbility}>
+          <Tooltip title={`ability generation ${idx}`} placement="top-start">
+            <span>+ {generation.abilities?.length}</span>
+          </Tooltip>
+        </TableCell>
       </TableRow>
     </>
   )

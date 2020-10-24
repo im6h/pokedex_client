@@ -1,29 +1,27 @@
 import React, { useEffect, useState } from 'react'
+import CardPokemon from './Card'
 import { handleUrlPokemon, formatNamePokemon } from 'src/util/formatString'
-import Pokemon from 'src/render/components/pokemon'
-import axios from 'axios'
 import { API_URL } from 'src/config/contraints'
+import { useFetch } from 'src/hook/useFetch'
 
 type Props = {
   url: string
   name: string
 }
+
 const Wrapper: React.FC<Props> = (props: Props) => {
   const [types, setTypes] = useState<string[]>([])
   const { url, name } = props
   const { idNumber, idString, urlImage } = handleUrlPokemon(url)
-  const getPokemon = async () => {
-    const res = await axios.get(`${API_URL}/pokemon/${idNumber}`)
-    if (res.status === 200 && res.data) {
-      setTypes(res.data.types)
-    }
-  }
+  const { data } = useFetch(`${API_URL}/pokemon/${idNumber}`)
+
   useEffect(() => {
-    getPokemon()
-  }, [])
+    setTypes(data.types)
+  }, [data.types])
+
   return (
     <>
-      <Pokemon
+      <CardPokemon
         name={formatNamePokemon(name)}
         idString={idString}
         urlImage={urlImage}
