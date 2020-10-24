@@ -6,4 +6,3 @@ public
 # don't lint nyc coverage output
 coverage
 public
-src/stories

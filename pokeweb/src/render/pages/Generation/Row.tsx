@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { TableRow, TableCell } from '@material-ui/core'
 import { formatNamePokemon, formatGenerationName } from 'src/util/formatString'
 import api from 'src/service/generation'
-import { Generation } from 'src/model/interface/generation'
+import { Generation, generationInstance } from 'src/model/interface/generation'
 import { useHistory } from 'react-router-dom'
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 
 const Row: React.FC<Props> = (props) => {
 	const { idx } = props
-	const [generation, setGenerations] = useState<Generation>({})
+	const [generation, setGenerations] = useState<Generation>(generationInstance)
 	const history = useHistory()
 	const fetchData = async () => {
 		const res = await api.getGeneration(idx)
