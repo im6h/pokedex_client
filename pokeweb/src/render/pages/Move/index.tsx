@@ -21,7 +21,7 @@ const Move: React.FC = () => {
         <Content>
           <Grid container spacing={1}>
             {moves?.map((el: any) => (
-              <Grid item lg={2} md={3} sm={4} xs={12} key={el.name}>
+              <Grid item lg={3} md={4} sm={6} xs={12} key={el.name}>
                 <Wrapper name={el.name} url={el.url} />
               </Grid>
             ))}

@@ -6,6 +6,7 @@ import Pokemon from 'src/render/pages/Pokemon'
 import Generation from 'src/render/pages/Generation'
 import Move from 'src/render/pages/Move'
 import Ability from 'src/render/pages/Ability'
+import Type from 'src/render/pages/Type'
 
 const Router: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const Router: React.FC = () => {
           <Route exact path="/generation/:id/pokemon" component={Pokemon} />
           <Route exact path="/generation/:id/move" component={Move} />
           <Route exact path="/generation/:id/ability" component={Ability} />
+          <Route exact path="/generation/:id/type" component={Type} />
         </Switch>
       </BrowserRouter>
     </>

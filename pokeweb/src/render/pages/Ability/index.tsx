@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import Wrapper from 'src/render/pages/Ability/Wrapper'
 import Base from 'src/model/interface/base'
-import { Grid } from '@material-ui/core'
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied'
+import { Grid, Typography } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState, Dispatch } from 'src/store'
 import { useParams } from 'react-router-dom'
@@ -30,7 +31,12 @@ const Ability: React.FC = () => {
               ))}
             </Grid>
           ) : (
-            <div>No data</div>
+            <NoData>
+              <SentimentVeryDissatisfiedIcon style={{ fontSize: 100 }} />
+              <Typography color="error" variant="h5" gutterBottom>
+                No Data
+              </Typography>
+            </NoData>
           )}
         </Content>
       </div>
@@ -42,5 +48,13 @@ const Content = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
   height: 88vh;
+`
+const NoData = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 `
 export default Ability

@@ -1,9 +1,20 @@
 import React from 'react'
+import CardType from './Card'
+import { handleUrlPokemon, formatNamePokemon } from 'src/util/formatString'
 
-const Wrapper: React.FC = () => {
+type Props = {
+  url: string
+  name: string
+}
+const Wrapper: React.FC<Props> = (props: Props) => {
+  const { url, name } = props
   return (
     <>
-      <div>Hello Wrapper</div>
+      <CardType
+        name={formatNamePokemon(name)}
+        idString={handleUrlPokemon(url).idString}
+        url={url}
+      />
     </>
   )
 }
