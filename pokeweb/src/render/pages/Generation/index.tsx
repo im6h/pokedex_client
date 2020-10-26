@@ -28,6 +28,7 @@ const Generation: React.FC = () => {
   const move = useSelector((state: RootState) => state.move)
   const pokemon = useSelector((state: RootState) => state.pokemon)
   const ability = useSelector((state: RootState) => state.ability)
+  const type = useSelector((state: RootState) => state.type)
   const { generations } = store
   const { results } = generations
   const dispatch = useDispatch<Dispatch>()
@@ -37,6 +38,7 @@ const Generation: React.FC = () => {
     dispatch.move.getMoves(0)
     dispatch.pokemon.getPokemons(0)
     dispatch.ability.getAbilities(0)
+    dispatch.type.getTypes(0)
   }, [])
 
   return (
@@ -52,18 +54,20 @@ const Generation: React.FC = () => {
                 <TableCell align="left">Moves</TableCell>
                 <TableCell align="left">Pokemons</TableCell>
                 <TableCell align="left">Abilities</TableCell>
+                <TableCell align="left">Types</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {results?.map((row: any, idx: number) => (
                 <Row key={idx} idx={idx + 1} />
               ))}
-              <TableCell align="left">-</TableCell>
-              <TableCell align="left">-</TableCell>
-              <TableCell align="left">-</TableCell>
+              <TableCell align="left"></TableCell>
+              <TableCell align="left"></TableCell>
+              <TableCell align="left">Total</TableCell>
               <TableCell align="left">{move?.moves?.count}</TableCell>
               <TableCell align="left">{pokemon?.pokemons?.count}</TableCell>
               <TableCell align="left">{ability?.abilities?.count}</TableCell>
+              <TableCell align="left">{type?.types?.count}</TableCell>
             </TableBody>
           </Table>
         </TableContainer>

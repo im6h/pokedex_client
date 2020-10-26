@@ -28,6 +28,9 @@ const Row: React.FC<Props> = (props: Props) => {
   const clickAbility = (): void => {
     history.push(`/generation/${idx}/ability`)
   }
+  const clickType = (): void => {
+    history.push(`/generation/${idx}/type`)
+  }
 
   useEffect(() => {
     fetchData()
@@ -61,6 +64,11 @@ const Row: React.FC<Props> = (props: Props) => {
         <TableCell align="left" onClick={clickAbility}>
           <Tooltip title={`ability generation ${idx}`} placement="top-start">
             <span>+ {generation.abilities?.length}</span>
+          </Tooltip>
+        </TableCell>
+        <TableCell align="left" onClick={clickType}>
+          <Tooltip title={`type generation ${idx}`} placement="top-start">
+            <span>+ {generation.types?.length}</span>
           </Tooltip>
         </TableCell>
       </TableRow>

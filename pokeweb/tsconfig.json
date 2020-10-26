@@ -24,5 +24,6 @@
 		"src/service",
 		"src/render",
 		"src/config"
-	]
+	],
+	"exclude": ["**/node_modules", "**/.*/"]
 }

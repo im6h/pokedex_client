@@ -63,7 +63,7 @@ const CardMove: React.FC<Props> = (props: Props) => {
               <Typography variant="subtitle1" color="textSecondary">
                 #{idString}
               </Typography>
-              <Typography gutterBottom variant="h5">
+              <Typography gutterBottom variant="h6">
                 {formatNamePokemon(name)}
               </Typography>
             </CardTop>
@@ -82,6 +82,6 @@ const CardTop = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
 `
 export default CardMove

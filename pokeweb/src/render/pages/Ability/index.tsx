@@ -24,7 +24,7 @@ const Ability: React.FC = () => {
           {abilities?.length > 0 ? (
             <Grid container spacing={1}>
               {abilities?.map((el: Base) => (
-                <Grid item lg={2} md={4} sm={6} xs={12} key={el.name}>
+                <Grid item lg={2} md={3} sm={4} xs={12} key={el.name}>
                   <Wrapper url={el.url} name={el.name} />
                 </Grid>
               ))}
