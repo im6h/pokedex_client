@@ -27,7 +27,7 @@ export const type = createModel<RootModel>()({
       }
     },
   },
-  effects: (dispatch) => ({
+  effects: dispatch => ({
     async getTypes(offset: number) {
       const res = await api.getTypes(offset)
       if (res.status === 200 && res.data) {

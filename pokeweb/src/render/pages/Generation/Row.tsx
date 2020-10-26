@@ -41,8 +41,7 @@ const Row: React.FC<Props> = (props: Props) => {
       <TableRow
         style={{
           cursor: 'pointer',
-        }}
-      >
+        }}>
         <TableCell align="left">{generation.id}</TableCell>{' '}
         <TableCell align="left">
           {formatGenerationName(generation.name || 'Hello-Hello') || '-'}

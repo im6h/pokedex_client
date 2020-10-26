@@ -1,0 +1,35 @@
+root: true
+
+parser: '@typescript-eslint/parser'
+
+extends:
+  - prettier
+  - eslint:recommended
+  - plugin:react/recommended
+
+plugins:
+  - prettier
+
+env:
+  browser: true
+  node: true
+
+parserOptions:
+  ecmaVersion: 2017
+  sourceType: module
+  ecmaFeatures:
+    jsx: true
+    globalReturn: true
+
+rules:
+  prettier/prettier:
+    - error
+    - no-unused-vars: 'warn'
+      no-console: warn
+      no-debbuger: warn
+      printWidth: 80
+      trailingComma: all
+      semi: false
+  jsx-quotes:
+    - warn
+    - prefer-double

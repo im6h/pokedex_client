@@ -29,7 +29,7 @@ export const move = createModel<RootModel>()({
     },
   },
 
-  effects: (dispatch) => ({
+  effects: dispatch => ({
     async getMoves(offset: number) {
       const res = await api.getMoves(offset)
       if (res.status === 200 && res.data) {

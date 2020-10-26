@@ -30,7 +30,7 @@ export const ability = createModel<RootModel>()({
     },
   },
 
-  effects: (dispatch) => ({
+  effects: dispatch => ({
     async getAbilities(offset: number) {
       const res = await api.getAbilites(offset)
       if (res.status === 200 && res.data) {

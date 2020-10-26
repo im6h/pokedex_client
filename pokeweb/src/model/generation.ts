@@ -29,7 +29,7 @@ export const generation = createModel<RootModel>()({
     },
   },
 
-  effects: (dispatch) => ({
+  effects: dispatch => ({
     async getGenerations() {
       const res = await api.getGenerations()
       if (res.status === 200 && res.data) {

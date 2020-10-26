@@ -44,8 +44,10 @@
     "lint-staged": "^10.4.2"
   },
   "lint-staged": {
-    "*.{ts, js, css, json}": [
-      "./node_modules/.bin/prettier --write"
+    "*.{ts, tsx, scss, css, json}": [
+      "npm run format",
+      "npm run eslint",
+      "git add ."
     ]
   },
   "husky": {
@@ -59,8 +61,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --cache *.js,*.jsx,*.ts,*.tsx ./",
-    "fix": "eslint --cache *,.js,*.jsx,*.ts,*.tsx  --fix ./"
+    "lint": "eslint './src/**/*.{ts, tsx}'",
+    "lint:fix": "eslint './src/**/*.{ts, tsx}' --fix",
+    "format": "prettier --write 'src/**/*'"
   },
   "eslintConfig": {
     "extends": "react-app"
