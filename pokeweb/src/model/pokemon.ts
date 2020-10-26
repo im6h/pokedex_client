@@ -1,7 +1,12 @@
 import { createModel } from '@rematch/core'
 import api from 'src/service/pokemon'
-import { List } from './interface/list'
-import { Pokemon, PokemonSpecial } from './interface/pokemon'
+import { List, listInstance } from './interface/list'
+import {
+  Pokemon,
+  PokemonSpecial,
+  pokemonInstance,
+  pokemonSpecialInstance,
+} from './interface/pokemon'
 import { RootModel } from '.'
 
 type PokemonState = {
@@ -43,7 +48,7 @@ export const pokemon = createModel<RootModel>()({
       if (res.status === 200 && res.data) {
         dispatch.pokemon.setPokemons(res.data)
       } else {
-        dispatch.pokemon.setPokemons({})
+        dispatch.pokemon.setPokemons(listInstance)
       }
     },
     async getPokemon(id: number) {
@@ -51,7 +56,7 @@ export const pokemon = createModel<RootModel>()({
       if (res.status === 200 && res.data) {
         dispatch.pokemon.setPokemon(res.data)
       } else {
-        dispatch.pokemon.setPokemon({})
+        dispatch.pokemon.setPokemon(pokemonInstance)
       }
     },
     async getSpecial(id: number) {
@@ -59,7 +64,7 @@ export const pokemon = createModel<RootModel>()({
       if (res.status === 200 && res.data) {
         dispatch.pokemon.setSpecial(res.data)
       } else {
-        dispatch.pokemon.setSpecial({})
+        dispatch.pokemon.setSpecial(pokemonSpecialInstance)
       }
     },
   }),

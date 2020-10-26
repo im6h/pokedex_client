@@ -1,7 +1,7 @@
 import { createModel } from '@rematch/core'
 import api from 'src/service/type'
-import { List } from './interface/list'
-import { Type } from './interface/type'
+import { List, listInstance } from './interface/list'
+import { Type, typeInstance } from './interface/type'
 import { RootModel } from '.'
 
 type TypeState = {
@@ -33,7 +33,7 @@ export const type = createModel<RootModel>()({
       if (res.status === 200 && res.data) {
         dispatch.type.setTypes(res.data)
       } else {
-        dispatch.type.setTypes({})
+        dispatch.type.setTypes(listInstance)
       }
     },
     async getType(id: number) {
@@ -41,7 +41,7 @@ export const type = createModel<RootModel>()({
       if (res.status === 200 && res.data) {
         dispatch.type.setType(res.data)
       } else {
-        dispatch.type.setType({})
+        dispatch.type.setType(typeInstance)
       }
     },
   }),

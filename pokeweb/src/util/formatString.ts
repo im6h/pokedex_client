@@ -3,16 +3,22 @@ interface Format {
   idNumber: number
   urlImage: string
 }
+
 export const formatNamePokemon = (name: string): string => {
-  let result: string = ''
+  let result = ''
   result = name.charAt(0).toUpperCase() + name.slice(1)
   return result
+}
+
+export const formatGenerationName = (name: string): string => {
+  const result: string[] = name.split('-')
+  return `${formatNamePokemon(result[0])} ${result[1].toUpperCase()}`
 }
 
 export const handleUrlPokemon = (url: string): Format => {
   const s = url.split('/')
   const idNumber: number = parseInt(s[6], 0)
-  let idString: string = ''
+  let idString = ''
   if (idNumber < 10) {
     idString = `00${idNumber}`
   } else if (idNumber > 99) {

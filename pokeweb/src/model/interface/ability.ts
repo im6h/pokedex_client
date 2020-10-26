@@ -1,42 +1,36 @@
 import Base from './base'
 
-export type Move = {
+export type Ability = {
   id: number
   name: string
-  accuracy: number
-  power: number
-  type: Base
-  pp: number
-  damage_class: Base
-  contest_type: Base
+  pokemon: [
+    {
+      pokemon: Base
+      slot: number
+    },
+  ]
   generation: Base
   flavor_text_entries: [
     {
       flavor_text: string
       language: Base
-      version: Base
+      version_group: Base
     },
   ]
 }
 
-export const moveInstance: Move = {
+export const abilityInstance: Ability = {
   id: 0,
   name: '',
-  accuracy: 0,
-  power: 0,
-  type: {
-    name: '',
-    url: '',
-  },
-  pp: 0,
-  damage_class: {
-    name: '',
-    url: '',
-  },
-  contest_type: {
-    name: '',
-    url: '',
-  },
+  pokemon: [
+    {
+      pokemon: {
+        name: '',
+        url: '',
+      },
+      slot: 0,
+    },
+  ],
   generation: {
     name: '',
     url: '',
@@ -48,7 +42,7 @@ export const moveInstance: Move = {
         name: '',
         url: '',
       },
-      version: {
+      version_group: {
         name: '',
         url: '',
       },

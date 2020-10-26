@@ -1,7 +1,7 @@
 import { createModel } from '@rematch/core'
 import api from 'src/service/move'
-import { List } from './interface/list'
-import { Move } from './interface/move'
+import { List, listInstance } from './interface/list'
+import { Move, moveInstance } from './interface/move'
 import { RootModel } from '.'
 
 type MoveState = {
@@ -13,6 +13,7 @@ export const move = createModel<RootModel>()({
     moves: {},
     move: {},
   } as MoveState,
+
   reducers: {
     setMoves(state, payload: List) {
       return {
@@ -27,13 +28,14 @@ export const move = createModel<RootModel>()({
       }
     },
   },
+
   effects: (dispatch) => ({
     async getMoves(offset: number) {
       const res = await api.getMoves(offset)
       if (res.status === 200 && res.data) {
-        dispatch.moves.setMoves(res.data)
+        dispatch.move.setMoves(res.data)
       } else {
-        dispatch.moves.setMoves({})
+        dispatch.move.setMoves(listInstance)
       }
     },
     async getMove(id: number) {
@@ -41,7 +43,7 @@ export const move = createModel<RootModel>()({
       if (res.status === 200 && res.data) {
         dispatch.move.setMove(res.data)
       } else {
-        dispatch.move.setMove({})
+        dispatch.move.setMove(moveInstance)
       }
     },
   }),

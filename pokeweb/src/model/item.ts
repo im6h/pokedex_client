@@ -1,7 +1,7 @@
 import { createModel } from '@rematch/core'
 import api from 'src/service/item'
-import { List } from './interface/list'
-import { Item } from './interface/item'
+import { List, listInstance } from './interface/list'
+import { Item, itemInstance } from './interface/item'
 import { RootModel } from '.'
 
 type ItemState = {
@@ -33,7 +33,7 @@ export const item = createModel<RootModel>()({
       if (res.status === 200 && res.data) {
         dispatch.item.setItems(res.data)
       } else {
-        dispatch.item.setItems({})
+        dispatch.item.setItems(listInstance)
       }
     },
     async getItem(id: number) {
@@ -41,7 +41,7 @@ export const item = createModel<RootModel>()({
       if (res.status === 200 && res.data) {
         dispatch.item.setItem(res.data)
       } else {
-        dispatch.item.setItem({})
+        dispatch.item.setItem(itemInstance)
       }
     },
   }),
