@@ -12,7 +12,7 @@ class Pokemon {
   }
 
   async getSpecial(id: number) {
-    return axios.get(`${API_URL}/pokemon-special/${id}`)
+    return axios.get(`${API_URL}/pokemon-species/${id}`)
   }
 }
 export default new Pokemon()

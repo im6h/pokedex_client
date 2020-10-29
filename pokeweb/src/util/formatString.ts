@@ -4,7 +4,7 @@ interface Format {
   urlImage: string
 }
 
-export const formatNamePokemon = (name: string): string => {
+export const formatNamePokemon = (name: string = ''): string => {
   let result = ''
   result = name.charAt(0).toUpperCase() + name.slice(1)
   return result
@@ -13,6 +13,10 @@ export const formatNamePokemon = (name: string): string => {
 export const formatGenerationName = (name: string): string => {
   const result: string[] = name.split('-')
   return `${formatNamePokemon(result[0])} ${result[1].toUpperCase()}`
+}
+
+export const formatHeightAndWeight = (params: number = 0): number => {
+  return params / 10
 }
 
 export const handleUrlPokemon = (url: string): Format => {

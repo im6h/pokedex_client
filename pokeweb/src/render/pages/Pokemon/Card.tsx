@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
 import {
   Chip,
   Card,
@@ -14,6 +15,7 @@ import { formatNamePokemon } from 'src/util/formatString'
 type Props = {
   name: string
   idString: string
+  idNumber: number
   urlImage: string
   types: string[]
 }
@@ -45,12 +47,16 @@ const useStyles = makeStyles(() =>
   }),
 )
 const CardPokemon: React.FC<Props> = (props: Props) => {
-  const { name, idString, urlImage, types } = props
+  const history = useHistory()
+  const { name, idString, idNumber, urlImage, types } = props
   const classes = useStyles()
+  const handleOnClick = (): void => {
+    history.push(`/pokemon/${idNumber}`)
+  }
 
   return (
     <>
-      <Card variant="outlined" className={classes.root}>
+      <Card variant="outlined" className={classes.root} onClick={handleOnClick}>
         <div className={classes.details}>
           <CardContent className={classes.content}>
             <Typography gutterBottom variant="h6">

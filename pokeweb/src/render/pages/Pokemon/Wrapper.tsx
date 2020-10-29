@@ -24,6 +24,7 @@ const Wrapper: React.FC<Props> = (props: Props) => {
       <CardPokemon
         name={formatNamePokemon(name)}
         idString={idString}
+        idNumber={idNumber}
         urlImage={urlImage}
         types={types}
       />
