@@ -1,29 +1,29 @@
-import Base from './base'
+import Base from './base';
 
 export type Pokemon = {
-  name: string
-  id: number
-  height: number
-  weight: number
+  name: string;
+  id: number;
+  height: number;
+  weight: number;
   types: [
     {
-      slot: number
-      type: Base
+      slot: number;
+      type: Base;
     },
-  ]
+  ];
   stats: [
     {
-      base_stat: number
-      effort: number
-      stat: Base
+      base_stat: number;
+      effort: number;
+      stat: Base;
     },
-  ]
+  ];
   moves: [
     {
-      move: Base
+      move: Base;
     },
-  ]
-}
+  ];
+};
 export const pokemonInstance: Pokemon = {
   name: '',
   id: 0,
@@ -56,21 +56,21 @@ export const pokemonInstance: Pokemon = {
       },
     },
   ],
-}
+};
 
 export type PokemonSpecial = {
-  base_happiness: string
-  capture_rate: string
+  base_happiness: string;
+  capture_rate: string;
   flavor_text_entries: [
     {
-      flavor_text: string
-      language: Base
-      version: Base
+      flavor_text: string;
+      language: Base;
+      version: Base;
     },
-  ]
-  is_legendary: boolean
-  is_mythical: boolean
-}
+  ];
+  is_legendary: boolean;
+  is_mythical: boolean;
+};
 export const pokemonSpecialInstance: PokemonSpecial = {
   base_happiness: '',
   capture_rate: '',
@@ -89,4 +89,4 @@ export const pokemonSpecialInstance: PokemonSpecial = {
   ],
   is_legendary: false,
   is_mythical: false,
-}
+};

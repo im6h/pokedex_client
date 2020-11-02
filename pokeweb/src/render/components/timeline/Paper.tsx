@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import api from 'src/service/generation'
-import { Paper, Typography, Tooltip } from '@material-ui/core'
-import { useHistory } from 'react-router-dom'
-import { Generation, generationInstance } from 'src/model/interface/generation'
-import { formatGenerationName, formatNamePokemon } from 'src/util/formatString'
-import { makeStyles } from '@material-ui/core/styles'
+import React, { useEffect, useState } from 'react';
+import api from 'src/service/generation';
+import { Paper, Typography, Tooltip } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+import { Generation, generationInstance } from 'src/model/interface/generation';
+import { formatGenerationName, formatNamePokemon } from 'src/util/formatString';
+import { makeStyles } from '@material-ui/core/styles';
 
 type Props = {
-  idx: number
-}
+  idx: number;
+};
 const useStyles = makeStyles(theme => ({
   paper: {
     padding: '6px 16px',
@@ -16,35 +16,35 @@ const useStyles = makeStyles(theme => ({
   secondaryTail: {
     backgroundColor: theme.palette.secondary.main,
   },
-}))
+}));
 
 const PaperItem: React.FC<Props> = (props: Props) => {
-  const classes = useStyles()
-  const { idx } = props
-  const [generation, setGenerations] = useState<Generation>(generationInstance)
-  const history = useHistory()
+  const classes = useStyles();
+  const { idx } = props;
+  const [generation, setGenerations] = useState<Generation>(generationInstance);
+  const history = useHistory();
   const fetchData = async () => {
-    const res = await api.getGeneration(idx)
+    const res = await api.getGeneration(idx);
     if (res.status === 200 && res.data) {
-      setGenerations(res.data)
+      setGenerations(res.data);
     }
-  }
+  };
   const clickPokemon = (): void => {
-    history.push(`/generation/${idx}/pokemon`)
-  }
+    history.push(`/generation/${idx}/pokemon`);
+  };
   const clickMove = (): void => {
-    history.push(`/generation/${idx}/move`)
-  }
+    history.push(`/generation/${idx}/move`);
+  };
   const clickAbility = (): void => {
-    history.push(`/generation/${idx}/ability`)
-  }
+    history.push(`/generation/${idx}/ability`);
+  };
   const clickType = (): void => {
-    history.push(`/generation/${idx}/type`)
-  }
+    history.push(`/generation/${idx}/type`);
+  };
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -78,6 +78,6 @@ const PaperItem: React.FC<Props> = (props: Props) => {
         </Typography>
       </Paper>
     </>
-  )
-}
-export default PaperItem
+  );
+};
+export default PaperItem;

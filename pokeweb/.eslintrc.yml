@@ -29,7 +29,7 @@ rules:
       no-debbuger: warn
       printWidth: 80
       trailingComma: all
-      semi: false
+      semi: true
   jsx-quotes:
     - warn
     - prefer-double

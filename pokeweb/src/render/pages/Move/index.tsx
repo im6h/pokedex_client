@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
-import Wrapper from './Wrapper'
-import { Grid } from '@material-ui/core'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState, Dispatch } from 'src/store'
-import { useParams } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import Wrapper from './Wrapper';
+import { Grid } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, Dispatch } from 'src/store';
+import { useParams } from 'react-router-dom';
 
 const Move: React.FC = () => {
-  const generation = useSelector((state: RootState) => state.generation)
-  const dispatch = useDispatch<Dispatch>()
-  const { id } = useParams()
-  const { moves } = generation.generation
+  const generation = useSelector((state: RootState) => state.generation);
+  const dispatch = useDispatch<Dispatch>();
+  const { id } = useParams();
+  const { moves } = generation.generation;
 
   useEffect(() => {
-    dispatch.generation.getGeneration(id)
-  }, [])
+    dispatch.generation.getGeneration(id);
+  }, []);
   return (
     <>
       <div>
@@ -29,13 +29,13 @@ const Move: React.FC = () => {
         </Content>
       </div>
     </>
-  )
-}
+  );
+};
 
 const Content = styled.div`
   margin-top: 12px;
   overflow-x: hidden;
   overflow-y: auto;
   height: 88vh;
-`
-export default Move
+`;
+export default Move;

@@ -1,24 +1,24 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useHistory } from 'react-router-dom'
+import React from 'react';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 import {
   Chip,
   Card,
   CardMedia,
   CardContent,
   Typography,
-} from '@material-ui/core'
-import { createStyles, makeStyles } from '@material-ui/core/styles'
-import { getColor } from 'src/util/color'
-import { formatNamePokemon } from 'src/util/formatString'
+} from '@material-ui/core';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { getColor } from 'src/util/color';
+import { formatNamePokemon } from 'src/util/formatString';
 
 type Props = {
-  name: string
-  idString: string
-  idNumber: number
-  urlImage: string
-  types: string[]
-}
+  name: string;
+  idString: string;
+  idNumber: number;
+  urlImage: string;
+  types: string[];
+};
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -45,14 +45,14 @@ const useStyles = makeStyles(() =>
       color: 'white',
     },
   }),
-)
+);
 const CardPokemon: React.FC<Props> = (props: Props) => {
-  const history = useHistory()
-  const { name, idString, idNumber, urlImage, types } = props
-  const classes = useStyles()
+  const history = useHistory();
+  const { name, idString, idNumber, urlImage, types } = props;
+  const classes = useStyles();
   const handleOnClick = (): void => {
-    history.push(`/pokemon/${idNumber}`)
-  }
+    history.push(`/pokemon/${idNumber}`);
+  };
 
   return (
     <>
@@ -83,10 +83,10 @@ const CardPokemon: React.FC<Props> = (props: Props) => {
         <CardMedia className={classes.cover} image={urlImage} title={name} />
       </Card>
     </>
-  )
-}
+  );
+};
 const WrapperChip = styled.div`
   display: flex;
   flex-direction: column;
-`
-export default CardPokemon
+`;
+export default CardPokemon;

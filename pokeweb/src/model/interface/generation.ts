@@ -1,14 +1,14 @@
-import Base from 'src/model/interface/base'
+import Base from 'src/model/interface/base';
 
 export type Generation = {
-  id: number
-  main_region: Base
-  name: string
-  moves: Base[]
-  pokemon_species: Base[]
-  types: Base[]
-  abilities: Base[]
-}
+  id: number;
+  main_region: Base;
+  name: string;
+  moves: Base[];
+  pokemon_species: Base[];
+  types: Base[];
+  abilities: Base[];
+};
 
 export const generationInstance: Generation = {
   id: 0,
@@ -41,4 +41,4 @@ export const generationInstance: Generation = {
       url: '',
     },
   ],
-}
+};

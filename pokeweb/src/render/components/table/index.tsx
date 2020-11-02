@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Table,
   TableBody,
@@ -7,11 +7,11 @@ import {
   TableHead,
   TableRow,
   Paper,
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import Row from './Row'
-import { useSelector } from 'react-redux'
-import { RootState } from 'src/store'
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Row from './Row';
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/store';
 
 const useStyles = makeStyles({
   root: {
@@ -20,17 +20,17 @@ const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
-})
+});
 
 const WrapperTable: React.FC = () => {
-  const store = useSelector((state: RootState) => state.generation)
-  const move = useSelector((state: RootState) => state.move)
-  const pokemon = useSelector((state: RootState) => state.pokemon)
-  const ability = useSelector((state: RootState) => state.ability)
-  const type = useSelector((state: RootState) => state.type)
-  const { generations } = store
-  const { results } = generations
-  const classes = useStyles()
+  const store = useSelector((state: RootState) => state.generation);
+  const move = useSelector((state: RootState) => state.move);
+  const pokemon = useSelector((state: RootState) => state.pokemon);
+  const ability = useSelector((state: RootState) => state.ability);
+  const type = useSelector((state: RootState) => state.type);
+  const { generations } = store;
+  const { results } = generations;
+  const classes = useStyles();
   return (
     <>
       <div className={classes.root}>
@@ -63,6 +63,6 @@ const WrapperTable: React.FC = () => {
         </TableContainer>
       </div>
     </>
-  )
-}
-export default WrapperTable
+  );
+};
+export default WrapperTable;

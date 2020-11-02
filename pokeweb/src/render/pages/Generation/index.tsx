@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import WrapperTable from 'src/render/components/table'
-import WrapperTimeLine from 'src/render/components/timeline'
-import { makeStyles } from '@material-ui/core/styles'
-import { useDispatch } from 'react-redux'
-import { Dispatch } from 'src/store'
-import { Switch, Typography } from '@material-ui/core'
+import React, { useEffect, useState } from 'react';
+import WrapperTable from 'src/render/components/table';
+import WrapperTimeLine from 'src/render/components/timeline';
+import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch } from 'react-redux';
+import { Dispatch } from 'src/store';
+import { Switch, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -18,23 +18,23 @@ const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
-})
+});
 
 const Generation: React.FC = () => {
-  const classes = useStyles()
-  const dispatch = useDispatch<Dispatch>()
-  const [check, setCheck] = useState(true)
+  const classes = useStyles();
+  const dispatch = useDispatch<Dispatch>();
+  const [check, setCheck] = useState(true);
   const handleChange = () => {
-    setCheck(!check)
-  }
+    setCheck(!check);
+  };
 
   useEffect(() => {
-    dispatch.generation.getGenerations()
-    dispatch.move.getMoves(0)
-    dispatch.pokemon.getPokemons(0)
-    dispatch.ability.getAbilities(0)
-    dispatch.type.getTypes(0)
-  }, [])
+    dispatch.generation.getGenerations();
+    dispatch.move.getMoves(0);
+    dispatch.pokemon.getPokemons(0);
+    dispatch.ability.getAbilities(0);
+    dispatch.type.getTypes(0);
+  }, []);
 
   return (
     <>
@@ -51,6 +51,6 @@ const Generation: React.FC = () => {
         {check ? <WrapperTable /> : <WrapperTimeLine />}
       </div>
     </>
-  )
-}
-export default Generation
+  );
+};
+export default Generation;

@@ -17,6 +17,6 @@ export const COLOR: any = {
   poison: '#B97FC9',
   ghost: '#7B62A3',
   steel: '#84B7B8',
-}
+};
 
-export const API_URL = 'https://pokeapi.co/api/v2'
+export const API_URL = 'https://pokeapi.co/api/v2';

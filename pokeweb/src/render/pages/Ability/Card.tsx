@@ -1,12 +1,12 @@
-import React from 'react'
-import { Card, CardContent, Typography } from '@material-ui/core'
-import { createStyles, makeStyles } from '@material-ui/core/styles'
+import React from 'react';
+import { Card, CardContent, Typography } from '@material-ui/core';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 
 type Props = {
-  name: string
-  idString: string
-  url: string
-}
+  name: string;
+  idString: string;
+  url: string;
+};
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -33,10 +33,10 @@ const useStyles = makeStyles(() =>
       color: 'white',
     },
   }),
-)
+);
 const CardAbility: React.FC<Props> = (props: Props) => {
-  const { name, idString } = props
-  const classes = useStyles()
+  const { name, idString } = props;
+  const classes = useStyles();
   return (
     <>
       <Card variant="outlined" className={classes.root}>
@@ -52,10 +52,10 @@ const CardAbility: React.FC<Props> = (props: Props) => {
         </div>
       </Card>
     </>
-  )
-}
+  );
+};
 // const WrapperChip = styled.div`
 //   display: flex;
 //   flex-direction: column;
 // `
-export default CardAbility
+export default CardAbility;

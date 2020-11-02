@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState, Dispatch } from 'src/store'
-import { useParams } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, Dispatch } from 'src/store';
+import { useParams } from 'react-router-dom';
 import {
   Card,
   CardContent,
@@ -11,10 +11,13 @@ import {
   CardActions,
   CardActionArea,
   Chip,
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import { getColor } from 'src/util/color'
-import { formatNamePokemon, formatHeightAndWeight } from 'src/util/formatString'
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { getColor } from 'src/util/color';
+import {
+  formatNamePokemon,
+  formatHeightAndWeight,
+} from 'src/util/formatString';
 
 const useStyles = makeStyles({
   root: {
@@ -42,30 +45,30 @@ const useStyles = makeStyles({
     margin: '2px 2px',
     color: 'white',
   },
-})
+});
 const Detail: React.FC = () => {
-  const classes = useStyles()
-  const state = useSelector((state: RootState) => state.pokemon)
-  const dispatch = useDispatch<Dispatch>()
-  const { id } = useParams()
-  const { pokemon, special } = state
-  const { name, weight, height, types } = pokemon
+  const classes = useStyles();
+  const state = useSelector((state: RootState) => state.pokemon);
+  const dispatch = useDispatch<Dispatch>();
+  const { id } = useParams();
+  const { pokemon, special } = state;
+  const { name, weight, height, types } = pokemon;
   const getUrlImagePokemon = (idNumber: number): string => {
-    let result = ''
+    let result = '';
     if (idNumber < 10) {
-      result = `00${idNumber}`
+      result = `00${idNumber}`;
     } else if (idNumber > 99) {
-      result = `${idNumber}`
+      result = `${idNumber}`;
     } else {
-      result = `0${idNumber}`
+      result = `0${idNumber}`;
     }
-    return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${result}.png`
-  }
+    return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${result}.png`;
+  };
 
   useEffect(() => {
-    dispatch.pokemon.getPokemon(id)
-    dispatch.pokemon.getSpecial(id)
-  }, [])
+    dispatch.pokemon.getPokemon(id);
+    dispatch.pokemon.getSpecial(id);
+  }, []);
 
   return (
     <>
@@ -138,14 +141,14 @@ const Detail: React.FC = () => {
         </Card>
       </WrapperCard>
     </>
-  )
-}
+  );
+};
 const WrapperCard = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-`
+`;
 const WrapperChip = styled.div`
   display: flex;
-`
-export default Detail
+`;
+export default Detail;

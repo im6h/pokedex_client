@@ -1,16 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Chip, Card, CardContent, Typography } from '@material-ui/core'
-import { useFetch } from 'src/hook/useFetch'
-import { createStyles, makeStyles } from '@material-ui/core/styles'
-import { getColor } from 'src/util/color'
-import { formatNamePokemon } from 'src/util/formatString'
+import React from 'react';
+import styled from 'styled-components';
+import { Chip, Card, CardContent, Typography } from '@material-ui/core';
+import { useFetch } from 'src/hook/useFetch';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { getColor } from 'src/util/color';
+import { formatNamePokemon } from 'src/util/formatString';
 
 type Props = {
-  name: string
-  url: string
-  idString: string
-}
+  name: string;
+  url: string;
+  idString: string;
+};
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -38,11 +38,11 @@ const useStyles = makeStyles(() =>
       color: 'white',
     },
   }),
-)
+);
 const CardMove: React.FC<Props> = (props: Props) => {
-  const { name, url, idString } = props
-  const classes = useStyles()
-  const { data } = useFetch(url)
+  const { name, url, idString } = props;
+  const classes = useStyles();
+  const { data } = useFetch(url);
 
   return (
     <>
@@ -72,17 +72,17 @@ const CardMove: React.FC<Props> = (props: Props) => {
         {/* <CardMedia className={classes.cover} image={urlImage} title={name} /> */}
       </Card>
     </>
-  )
-}
+  );
+};
 const WrapperChip = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 const CardTop = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-evenly;
-`
-export default CardMove
+`;
+export default CardMove;

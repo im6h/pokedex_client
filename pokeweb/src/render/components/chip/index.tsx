@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
 const Chip: React.FC = () => {
   return (
     <>
       <div>Chip</div>
     </>
-  )
-}
-export default Chip
+  );
+};
+export default Chip;

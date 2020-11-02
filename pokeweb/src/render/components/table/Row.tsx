@@ -1,40 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import api from 'src/service/generation'
-import { TableRow, TableCell, Tooltip } from '@material-ui/core'
-import { formatNamePokemon, formatGenerationName } from 'src/util/formatString'
-import { Generation, generationInstance } from 'src/model/interface/generation'
-import { useHistory } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import api from 'src/service/generation';
+import { TableRow, TableCell, Tooltip } from '@material-ui/core';
+import { formatNamePokemon, formatGenerationName } from 'src/util/formatString';
+import { Generation, generationInstance } from 'src/model/interface/generation';
+import { useHistory } from 'react-router-dom';
 
 type Props = {
-  idx: number
-}
+  idx: number;
+};
 
 const Row: React.FC<Props> = (props: Props) => {
-  const { idx } = props
-  const [generation, setGenerations] = useState<Generation>(generationInstance)
-  const history = useHistory()
+  const { idx } = props;
+  const [generation, setGenerations] = useState<Generation>(generationInstance);
+  const history = useHistory();
   const fetchData = async () => {
-    const res = await api.getGeneration(idx)
+    const res = await api.getGeneration(idx);
     if (res.status === 200 && res.data) {
-      setGenerations(res.data)
+      setGenerations(res.data);
     }
-  }
+  };
   const clickPokemon = (): void => {
-    history.push(`/generation/${idx}/pokemon`)
-  }
+    history.push(`/generation/${idx}/pokemon`);
+  };
   const clickMove = (): void => {
-    history.push(`/generation/${idx}/move`)
-  }
+    history.push(`/generation/${idx}/move`);
+  };
   const clickAbility = (): void => {
-    history.push(`/generation/${idx}/ability`)
-  }
+    history.push(`/generation/${idx}/ability`);
+  };
   const clickType = (): void => {
-    history.push(`/generation/${idx}/type`)
-  }
+    history.push(`/generation/${idx}/type`);
+  };
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -72,7 +72,7 @@ const Row: React.FC<Props> = (props: Props) => {
         </TableCell>
       </TableRow>
     </>
-  )
-}
+  );
+};
 
-export default Row
+export default Row;

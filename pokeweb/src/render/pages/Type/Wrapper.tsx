@@ -1,13 +1,13 @@
-import React from 'react'
-import CardType from './Card'
-import { handleUrlPokemon, formatNamePokemon } from 'src/util/formatString'
+import React from 'react';
+import CardType from './Card';
+import { handleUrlPokemon, formatNamePokemon } from 'src/util/formatString';
 
 type Props = {
-  url: string
-  name: string
-}
+  url: string;
+  name: string;
+};
 const Wrapper: React.FC<Props> = (props: Props) => {
-  const { url, name } = props
+  const { url, name } = props;
   return (
     <>
       <CardType
@@ -16,6 +16,6 @@ const Wrapper: React.FC<Props> = (props: Props) => {
         url={url}
       />
     </>
-  )
-}
-export default Wrapper
+  );
+};
+export default Wrapper;

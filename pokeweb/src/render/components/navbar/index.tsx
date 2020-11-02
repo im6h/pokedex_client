@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -8,10 +8,10 @@ import {
   List,
   ListItem,
   ListItemText,
-} from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
-import { makeStyles } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
+} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   list: {
@@ -20,21 +20,21 @@ const useStyles = makeStyles({
   fullList: {
     width: 'auto',
   },
-})
+});
 const Navbar: React.FC = () => {
-  const classes = useStyles()
-  const [open, setOpen] = useState(false)
-  const data: string[] = ['Pokemon', 'Move', 'Type']
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const data: string[] = ['Pokemon', 'Move', 'Type'];
   const actionDrawer = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
   return (
     <div>
       <AppBar position="relative" color="transparent">
         <Toolbar>
           <IconButton
             onClick={() => {
-              actionDrawer()
+              actionDrawer();
             }}
             edge="start"
             color="primary"
@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
             anchor="left"
             open={open}
             onClose={() => {
-              setOpen(false)
+              setOpen(false);
             }}>
             <div className={classes.list}>
               <List>
@@ -70,6 +70,6 @@ const Navbar: React.FC = () => {
         </Toolbar>
       </AppBar>
     </div>
-  )
-}
-export default Navbar
+  );
+};
+export default Navbar;

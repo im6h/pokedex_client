@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Timeline,
   TimelineSeparator,
@@ -6,15 +6,15 @@ import {
   TimelineDot,
   TimelineItem,
   TimelineContent,
-} from '@material-ui/lab'
-import { useSelector } from 'react-redux'
-import { RootState } from 'src/store'
-import PaperItem from './Paper'
+} from '@material-ui/lab';
+import { useSelector } from 'react-redux';
+import { RootState } from 'src/store';
+import PaperItem from './Paper';
 
 const WrapperTimeLine: React.FC = () => {
-  const store = useSelector((state: RootState) => state.generation)
-  const { generations } = store
-  const { results } = generations
+  const store = useSelector((state: RootState) => state.generation);
+  const { generations } = store;
+  const { results } = generations;
 
   return (
     <>
@@ -31,7 +31,7 @@ const WrapperTimeLine: React.FC = () => {
                   <PaperItem idx={idx + 1} />
                 </TimelineContent>
               </TimelineItem>
-            )
+            );
           })}
           <TimelineItem>
             <TimelineSeparator>
@@ -42,6 +42,6 @@ const WrapperTimeLine: React.FC = () => {
         </Timeline>
       </div>
     </>
-  )
-}
-export default WrapperTimeLine
+  );
+};
+export default WrapperTimeLine;

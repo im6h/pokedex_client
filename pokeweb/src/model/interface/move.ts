@@ -1,23 +1,23 @@
-import Base from './base'
+import Base from './base';
 
 export type Move = {
-  id: number
-  name: string
-  accuracy: number
-  power: number
-  type: Base
-  pp: number
-  damage_class: Base
-  contest_type: Base
-  generation: Base
+  id: number;
+  name: string;
+  accuracy: number;
+  power: number;
+  type: Base;
+  pp: number;
+  damage_class: Base;
+  contest_type: Base;
+  generation: Base;
   flavor_text_entries: [
     {
-      flavor_text: string
-      language: Base
-      version: Base
+      flavor_text: string;
+      language: Base;
+      version: Base;
     },
-  ]
-}
+  ];
+};
 
 export const moveInstance: Move = {
   id: 0,
@@ -54,4 +54,4 @@ export const moveInstance: Move = {
       },
     },
   ],
-}
+};

@@ -1,11 +1,11 @@
-import Base from './base'
+import Base from './base';
 
 export type List = {
-  count: number
-  next: string
-  previous: string
-  results: Base[]
-}
+  count: number;
+  next: string;
+  previous: string;
+  results: Base[];
+};
 
 export const listInstance = {
   count: 0,
@@ -17,4 +17,4 @@ export const listInstance = {
       url: '',
     },
   ],
-}
+};

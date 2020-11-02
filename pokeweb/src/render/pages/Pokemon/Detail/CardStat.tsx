@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
 const CardStat = () => {
   return (
     <>
       <div>Ability</div>
     </>
-  )
-}
-export default CardStat
+  );
+};
+export default CardStat;

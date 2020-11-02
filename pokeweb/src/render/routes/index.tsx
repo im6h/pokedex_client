@@ -1,13 +1,13 @@
-import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Navbar from 'src/render/components/navbar'
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Navbar from 'src/render/components/navbar';
 // import Home from 'src/render/pages/Home'
-import Pokemon from 'src/render/pages/Pokemon'
-import Generation from 'src/render/pages/Generation'
-import Move from 'src/render/pages/Move'
-import Ability from 'src/render/pages/Ability'
-import Type from 'src/render/pages/Type'
-import Detail from 'src/render/pages/Pokemon/Detail'
+import Pokemon from 'src/render/pages/Pokemon';
+import Generation from 'src/render/pages/Generation';
+import Move from 'src/render/pages/Move';
+import Ability from 'src/render/pages/Ability';
+import Type from 'src/render/pages/Type';
+import Detail from 'src/render/pages/Pokemon/Detail';
 
 const Router: React.FC = () => {
   return (
@@ -24,6 +24,6 @@ const Router: React.FC = () => {
         </Switch>
       </BrowserRouter>
     </>
-  )
-}
-export default Router
+  );
+};
+export default Router;

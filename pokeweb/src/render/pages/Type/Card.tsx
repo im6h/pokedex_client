@@ -1,13 +1,13 @@
-import React from 'react'
-import { Card, CardContent, Typography } from '@material-ui/core'
-import { createStyles, makeStyles } from '@material-ui/core/styles'
-import { getColor } from 'src/util/color'
+import React from 'react';
+import { Card, CardContent, Typography } from '@material-ui/core';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { getColor } from 'src/util/color';
 
 type Props = {
-  name: string
-  idString: string
-  url: string
-}
+  name: string;
+  idString: string;
+  url: string;
+};
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -34,10 +34,10 @@ const useStyles = makeStyles(() =>
       color: 'white',
     },
   }),
-)
+);
 const CardType: React.FC<Props> = (props: Props) => {
-  const { name, idString } = props
-  const classes = useStyles()
+  const { name, idString } = props;
+  const classes = useStyles();
   return (
     <>
       <Card
@@ -58,10 +58,10 @@ const CardType: React.FC<Props> = (props: Props) => {
         </div>
       </Card>
     </>
-  )
-}
+  );
+};
 // const WrapperChip = styled.div`
 //   display: flex;
 //   flex-direction: column;
 // `
-export default CardType
+export default CardType;
