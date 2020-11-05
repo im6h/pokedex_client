@@ -51,6 +51,7 @@ export const pokemon = createModel<RootModel>()({
         dispatch.pokemon.setPokemons(listInstance);
       }
     },
+
     async getPokemon(id: number) {
       const res = await api.getPokemon(id);
       if (res.status === 200 && res.data) {
@@ -59,6 +60,7 @@ export const pokemon = createModel<RootModel>()({
         dispatch.pokemon.setPokemon(pokemonInstance);
       }
     },
+
     async getSpecial(id: number) {
       const res = await api.getSpecial(id);
       if (res.status === 200 && res.data) {

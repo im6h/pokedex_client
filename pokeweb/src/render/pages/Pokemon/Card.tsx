@@ -11,6 +11,8 @@ import {
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { getColor } from 'src/util/color';
 import { formatNamePokemon } from 'src/util/formatString';
+import { useDispatch } from 'react-redux';
+import { Dispatch } from 'src/store';
 
 type Props = {
   name: string;
@@ -25,6 +27,7 @@ const useStyles = makeStyles(() =>
     root: {
       display: 'flex',
       height: '100%',
+      margin: '2px 0px',
     },
     details: {
       display: 'flex',
@@ -47,11 +50,12 @@ const useStyles = makeStyles(() =>
   }),
 );
 const CardPokemon: React.FC<Props> = (props: Props) => {
-  const history = useHistory();
+  const dispatch = useDispatch<Dispatch>();
   const { name, idString, idNumber, urlImage, types } = props;
   const classes = useStyles();
   const handleOnClick = (): void => {
-    history.push(`/pokemon/${idNumber}`);
+    dispatch.pokemon.getPokemon(idNumber);
+    dispatch.pokemon.getSpecial(idNumber);
   };
 
   return (
