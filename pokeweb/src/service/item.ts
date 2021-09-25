@@ -4,7 +4,12 @@ import axios from 'axios';
 const limit = 100;
 class Item {
   async getItems(offset: number) {
-    return axios.get(`${API_URL}/item?limit=${limit}&offset=${offset}`);
+    return axios.get(`${API_URL}/item`, {
+      params: {
+        limit,
+        offset
+      }
+    });
   }
 
   async getItem(id: number) {

@@ -4,7 +4,12 @@ import axios from 'axios';
 const limit = 100;
 class Move {
   async getMoves(offset: number) {
-    return axios.get(`${API_URL}/move?limit=${limit}&offset=${offset}`);
+    return axios.get(`${API_URL}/move`, {
+      params: {
+        limit,
+        offset
+      }
+    });
   }
 
   async getMove(id: number) {

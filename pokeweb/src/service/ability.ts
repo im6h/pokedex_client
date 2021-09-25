@@ -4,7 +4,12 @@ import axios from 'axios';
 const limit = 100;
 class Ability {
   async getAbilites(offset: number) {
-    return axios.get(`${API_URL}/ability?limit=${limit}&offset=${offset}`);
+    return axios.get(`${API_URL}/ability`, {
+      params: {
+        limit,
+        offset
+      }
+    });
   }
 
   async getAbility(id: number) {

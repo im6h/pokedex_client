@@ -4,7 +4,12 @@ import axios from 'axios';
 const limit = 100;
 class Type {
   async getTypes(offset: number) {
-    return axios.get(`${API_URL}/type?limit=${limit}&offset=${offset}`);
+    return axios.get(`${API_URL}/type`, {
+      params: {
+        limit,
+        offset
+      }
+    });
   }
 
   async getType(id: number) {
